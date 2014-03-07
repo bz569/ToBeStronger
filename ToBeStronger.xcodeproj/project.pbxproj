@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B22295E118CA3D5700EA6E87 /* TimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22295E018CA3D5700EA6E87 /* TimerViewController.m */; };
+		B229D77418CA3AE800415DD2 /* ContentOfDay.m in Sources */ = {isa = PBXBuildFile; fileRef = B229D77318CA3AE800415DD2 /* ContentOfDay.m */; };
+		B229D77718CA3B4300415DD2 /* Plan.m in Sources */ = {isa = PBXBuildFile; fileRef = B229D77618CA3B4300415DD2 /* Plan.m */; };
+		B229D77A18CA3B9300415DD2 /* Counter.m in Sources */ = {isa = PBXBuildFile; fileRef = B229D77918CA3B9300415DD2 /* Counter.m */; };
 		B2FE9F4718CA3987004328E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE9F4618CA3987004328E7 /* Foundation.framework */; };
 		B2FE9F4918CA3987004328E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE9F4818CA3987004328E7 /* CoreGraphics.framework */; };
 		B2FE9F4B18CA3987004328E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE9F4A18CA3987004328E7 /* UIKit.framework */; };
@@ -21,6 +25,7 @@
 		B2FE9F6818CA3988004328E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE9F4A18CA3987004328E7 /* UIKit.framework */; };
 		B2FE9F7018CA3988004328E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2FE9F6E18CA3988004328E7 /* InfoPlist.strings */; };
 		B2FE9F7218CA3988004328E7 /* ToBeStrongerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FE9F7118CA3988004328E7 /* ToBeStrongerTests.m */; };
+		B2FE9F8A18CA3A51004328E7 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FE9F8918CA3A51004328E7 /* Exercise.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +39,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B22295DF18CA3D5700EA6E87 /* TimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimerViewController.h; path = ToBeStronger/TimerViewController.h; sourceTree = SOURCE_ROOT; };
+		B22295E018CA3D5700EA6E87 /* TimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimerViewController.m; path = ToBeStronger/TimerViewController.m; sourceTree = SOURCE_ROOT; };
+		B229D77218CA3AE800415DD2 /* ContentOfDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentOfDay.h; sourceTree = "<group>"; };
+		B229D77318CA3AE800415DD2 /* ContentOfDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentOfDay.m; sourceTree = "<group>"; };
+		B229D77518CA3B4300415DD2 /* Plan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plan.h; sourceTree = "<group>"; };
+		B229D77618CA3B4300415DD2 /* Plan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plan.m; sourceTree = "<group>"; };
+		B229D77818CA3B9300415DD2 /* Counter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Counter.h; sourceTree = "<group>"; };
+		B229D77918CA3B9300415DD2 /* Counter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Counter.m; sourceTree = "<group>"; };
 		B2FE9F4318CA3987004328E7 /* ToBeStronger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToBeStronger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2FE9F4618CA3987004328E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B2FE9F4818CA3987004328E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +66,8 @@
 		B2FE9F6D18CA3988004328E7 /* ToBeStrongerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ToBeStrongerTests-Info.plist"; sourceTree = "<group>"; };
 		B2FE9F6F18CA3988004328E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B2FE9F7118CA3988004328E7 /* ToBeStrongerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToBeStrongerTests.m; sourceTree = "<group>"; };
+		B2FE9F8818CA3A51004328E7 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
+		B2FE9F8918CA3A51004328E7 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +127,12 @@
 		B2FE9F4C18CA3987004328E7 /* ToBeStronger */ = {
 			isa = PBXGroup;
 			children = (
-				B2FE9F5518CA3988004328E7 /* TBSAppDelegate.h */,
-				B2FE9F5618CA3988004328E7 /* TBSAppDelegate.m */,
 				B2FE9F5818CA3988004328E7 /* Main.storyboard */,
+				B22295DF18CA3D5700EA6E87 /* TimerViewController.h */,
+				B22295E018CA3D5700EA6E87 /* TimerViewController.m */,
 				B2FE9F5B18CA3988004328E7 /* TBSViewController.h */,
 				B2FE9F5C18CA3988004328E7 /* TBSViewController.m */,
+				B2FE9F7B18CA39C8004328E7 /* models */,
 				B2FE9F5E18CA3988004328E7 /* Images.xcassets */,
 				B2FE9F4D18CA3987004328E7 /* Supporting Files */,
 			);
@@ -126,6 +142,8 @@
 		B2FE9F4D18CA3987004328E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B2FE9F5518CA3988004328E7 /* TBSAppDelegate.h */,
+				B2FE9F5618CA3988004328E7 /* TBSAppDelegate.m */,
 				B2FE9F4E18CA3987004328E7 /* ToBeStronger-Info.plist */,
 				B2FE9F4F18CA3987004328E7 /* InfoPlist.strings */,
 				B2FE9F5218CA3988004328E7 /* main.m */,
@@ -150,6 +168,21 @@
 				B2FE9F6E18CA3988004328E7 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B2FE9F7B18CA39C8004328E7 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				B2FE9F8818CA3A51004328E7 /* Exercise.h */,
+				B2FE9F8918CA3A51004328E7 /* Exercise.m */,
+				B229D77218CA3AE800415DD2 /* ContentOfDay.h */,
+				B229D77318CA3AE800415DD2 /* ContentOfDay.m */,
+				B229D77518CA3B4300415DD2 /* Plan.h */,
+				B229D77618CA3B4300415DD2 /* Plan.m */,
+				B229D77818CA3B9300415DD2 /* Counter.h */,
+				B229D77918CA3B9300415DD2 /* Counter.m */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,8 +283,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B22295E118CA3D5700EA6E87 /* TimerViewController.m in Sources */,
 				B2FE9F5718CA3988004328E7 /* TBSAppDelegate.m in Sources */,
+				B229D77418CA3AE800415DD2 /* ContentOfDay.m in Sources */,
+				B2FE9F8A18CA3A51004328E7 /* Exercise.m in Sources */,
 				B2FE9F5D18CA3988004328E7 /* TBSViewController.m in Sources */,
+				B229D77718CA3B4300415DD2 /* Plan.m in Sources */,
+				B229D77A18CA3B9300415DD2 /* Counter.m in Sources */,
 				B2FE9F5318CA3988004328E7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,6 +499,7 @@
 				B2FE9F7718CA3988004328E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B2FE9F7818CA3988004328E7 /* Build configuration list for PBXNativeTarget "ToBeStrongerTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +508,7 @@
 				B2FE9F7A18CA3988004328E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
