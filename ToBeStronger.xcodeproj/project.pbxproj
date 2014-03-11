@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		B21BAA0E18CCF48400304E1F /* TimerPics.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BAA0D18CCF48400304E1F /* TimerPics.m */; };
 		B21BAA3918CCF6B500304E1F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B21BAA3818CCF6B500304E1F /* Images.xcassets */; };
-		B21BAA3B18CD000C00304E1F /* clock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B21BAA3A18CD000C00304E1F /* clock.mp3 */; };
 		B21BAA3D18CD011A00304E1F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21BAA3C18CD011A00304E1F /* AVFoundation.framework */; };
 		B22295E118CA3D5700EA6E87 /* TimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22295E018CA3D5700EA6E87 /* TimerViewController.m */; };
 		B229D77418CA3AE800415DD2 /* ContentOfDay.m in Sources */ = {isa = PBXBuildFile; fileRef = B229D77318CA3AE800415DD2 /* ContentOfDay.m */; };
 		B229D77718CA3B4300415DD2 /* Plan.m in Sources */ = {isa = PBXBuildFile; fileRef = B229D77618CA3B4300415DD2 /* Plan.m */; };
 		B229D77A18CA3B9300415DD2 /* Counter.m in Sources */ = {isa = PBXBuildFile; fileRef = B229D77918CA3B9300415DD2 /* Counter.m */; };
+		B2A8CE9018CFB92A00303929 /* clock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2A8CE8F18CFB92A00303929 /* clock.mp3 */; };
 		B2FE9F4718CA3987004328E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE9F4618CA3987004328E7 /* Foundation.framework */; };
 		B2FE9F4918CA3987004328E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE9F4818CA3987004328E7 /* CoreGraphics.framework */; };
 		B2FE9F4B18CA3987004328E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE9F4A18CA3987004328E7 /* UIKit.framework */; };
@@ -45,7 +45,6 @@
 		B21BAA0C18CCF48400304E1F /* TimerPics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimerPics.h; path = ../TimerPics.h; sourceTree = "<group>"; };
 		B21BAA0D18CCF48400304E1F /* TimerPics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimerPics.m; path = ../TimerPics.m; sourceTree = "<group>"; };
 		B21BAA3818CCF6B500304E1F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B21BAA3A18CD000C00304E1F /* clock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = clock.mp3; path = ../../../../../../Desktop/clock.mp3; sourceTree = "<group>"; };
 		B21BAA3C18CD011A00304E1F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B22295DF18CA3D5700EA6E87 /* TimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimerViewController.h; path = ToBeStronger/TimerViewController.h; sourceTree = SOURCE_ROOT; };
 		B22295E018CA3D5700EA6E87 /* TimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimerViewController.m; path = ToBeStronger/TimerViewController.m; sourceTree = SOURCE_ROOT; };
@@ -55,6 +54,7 @@
 		B229D77618CA3B4300415DD2 /* Plan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plan.m; sourceTree = "<group>"; };
 		B229D77818CA3B9300415DD2 /* Counter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Counter.h; sourceTree = "<group>"; };
 		B229D77918CA3B9300415DD2 /* Counter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Counter.m; sourceTree = "<group>"; };
+		B2A8CE8F18CFB92A00303929 /* clock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clock.mp3; sourceTree = "<group>"; };
 		B2FE9F4318CA3987004328E7 /* ToBeStronger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToBeStronger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2FE9F4618CA3987004328E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B2FE9F4818CA3987004328E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -151,7 +151,7 @@
 		B2FE9F4D18CA3987004328E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B21BAA3A18CD000C00304E1F /* clock.mp3 */,
+				B2A8CE8F18CFB92A00303929 /* clock.mp3 */,
 				B2FE9F5518CA3988004328E7 /* TBSAppDelegate.h */,
 				B2FE9F5618CA3988004328E7 /* TBSAppDelegate.m */,
 				B2FE9F4E18CA3987004328E7 /* ToBeStronger-Info.plist */,
@@ -277,7 +277,7 @@
 				B21BAA3918CCF6B500304E1F /* Images.xcassets in Resources */,
 				B2FE9F5118CA3987004328E7 /* InfoPlist.strings in Resources */,
 				B2FE9F5A18CA3988004328E7 /* Main.storyboard in Resources */,
-				B21BAA3B18CD000C00304E1F /* clock.mp3 in Resources */,
+				B2A8CE9018CFB92A00303929 /* clock.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
