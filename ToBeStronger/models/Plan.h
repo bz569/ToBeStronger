@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Exercise.h"
+#import "ContentOfDay.h"
 
 @interface Plan : Exercise
 
@@ -22,6 +22,7 @@
                        Frequency:(NSInteger)frequency
                        NumPerSet:(NSInteger)numberPerSet
                             Sets:(NSInteger)sets
+                          Weight:(NSInteger)weight
                         Duration:(NSInteger)duration
               isNeedNotification:(BOOL)needNotification;
 

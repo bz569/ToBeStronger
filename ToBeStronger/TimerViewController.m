@@ -16,6 +16,8 @@
 @property (strong, nonatomic) TimerPics *timerPics;
 @property (strong, nonatomic) AVAudioPlayer *clockSoundPlayer;
 
+@property (strong, nonatomic) TBSDatebase *db;
+
 @end
 
 @implementation TimerViewController
@@ -39,6 +41,15 @@
     {
         [self.clockSoundPlayer play];
     }
+    
+    self.db = [[TBSDatebase alloc] init];
+    [self.db insertExerciseContentWithName:@"Push-ups"
+                                  Position:@"Chest"
+                               NumberOfSet:12
+                                      Sets:4
+                                    Weight:40
+                                      Date:@"2014-3-12"];
+    
 }
 
 - (void)initClockSoundPlayer

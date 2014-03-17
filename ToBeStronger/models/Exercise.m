@@ -14,6 +14,7 @@
                     Position:(NSString *)position
                 nubmerPerSet:(NSInteger)numberPerset
                         Sets:(NSInteger)sets
+                      Weight:(NSInteger)weight
 {
     self = [super init];
     
@@ -23,6 +24,7 @@
         self.position = position;
         self.numberPerSet = numberPerset;
         self.sets = sets;
+        self.weight = weight;
     }
     
     return self;

@@ -14,12 +14,14 @@
                     Position:(NSString *)position
                 nubmerPerSet:(NSInteger)numberPerset
                         Sets:(NSInteger)sets
+                      Weight:(NSInteger)weight
                         Date:(NSString *)date
 {
     self = [super initWithName:name
                       Position:position
                   nubmerPerSet:numberPerset
-                          Sets:sets];
+                          Sets:sets
+                        Weight:weight];
     
     if(self)
     {
@@ -34,16 +36,18 @@
                     Position:(NSString *)position
                 nubmerPerSet:(NSInteger)numberPerset
                         Sets:(NSInteger)sets
+                      Weight:(NSInteger)weight
                         Date:(NSString *)date
                   isFinished:(BOOL)finished
                intervalTimes:(NSMutableArray*)intervalTimes
                    RestTimes:(NSMutableArray*)RestTimes
 {
-    self = [self initWithName:name
-                     Position:position
-                 nubmerPerSet:numberPerset
-                         Sets:sets
-                         Date:date];
+    self = [super initWithName:name
+                      Position:position
+                  nubmerPerSet:numberPerset
+                          Sets:sets
+                        Weight:weight];
+
     
     if(self)
     {
@@ -61,6 +65,18 @@
     self.finished = YES;
     self.intervalTimes = intervalTimes;
     self.restTimes =restTimes;
+}
+
+- (void)storeIntoDateBase
+{
+    TBSDatebase *db = [[TBSDatebase alloc] init];
+    [db insertExerciseContentWithName:self.name
+                             Position:self.position
+                          NumberOfSet:self.numberPerSet
+                                 Sets:self.sets
+                               Weight:self.weight
+                                 Date:self.date
+                             Finished:self.finished];
 }
 
 @end

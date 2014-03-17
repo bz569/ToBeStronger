@@ -16,10 +16,15 @@
                        Frequency:(NSInteger)frequency
                        NumPerSet:(NSInteger)numberPerSet
                             Sets:(NSInteger)sets
+                          Weight:(NSInteger)weight
                         Duration:(NSInteger)duration
               isNeedNotification:(BOOL)needNotification
 {
-    self = [super initWithName:name Position:position nubmerPerSet:numberPerSet Sets:sets];
+    self = [super initWithName:name
+                      Position:position
+                  nubmerPerSet:numberPerSet
+                          Sets:sets
+                        Weight:weight];
     
     if(self)
     {
@@ -40,12 +45,13 @@
     
     for(int i = 0; i < numOfDays; i++)
     {
-        Exercise *newExercise = [[Exercise alloc] initWithName:self.name
+        ContentOfDay *newContent = [[ContentOfDay alloc] initWithName:self.name
                                                       Position:self.position
                                                   nubmerPerSet:self.numberPerSet
-                                                          Sets:self.numberPerSet];
+                                                          Sets:self.numberPerSet
+                                                               Weight:self.weight];
         
-        [planContent addObject:newExercise];
+        [planContent addObject:newContent];
     }
     
     return planContent;
@@ -113,7 +119,7 @@
             }
         }
         
-        nextDay = [NSString stringWithFormat:@"%d-%d-%d", currentYear, currentMonth, currentDay];
+        nextDay = [NSString stringWithFormat:@"%ld-%d-%d", currentYear, currentMonth, currentDay];
         
     }
     

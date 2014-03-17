@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Exercise.h"
+#import "TBSDatebase.h"
 
 @interface ContentOfDay : Exercise
 
@@ -18,14 +19,16 @@
 
 - (instancetype)initWithName:(NSString *)name
                     Position:(NSString *)position
-                nubmerPerSet:(NSInteger)numberPerset
+                nubmerPerSet:(NSInteger)numberPerSet
                         Sets:(NSInteger)sets
+                      Weight:(NSInteger)weight
                         Date:(NSString *)date;
 
 - (instancetype)initWithName:(NSString *)name
                     Position:(NSString *)position
-                nubmerPerSet:(NSInteger)numberPerset
+                nubmerPerSet:(NSInteger)numberPerSet
                         Sets:(NSInteger)sets
+                      Weight:(NSInteger)weight
                         Date:(NSString *)date
                   isFinished:(BOOL)finished
                intervalTimes:(NSMutableArray*)intervalTimes
@@ -33,5 +36,7 @@
 
 - (void)finishPlanWithIntervalTimes:(NSMutableArray*)intervalTimes
                           RestTimes:(NSMutableArray*)restTimes;
+
+- (void)storeIntoDateBase;
 
 @end

@@ -14,11 +14,13 @@
 @property (strong, nonatomic) NSString *position;
 @property (nonatomic) NSInteger numberPerSet;
 @property (nonatomic) NSInteger sets;
+@property (nonatomic) NSInteger weight;
 
 - (instancetype) initWithName:(NSString *)name
                      Position:(NSString *)position
                  nubmerPerSet:(NSInteger)numberPerset
-                         Sets:(NSInteger) sets;
+                         Sets:(NSInteger) sets
+                       Weight:(NSInteger)weight;
 
 @end
 
