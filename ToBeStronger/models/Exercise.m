@@ -15,6 +15,7 @@
                 nubmerPerSet:(NSInteger)numberPerset
                         Sets:(NSInteger)sets
                       Weight:(NSInteger)weight
+              CountingMethod:(NSString*)countingMethod
 {
     self = [super init];
     
@@ -25,6 +26,7 @@
         self.numberPerSet = numberPerset;
         self.sets = sets;
         self.weight = weight;
+        self.countingMethod = self.countingMethod;
     }
     
     return self;

@@ -16,12 +16,14 @@
                         Sets:(NSInteger)sets
                       Weight:(NSInteger)weight
                         Date:(NSString *)date
+              CountingMethod:(NSString *)countingMethod
 {
     self = [super initWithName:name
                       Position:position
                   nubmerPerSet:numberPerset
                           Sets:sets
-                        Weight:weight];
+                        Weight:weight
+            CountingMethod:countingMethod];
     
     if(self)
     {
@@ -38,6 +40,7 @@
                         Sets:(NSInteger)sets
                       Weight:(NSInteger)weight
                         Date:(NSString *)date
+              CountingMethod:(NSString *)countingMethod
                   isFinished:(BOOL)finished
                intervalTimes:(NSMutableArray*)intervalTimes
                    RestTimes:(NSMutableArray*)RestTimes
@@ -46,7 +49,8 @@
                       Position:position
                   nubmerPerSet:numberPerset
                           Sets:sets
-                        Weight:weight];
+                        Weight:weight
+            CountingMethod:countingMethod];
 
     
     if(self)

@@ -18,13 +18,15 @@
                             Sets:(NSInteger)sets
                           Weight:(NSInteger)weight
                         Duration:(NSInteger)duration
+                  CountingMethod:(NSString*)countingMethod
               isNeedNotification:(BOOL)needNotification
 {
     self = [super initWithName:name
                       Position:position
                   nubmerPerSet:numberPerSet
                           Sets:sets
-                        Weight:weight];
+                        Weight:weight
+            CountingMethod:countingMethod];
     
     if(self)
     {
@@ -49,7 +51,8 @@
                                                       Position:self.position
                                                   nubmerPerSet:self.numberPerSet
                                                           Sets:self.numberPerSet
-                                                               Weight:self.weight];
+                                                               Weight:self.weight
+                                                       CountingMethod:self.countingMethod];
         
         [planContent addObject:newContent];
     }

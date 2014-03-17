@@ -20,9 +20,16 @@
 @property (weak, nonatomic) IBOutlet UITextField *tf_countingMethod;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker_startDate;
 @property (strong, nonatomic) IBOutlet UIPickerView *pickerView_frequency;
+@property (strong, nonatomic) IBOutlet UIPickerView *pickerView_countingMethod;
 @property (strong, nonatomic) IBOutlet UIToolbar *doneToolBar_datePicker;
+@property (strong, nonatomic) IBOutlet UIToolbar *doneToolBar_frequencyPicker;
+@property (strong, nonatomic) IBOutlet UIToolbar *doneToolBar_countingMethodPicker;
 
 @property (strong, nonatomic) NSString *planDate;
+@property (strong, nonatomic) NSArray *frequencyPickerArray;
+@property (strong, nonatomic) NSArray *countingMethodPickerArray;
+
+@property (strong, nonatomic) Plan *newPlan;
 
 @end
 
@@ -34,27 +41,136 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self setTextfields];
+    [self setTextfieldsDelegates];
     [self createDatePicker];
+    [self createPickerViewForFrequencyInput];
+    [self createPickerViewForCountingMethodInput];
     
-    }
+    self.newPlan = [[Plan alloc] init];
+    
+}
 
-- (void)setTextfields
+- (void)setTextfieldsDelegates
 {
+    self.tf_content.delegate = self;
+    self.tf_position.delegate = self;
+    self.tf_sets.delegate = self;
+    self.tf_numPerSet.delegate = self;
+    self.tf_frequency.delegate = self;
+    self.tf_countingMethod.delegate = self;
+
     self.tf_weight.delegate = self;
     self.tf_weight.clearsOnBeginEditing = YES;
 }
 
-//using UIPickerView to input frequency
+//using UIPickerView to input frequency and counting Method
 - (void)createPickerViewForFrequencyInput
 {
     self.tf_frequency.delegate = self;
     
     //Create UIPickerView
-    self.pickerView_frequency = [[UIPickerView alloc] init];
+    self.pickerView_frequency = [[UIPickerView alloc] initWithFrame:CGRectMake(100, 250, 200, 100)];
     
+    [self.pickerView_frequency reloadAllComponents];
+    [self.view addSubview:self.pickerView_frequency];
+    
+    self.frequencyPickerArray = [NSArray arrayWithObjects:@"every 1 day", @"every 2 days", @"every 3 days", @"every 4 days", @"every 5 days", @"every 6 days", nil];
+    
+    self.tf_frequency.inputView = self.pickerView_frequency;
+    self.pickerView_frequency.delegate = self;
+    self.pickerView_frequency.dataSource = self;
+    self.pickerView_frequency.frame = CGRectMake(0, 480, 320, 216);
+    
+    //create UIToolBar
+    self.doneToolBar_frequencyPicker = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    // add done button
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self
+                                                                           action:@selector(doneFrequencyPicker)];
+    
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                           target:self
+                                                                           action:nil];
+    self.doneToolBar_frequencyPicker.items = [NSArray arrayWithObjects:space, right, nil];
+    //Set tf_startDate's inputAccessoryView to doneToolBar
+    self.tf_frequency.inputAccessoryView = self.doneToolBar_frequencyPicker;
+
+}
+
+- (void)createPickerViewForCountingMethodInput
+{
+    self.tf_countingMethod.delegate = self;
+    
+    //Create UIPickerView
+    self.pickerView_countingMethod = [[UIPickerView alloc] initWithFrame:CGRectMake(100, 250, 200, 100)];
+    
+    [self.pickerView_countingMethod reloadAllComponents];
+    [self.view addSubview:self.pickerView_countingMethod];
+    
+    self.countingMethodPickerArray = [NSArray arrayWithObjects:@"Accelorometer", @"Touch", nil];
+    
+    self.tf_countingMethod.inputView = self.pickerView_countingMethod;
+    self.pickerView_countingMethod.delegate = self;
+    self.pickerView_countingMethod.dataSource = self;
+    self.pickerView_countingMethod.frame = CGRectMake(0, 480, 320, 216);
+    
+    //create UIToolBar
+    self.doneToolBar_countingMethodPicker = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    // add done button
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self
+                                                                           action:@selector(doneCountingMethodPicker)];
+    
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                           target:self
+                                                                           action:nil];
+    self.doneToolBar_countingMethodPicker.items = [NSArray arrayWithObjects:space, right, nil];
+    //Set tf_startDate's inputAccessoryView to doneToolBar
+    self.tf_countingMethod.inputAccessoryView = self.doneToolBar_countingMethodPicker;
     
 }
+
+
+- (void)doneFrequencyPicker
+{
+    [self.tf_frequency endEditing:YES];
+}
+
+- (void)doneCountingMethodPicker
+{
+    [self.tf_countingMethod endEditing:YES];
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    if(pickerView == self.pickerView_frequency)
+    {
+        return [self.frequencyPickerArray count];
+    }else if (pickerView == self.pickerView_countingMethod)
+    {
+        return [self.countingMethodPickerArray count];
+    }
+    
+    return 0;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    if(pickerView == self.pickerView_frequency)
+    {
+        return [self.frequencyPickerArray objectAtIndex:row];
+    }else if(pickerView ==self.pickerView_countingMethod)
+    {
+        return [self.countingMethodPickerArray objectAtIndex:row];
+    }
+    
+    return @"error";
+}
+
+
 
 //using UIDatePicker to input start date
 - (void)createDatePicker
@@ -73,7 +189,7 @@
     self.doneToolBar_datePicker = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
     // add done button
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self
-                                                                           action:@selector(donePicker)];
+                                                                           action:@selector(doneDatePicker)];
     
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                            target:self
@@ -83,12 +199,12 @@
     self.tf_startDate.inputAccessoryView = self.doneToolBar_datePicker;
 }
 
-- (void)donePicker
+- (void)doneDatePicker
 {
     if ([self.view endEditing:NO]) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"YYYY-MM-DD"];
-        self.tf_startDate.text = [NSString stringWithFormat:@"Start Date\t\t\t\t\t\t%@",[formatter stringFromDate:self.datePicker_startDate.date]];
+        self.tf_startDate.text = [NSString stringWithFormat:@"Start Date\t\t\t\t%@",[formatter stringFromDate:self.datePicker_startDate.date]];
         self.planDate = [NSString stringWithString:[formatter stringFromDate:self.datePicker_startDate.date]];
     }
 }
@@ -99,8 +215,35 @@
     if(textField == self.tf_weight)
     {
         NSString *tmp = [NSString stringWithString:self.tf_weight.text];
-        self.tf_weight.text = [NSString stringWithFormat:@"Weight\t\t\t\t\t\t\t\t%@ lb", tmp];
+        self.tf_weight.text = [NSString stringWithFormat:@"Weight\t\t\t\t\t\t\t%@ lb", tmp];
+        self.newPlan.weight = [tmp integerValue];
+    }else if(textField == self.tf_frequency)
+    {
+        NSInteger row = [self.pickerView_frequency selectedRowInComponent:0];
+        self.tf_frequency.text = [NSString stringWithFormat:@"Freq.\t\t\t\t\t\t%@", [self.frequencyPickerArray objectAtIndex:row]];
+        self.newPlan.frequency = row + 1;
+    }else if(textField == self.tf_countingMethod)
+    {
+        NSInteger row = [self.pickerView_countingMethod selectedRowInComponent:0];
+        self.tf_countingMethod.text = [self.countingMethodPickerArray objectAtIndex:row];
+        self.newPlan = [self.countingMethodPickerArray objectAtIndex:row];
+    }else if(textField == self.tf_position)
+    {
+        self.newPlan.position = self.tf_position.text;
+    }else if(textField == self.tf_content)
+    {
+        self.newPlan.name = self.tf_content.text;
+    }else if(textField == self.tf_sets)
+    {
+        self.newPlan.sets = [self.tf_sets.text integerValue];
+    }else if(textField == self.tf_numPerSet)
+    {
+        self.newPlan.numberPerSet = [self.tf_numPerSet.text integerValue];
+    }else if(textField == self.tf_countingMethod)
+    {
+        self.newPlan.countingMethod = self.tf_countingMethod.text;
     }
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -108,6 +251,20 @@
     if(textField == self.tf_weight)
     {
         [self.tf_weight resignFirstResponder];
+    }
+    
+    if([self.tf_position isFirstResponder])
+    {
+        [self.tf_content becomeFirstResponder];
+    }else if([self.tf_content isFirstResponder])
+    {
+        [self.tf_sets becomeFirstResponder];
+    }else if([self.tf_sets isFirstResponder])
+    {
+        [self.tf_numPerSet becomeFirstResponder];
+    }else if([self.tf_numPerSet isFirstResponder])
+    {
+        [self.tf_weight becomeFirstResponder];
     }
     
     return YES;
@@ -118,6 +275,14 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.tf_weight resignFirstResponder];
+    [self.tf_position resignFirstResponder];
+    [self.tf_content resignFirstResponder];
+    [self.tf_sets resignFirstResponder];
+    [self.tf_numPerSet resignFirstResponder];
+    [self.tf_startDate resignFirstResponder];
+    [self.tf_frequency resignFirstResponder];
+    [self.tf_countingMethod resignFirstResponder];
+    
 }
 
 

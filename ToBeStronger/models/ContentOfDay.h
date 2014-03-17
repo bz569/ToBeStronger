@@ -22,7 +22,8 @@
                 nubmerPerSet:(NSInteger)numberPerSet
                         Sets:(NSInteger)sets
                       Weight:(NSInteger)weight
-                        Date:(NSString *)date;
+                        Date:(NSString *)date
+              CountingMethod:(NSString *)countingMethod;
 
 - (instancetype)initWithName:(NSString *)name
                     Position:(NSString *)position
@@ -30,6 +31,7 @@
                         Sets:(NSInteger)sets
                       Weight:(NSInteger)weight
                         Date:(NSString *)date
+              CountingMethod:(NSString *)countingMethod
                   isFinished:(BOOL)finished
                intervalTimes:(NSMutableArray*)intervalTimes
                    RestTimes:(NSMutableArray*)RestTimes;

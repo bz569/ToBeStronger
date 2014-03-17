@@ -29,6 +29,7 @@
                                  Sets:(NSInteger)sets
                                 Weight:(NSInteger)weight
                                  Date:(NSString *)date
+                       CountingMethod:(NSString *)countingMethod
                              Finished:(BOOL)finished;
 
 /**
@@ -45,7 +46,8 @@
                           NumberOfSet:(NSInteger)numberOfSet
                                  Sets:(NSInteger)sets
                                 Weight:(NSInteger)weight
-                                 Date:(NSString *)date;
+                                 Date:(NSString *)date
+                       CountingMethod:(NSString *)countingMethod;
 
 
 @end

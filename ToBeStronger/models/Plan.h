@@ -24,6 +24,7 @@
                             Sets:(NSInteger)sets
                           Weight:(NSInteger)weight
                         Duration:(NSInteger)duration
+                  CountingMethod:(NSString*)countingMethod
               isNeedNotification:(BOOL)needNotification;
 
 - (NSMutableArray*)generatePlan;

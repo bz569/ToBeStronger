@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Plan.h"
 
-@interface NewPlanViewController : UIViewController <UITextFieldDelegate>
+@interface NewPlanViewController : UIViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 
 

@@ -27,6 +27,7 @@
 #define COLUMN_NAME_EXERCISE_CONTEN_SETS @"sets"
 #define COLUMN_NAME_EXERCISE_CONTEN_WEIGHT @"weight"
 #define COLUMN_NAME_EXERCISE_CONTEN_DATE @"date"
+#define COLUMN_NAME_EXERCISE_CONTEN_COUNTING_METHOD @"countingMethod"
 #define COLUMN_NAME_EXERCISE_CONTEN_FINISHED @"finished"
 
 //Define the column name of IntervalTimes Table
@@ -71,7 +72,7 @@
 - (void) createTables
 {
     //Create Exercise Conetent Table
-    NSString *sqlToCreateECTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (%@ INTEGER PRIMARY KEY AUTOINCREMENT, %@ TEXT, %@ TEXT, %@ INTEGER, %@ INTEGER, %@ INTEGER, %@ TEXT, %@ BOOL)", TABLE_NAME_EXERCISE_CONTENT, COLUMN_NAME_EXERCISE_CONTEN_ID, COLUMN_NAME_EXERCISE_CONTEN_NAME, COLUMN_NAME_EXERCISE_CONTEN_POSITION, COLUMN_NAME_EXERCISE_CONTEN_NUMBER_PER_SET, COLUMN_NAME_EXERCISE_CONTEN_SETS, COLUMN_NAME_EXERCISE_CONTEN_WEIGHT, COLUMN_NAME_EXERCISE_CONTEN_DATE, COLUMN_NAME_EXERCISE_CONTEN_FINISHED];
+    NSString *sqlToCreateECTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (%@ INTEGER PRIMARY KEY AUTOINCREMENT, %@ TEXT, %@ TEXT, %@ INTEGER, %@ INTEGER, %@ INTEGER, %@ TEXT, %@ TEXT, %@ BOOL)", TABLE_NAME_EXERCISE_CONTENT, COLUMN_NAME_EXERCISE_CONTEN_ID, COLUMN_NAME_EXERCISE_CONTEN_NAME, COLUMN_NAME_EXERCISE_CONTEN_POSITION, COLUMN_NAME_EXERCISE_CONTEN_NUMBER_PER_SET, COLUMN_NAME_EXERCISE_CONTEN_SETS, COLUMN_NAME_EXERCISE_CONTEN_WEIGHT, COLUMN_NAME_EXERCISE_CONTEN_DATE, COLUMN_NAME_EXERCISE_CONTEN_COUNTING_METHOD, COLUMN_NAME_EXERCISE_CONTEN_FINISHED];
     NSLog(@"sqlToCreateECTable=%@", sqlToCreateECTable);
     
     [self execSql:sqlToCreateECTable];
@@ -107,10 +108,11 @@
                                  Sets:(NSInteger)sets
                                 Weight:(NSInteger)weight
                                  Date:(NSString *)date
+                       CountingMethod:(NSString *)countingMethod
                              Finished:(BOOL)finished
 {
     
-    NSString *sqlToInsertECRecord = [NSString stringWithFormat:@"INSERT INTO '%@' ('%@', '%@', '%@', '%@', '%@', '%@', '%@') VALUES ('%@', '%@', %d, %d, %d, '%@', %d)"               ,TABLE_NAME_EXERCISE_CONTENT, COLUMN_NAME_EXERCISE_CONTEN_NAME, COLUMN_NAME_EXERCISE_CONTEN_POSITION, COLUMN_NAME_EXERCISE_CONTEN_NUMBER_PER_SET, COLUMN_NAME_EXERCISE_CONTEN_SETS, COLUMN_NAME_EXERCISE_CONTEN_WEIGHT, COLUMN_NAME_EXERCISE_CONTEN_DATE, COLUMN_NAME_EXERCISE_CONTEN_FINISHED, name, position, numberOfSet, sets, weight, date, finished];
+    NSString *sqlToInsertECRecord = [NSString stringWithFormat:@"INSERT INTO '%@' ('%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@') VALUES ('%@', '%@', %d, %d, %d, '%@', %@, %d)"               ,TABLE_NAME_EXERCISE_CONTENT, COLUMN_NAME_EXERCISE_CONTEN_NAME, COLUMN_NAME_EXERCISE_CONTEN_POSITION, COLUMN_NAME_EXERCISE_CONTEN_NUMBER_PER_SET, COLUMN_NAME_EXERCISE_CONTEN_SETS, COLUMN_NAME_EXERCISE_CONTEN_WEIGHT, COLUMN_NAME_EXERCISE_CONTEN_DATE, COLUMN_NAME_EXERCISE_CONTEN_COUNTING_METHOD, COLUMN_NAME_EXERCISE_CONTEN_FINISHED, name, position, numberOfSet, sets, weight, date, countingMethod, finished];
     NSLog(@"sqlToInsertECRecord=%@", sqlToInsertECRecord);
     
 }
@@ -130,12 +132,14 @@
                                  Sets:(NSInteger)sets
                                 Weight:(NSInteger)weight
                                  Date:(NSString *)date
+                       CountingMethod:(NSString *)countingMethod
 {
     [self insertExerciseContentWithName:name
                                Position:position NumberOfSet:numberOfSet
                                    Sets:sets
                                   Weight:weight
                                    Date:date
+                         CountingMethod:countingMethod
                                Finished:NO];
 }
 
