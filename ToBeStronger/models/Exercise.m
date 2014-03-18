@@ -26,7 +26,7 @@
         self.numberPerSet = numberPerset;
         self.sets = sets;
         self.weight = weight;
-        self.countingMethod = self.countingMethod;
+        self.countingMethod = countingMethod;
     }
     
     return self;

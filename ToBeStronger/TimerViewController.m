@@ -48,7 +48,8 @@
                                NumberOfSet:12
                                       Sets:4
                                     Weight:40
-                                      Date:@"2014-3-12"];
+                                      Date:@"2014-3-12"
+                            CountingMethod:@"Accelormeter"];
     
 }
 

@@ -80,6 +80,7 @@
                                  Sets:self.sets
                                Weight:self.weight
                                  Date:self.date
+                       CountingMethod:self.countingMethod
                              Finished:self.finished];
 }
 

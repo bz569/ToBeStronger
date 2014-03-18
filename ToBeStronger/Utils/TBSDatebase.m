@@ -112,8 +112,10 @@
                              Finished:(BOOL)finished
 {
     
-    NSString *sqlToInsertECRecord = [NSString stringWithFormat:@"INSERT INTO '%@' ('%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@') VALUES ('%@', '%@', %d, %d, %d, '%@', %@, %d)"               ,TABLE_NAME_EXERCISE_CONTENT, COLUMN_NAME_EXERCISE_CONTEN_NAME, COLUMN_NAME_EXERCISE_CONTEN_POSITION, COLUMN_NAME_EXERCISE_CONTEN_NUMBER_PER_SET, COLUMN_NAME_EXERCISE_CONTEN_SETS, COLUMN_NAME_EXERCISE_CONTEN_WEIGHT, COLUMN_NAME_EXERCISE_CONTEN_DATE, COLUMN_NAME_EXERCISE_CONTEN_COUNTING_METHOD, COLUMN_NAME_EXERCISE_CONTEN_FINISHED, name, position, numberOfSet, sets, weight, date, countingMethod, finished];
+    NSString *sqlToInsertECRecord = [NSString stringWithFormat:@"INSERT INTO '%@' ('%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@') VALUES ('%@', '%@', %ld, %ld, %ld, '%@', '%@', %d)"               ,TABLE_NAME_EXERCISE_CONTENT, COLUMN_NAME_EXERCISE_CONTEN_NAME, COLUMN_NAME_EXERCISE_CONTEN_POSITION, COLUMN_NAME_EXERCISE_CONTEN_NUMBER_PER_SET, COLUMN_NAME_EXERCISE_CONTEN_SETS, COLUMN_NAME_EXERCISE_CONTEN_WEIGHT, COLUMN_NAME_EXERCISE_CONTEN_DATE, COLUMN_NAME_EXERCISE_CONTEN_COUNTING_METHOD, COLUMN_NAME_EXERCISE_CONTEN_FINISHED, name, position, numberOfSet, sets, weight, date, countingMethod, finished];
     NSLog(@"sqlToInsertECRecord=%@", sqlToInsertECRecord);
+    
+    [self execSql:sqlToInsertECRecord];
     
 }
 

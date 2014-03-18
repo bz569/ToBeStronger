@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *tf_startDate;
 @property (weak, nonatomic) IBOutlet UITextField *tf_frequency;
 @property (weak, nonatomic) IBOutlet UITextField *tf_countingMethod;
+@property (weak, nonatomic) IBOutlet UITextField *tf_duration;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker_startDate;
 @property (strong, nonatomic) IBOutlet UIPickerView *pickerView_frequency;
 @property (strong, nonatomic) IBOutlet UIPickerView *pickerView_countingMethod;
@@ -29,7 +30,7 @@
 @property (strong, nonatomic) NSArray *frequencyPickerArray;
 @property (strong, nonatomic) NSArray *countingMethodPickerArray;
 
-@property (strong, nonatomic) Plan *newPlan;
+@property (strong, nonatomic) Plan *planToAdd;
 
 @end
 
@@ -46,7 +47,7 @@
     [self createPickerViewForFrequencyInput];
     [self createPickerViewForCountingMethodInput];
     
-    self.newPlan = [[Plan alloc] init];
+    self.planToAdd = [[Plan alloc] init];
     
 }
 
@@ -57,10 +58,13 @@
     self.tf_sets.delegate = self;
     self.tf_numPerSet.delegate = self;
     self.tf_frequency.delegate = self;
+    self.tf_duration.delegate = self;
     self.tf_countingMethod.delegate = self;
 
     self.tf_weight.delegate = self;
     self.tf_weight.clearsOnBeginEditing = YES;
+    
+    self.tf_duration.clearsOnBeginEditing = YES;
 }
 
 //using UIPickerView to input frequency and counting Method
@@ -74,7 +78,7 @@
     [self.pickerView_frequency reloadAllComponents];
     [self.view addSubview:self.pickerView_frequency];
     
-    self.frequencyPickerArray = [NSArray arrayWithObjects:@"every 1 day", @"every 2 days", @"every 3 days", @"every 4 days", @"every 5 days", @"every 6 days", nil];
+    self.frequencyPickerArray = [NSArray arrayWithObjects:@"every 1 day ", @"every 2 days", @"every 3 days", @"every 4 days", @"every 5 days", @"every 6 days", nil];
     
     self.tf_frequency.inputView = self.pickerView_frequency;
     self.pickerView_frequency.delegate = self;
@@ -203,9 +207,9 @@
 {
     if ([self.view endEditing:NO]) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"YYYY-MM-DD"];
-        self.tf_startDate.text = [NSString stringWithFormat:@"Start Date\t\t\t\t%@",[formatter stringFromDate:self.datePicker_startDate.date]];
-        self.planDate = [NSString stringWithString:[formatter stringFromDate:self.datePicker_startDate.date]];
+        [formatter setDateFormat:@"YYYY-MM-dd"];
+        self.tf_startDate.text = [NSString stringWithFormat:@"Start Date\t\t\t\t\t\t%@",[formatter stringFromDate:self.datePicker_startDate.date]];
+        self.planToAdd.startDate = [NSString stringWithString:[formatter stringFromDate:self.datePicker_startDate.date]];
     }
 }
 
@@ -215,35 +219,35 @@
     if(textField == self.tf_weight)
     {
         NSString *tmp = [NSString stringWithString:self.tf_weight.text];
-        self.tf_weight.text = [NSString stringWithFormat:@"Weight\t\t\t\t\t\t\t%@ lb", tmp];
-        self.newPlan.weight = [tmp integerValue];
+        self.tf_weight.text = [NSString stringWithFormat:@"Weight\t\t\t\t\t\t\t\t    %@ lb", tmp];
+        self.planToAdd.weight = [tmp integerValue];
     }else if(textField == self.tf_frequency)
     {
         NSInteger row = [self.pickerView_frequency selectedRowInComponent:0];
-        self.tf_frequency.text = [NSString stringWithFormat:@"Freq.\t\t\t\t\t\t%@", [self.frequencyPickerArray objectAtIndex:row]];
-        self.newPlan.frequency = row + 1;
+        self.tf_frequency.text = [NSString stringWithFormat:@"Freq.\t\t\t\t\t\t    %@", [self.frequencyPickerArray objectAtIndex:row]];
+        self.planToAdd.frequency = row + 1;
     }else if(textField == self.tf_countingMethod)
     {
         NSInteger row = [self.pickerView_countingMethod selectedRowInComponent:0];
         self.tf_countingMethod.text = [self.countingMethodPickerArray objectAtIndex:row];
-        self.newPlan = [self.countingMethodPickerArray objectAtIndex:row];
+        self.planToAdd.countingMethod = [self.countingMethodPickerArray objectAtIndex:row];
     }else if(textField == self.tf_position)
     {
-        self.newPlan.position = self.tf_position.text;
+        self.planToAdd.position = self.tf_position.text;
     }else if(textField == self.tf_content)
     {
-        self.newPlan.name = self.tf_content.text;
+        self.planToAdd.name = self.tf_content.text;
     }else if(textField == self.tf_sets)
     {
-        self.newPlan.sets = [self.tf_sets.text integerValue];
+        self.planToAdd.sets = [self.tf_sets.text integerValue];
     }else if(textField == self.tf_numPerSet)
     {
-        self.newPlan.numberPerSet = [self.tf_numPerSet.text integerValue];
-    }else if(textField == self.tf_countingMethod)
+        self.planToAdd.numberPerSet = [self.tf_numPerSet.text integerValue];
+    }else if(textField == self.tf_duration)
     {
-        self.newPlan.countingMethod = self.tf_countingMethod.text;
+        self.planToAdd.duration = [self.tf_duration.text integerValue];
+        self.tf_duration.text = [NSString stringWithFormat:@"Duration:\t\t\t\t\t\t  %ld week(s)", self.planToAdd.duration];
     }
-    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -265,6 +269,9 @@
     }else if([self.tf_numPerSet isFirstResponder])
     {
         [self.tf_weight becomeFirstResponder];
+    }else if([self.tf_duration isFirstResponder])
+    {
+        [self.tf_duration resignFirstResponder];
     }
     
     return YES;
@@ -282,10 +289,34 @@
     [self.tf_startDate resignFirstResponder];
     [self.tf_frequency resignFirstResponder];
     [self.tf_countingMethod resignFirstResponder];
-    
+    [self.tf_duration resignFirstResponder];
 }
 
 
+- (IBAction)clickDoneButtonToAddPlan:(UIBarButtonItem*)sender
+{
+    [self.tf_content endEditing:YES];
+    [self.tf_position endEditing:YES];
+    [self.tf_sets endEditing:YES];
+    [self.tf_numPerSet endEditing:YES];
+    [self.tf_weight endEditing:YES];
+    [self.tf_startDate endEditing:YES];
+    [self.tf_frequency endEditing:YES];
+    [self.tf_countingMethod endEditing:YES];
+    
+    NSLog(@"addPlan.name=%@\n", self.planToAdd.name);
+    NSLog(@"addPlan.position=%@\n", self.planToAdd.position);
+    NSLog(@"addPlan.sets=%ld\n", (long)self.planToAdd.sets);
+    NSLog(@"addPlan.numPerSet=%ld\n", (long)self.planToAdd.numberPerSet);
+    NSLog(@"addPlan.weight=%ld\n", (long)self.planToAdd.weight);
+    NSLog(@"addPlan.startDate=%@\n", self.planToAdd.startDate);
+    NSLog(@"addPlan.frequency=%ld\n", (long)self.planToAdd.frequency);
+    NSLog(@"addPlan.countingMethod=%@\n", self.planToAdd.countingMethod);
+    
+    [self.planToAdd generatePlan];
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 
 
 

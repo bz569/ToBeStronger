@@ -45,16 +45,21 @@
     
     NSInteger numOfDays = (self.duration * 7 + self.frequency - 1) / self.frequency;
     
+    NSString *currentDate = self.startDate;
     for(int i = 0; i < numOfDays; i++)
     {
         ContentOfDay *newContent = [[ContentOfDay alloc] initWithName:self.name
-                                                      Position:self.position
-                                                  nubmerPerSet:self.numberPerSet
-                                                          Sets:self.numberPerSet
+                                                             Position:self.position
+                                                         nubmerPerSet:self.numberPerSet
+                                                                 Sets:self.sets
                                                                Weight:self.weight
+                                                                 Date:currentDate
                                                        CountingMethod:self.countingMethod];
         
-        [planContent addObject:newContent];
+//        [planContent addObject:newContent];
+        [newContent storeIntoDateBase];
+        currentDate = [self nextExerciseDayByCurrentDate:currentDate Frequency:self.frequency];
+        NSLog(@"next_Date=%@", currentDate);
     }
     
     return planContent;
@@ -77,52 +82,77 @@
         if((currentMonth == 1) || (currentMonth == 3) || (currentMonth == 5) || (currentMonth == 7)
            || (currentMonth == 8) || (currentMonth == 10))                          //Jan, Mar, May, July, Aug, Oct
         {
-            if(currentDay == 31)
-            {
-                currentDay = 1;
-                currentMonth++;
-            }
-            else
-            {
-                currentDay++;
-            }
+//            if(currentDay == 31)
+//            {
+//                currentDay = 1;
+//                currentMonth++;
+//            }
+//            else
+//            {
+//                currentDay++;
+//            }
+            NSInteger tmp = currentDay + frequency;
+            currentDay = (currentDay + frequency) % 31;
+            currentMonth = currentMonth + tmp / 31;
             
         }else if((currentMonth == 4) || (currentMonth == 6) || (currentMonth == 9) || (currentMonth == 11))     //Apr, June, Sep, Nov
         {
-            if(currentDay == 30)
-            {
-                currentDay = 1;
-                currentMonth++;
-            }
-            else
-            {
-                currentDay++;
-            }
+            NSInteger tmp = currentDay + frequency;
+            currentDay = (currentDay + frequency) % 30;
+            currentMonth = currentMonth + tmp / 30;
+
+//            if(currentDay == 30)
+//            {
+//                currentDay = 1;
+//                currentMonth++;
+//            }
+//            else
+//            {
+//                currentDay++;
+//            }
         }else if(currentMonth == 2)     //Feb
         {
-            if(([self isLeapYear:currentYear] && currentDay == 29) || (([self isLeapYear:currentDay] == NO) && currentDay == 28))  // the last of Feb
+            if([self isLeapYear:currentYear])
             {
-                currentDay = 1;
-                currentMonth++;
-            }else
-            {
-                currentDay++;
-            }
-        }else if(currentMonth == 12)    //Dec
-        {
-            if(currentDay == 31)
-            {
-                currentDay = 1;
-                currentMonth++;
-                currentYear++;
+                NSInteger tmp = currentDay + frequency;
+                currentDay = (currentDay + frequency) % 29;
+                currentMonth = currentMonth + tmp / 29;
             }
             else
             {
-                currentDay++;
+                NSInteger tmp = currentDay + frequency;
+                currentDay = (currentDay + frequency) % 28;
+                currentMonth = currentMonth + tmp / 28;
+
             }
+//            if(([self isLeapYear:currentYear] && currentDay == 29) || (([self isLeapYear:currentDay] == NO) && currentDay == 28))  // the last of Feb
+//            {
+//                currentDay = (currentDay + frequency) % 31;
+//                currentMonth = currentMonth + (currentDay + frequency) / 31;
+//            }else
+//            {
+//                currentDay++;
+//            }
+        }else if(currentMonth == 12)    //Dec
+        {
+            NSInteger tmp = currentDay + frequency;
+            currentDay = (currentDay + frequency) % 31;
+            currentMonth = currentMonth + tmp / 31;
+            currentYear = currentYear + tmp /31;
+            
+//            if(currentDay == 31)
+//            {
+//                currentDay = 1;
+//                currentMonth++;
+//                currentYear++;
+//            }
+//            else
+//            {
+//                currentDay++;
+//            }
         }
         
-        nextDay = [NSString stringWithFormat:@"%ld-%d-%d", currentYear, currentMonth, currentDay];
+        nextDay = [NSString stringWithFormat:@"%02ld-%02ld-%02ld", currentYear, currentMonth, currentDay];
         
     }
     

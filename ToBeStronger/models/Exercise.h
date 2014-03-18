@@ -15,7 +15,7 @@
 @property (nonatomic) NSInteger numberPerSet;
 @property (nonatomic) NSInteger sets;
 @property (nonatomic) NSInteger weight;
-@property (strong, nonatomic) NSString countingMethod;
+@property (strong, nonatomic) NSString* countingMethod;
 
 - (instancetype) initWithName:(NSString *)name
                      Position:(NSString *)position
