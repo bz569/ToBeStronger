@@ -61,9 +61,9 @@
 - (void)updateTime
 {
     self.timeInt += 1;
-    int time_sec = self.timeInt - (60 * (int)(self.timeInt / 60));
-    int time_min = (int)self.timeInt / 60;
-    NSString *timeStr = [NSString stringWithFormat:@"%02d:%02d", time_min, time_sec];
+    NSInteger time_sec = self.timeInt - (60 * (int)(self.timeInt / 60));
+    NSInteger time_min = (int)self.timeInt / 60;
+    NSString *timeStr = [NSString stringWithFormat:@"%02ld:%02ld", time_min, time_sec];
     
     [self.lable_showTime setText:timeStr];
     

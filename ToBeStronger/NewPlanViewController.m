@@ -22,13 +22,16 @@
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker_startDate;
 @property (strong, nonatomic) IBOutlet UIPickerView *pickerView_frequency;
 @property (strong, nonatomic) IBOutlet UIPickerView *pickerView_countingMethod;
+@property (strong, nonatomic) IBOutlet UIPickerView *pickerView_position;
 @property (strong, nonatomic) IBOutlet UIToolbar *doneToolBar_datePicker;
 @property (strong, nonatomic) IBOutlet UIToolbar *doneToolBar_frequencyPicker;
 @property (strong, nonatomic) IBOutlet UIToolbar *doneToolBar_countingMethodPicker;
+@property (strong, nonatomic) IBOutlet UIToolbar *doneToolBar_positionPicker;
 
 @property (strong, nonatomic) NSString *planDate;
 @property (strong, nonatomic) NSArray *frequencyPickerArray;
 @property (strong, nonatomic) NSArray *countingMethodPickerArray;
+@property (strong, nonatomic) NSArray *positionPickerArray;
 
 @property (strong, nonatomic) Plan *planToAdd;
 
@@ -46,6 +49,7 @@
     [self createDatePicker];
     [self createPickerViewForFrequencyInput];
     [self createPickerViewForCountingMethodInput];
+    [self createPickerViewForPositionInput];
     
     self.planToAdd = [[Plan alloc] init];
     
@@ -67,7 +71,36 @@
     self.tf_duration.clearsOnBeginEditing = YES;
 }
 
-//using UIPickerView to input 
+//using UIPickerView to input
+- (void)createPickerViewForPositionInput
+{
+    //Create UIPickerView
+    self.pickerView_position = [[UIPickerView alloc] initWithFrame:CGRectMake(100, 250, 200, 100)];
+    
+    [self.pickerView_position reloadAllComponents];
+    [self.view addSubview:self.pickerView_position];
+    
+    self.positionPickerArray = [NSArray arrayWithObjects:@"Shoulders", @"Chest", @"Arms", @"Core", @"Legs", @"Other", nil];
+    
+    self.tf_position.inputView = self.pickerView_position;
+    self.pickerView_position.delegate = self;
+    self.pickerView_position.dataSource = self;
+    self.pickerView_position.frame = CGRectMake(0, 480, 320, 216);
+    
+    //create UIToolBar
+    self.doneToolBar_positionPicker = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    // add done button
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self
+                                                                           action:@selector(donePositionPicker)];
+    
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                           target:self
+                                                                           action:nil];
+    self.doneToolBar_positionPicker.items = [NSArray arrayWithObjects:space, right, nil];
+    //Set tf_startDate's inputAccessoryView to doneToolBar
+    self.tf_position.inputAccessoryView = self.doneToolBar_positionPicker;
+    
+}
 
 
 //using UIPickerView to input frequency
@@ -136,6 +169,10 @@
     
 }
 
+- (void)donePositionPicker
+{
+    [self.tf_position endEditing:YES];
+}
 
 - (void)doneFrequencyPicker
 {
@@ -160,6 +197,9 @@
     }else if (pickerView == self.pickerView_countingMethod)
     {
         return [self.countingMethodPickerArray count];
+    }else if (pickerView == self.pickerView_position)
+    {
+        return [self.positionPickerArray count];
     }
     
     return 0;
@@ -170,9 +210,12 @@
     if(pickerView == self.pickerView_frequency)
     {
         return [self.frequencyPickerArray objectAtIndex:row];
-    }else if(pickerView ==self.pickerView_countingMethod)
+    }else if(pickerView == self.pickerView_countingMethod)
     {
         return [self.countingMethodPickerArray objectAtIndex:row];
+    }else if(pickerView == self.pickerView_position)
+    {
+        return [self.positionPickerArray objectAtIndex:row];
     }
     
     return @"error";
@@ -237,6 +280,8 @@
         self.planToAdd.countingMethod = [self.countingMethodPickerArray objectAtIndex:row];
     }else if(textField == self.tf_position)
     {
+        NSInteger row = [self.pickerView_position selectedRowInComponent:0];
+        self.tf_position.text = [self.positionPickerArray objectAtIndex:row];
         self.planToAdd.position = self.tf_position.text;
     }else if(textField == self.tf_content)
     {
