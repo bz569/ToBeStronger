@@ -42,15 +42,6 @@
         [self.clockSoundPlayer play];
     }
     
-    self.db = [[TBSDatebase alloc] init];
-    [self.db insertExerciseContentWithName:@"Push-ups"
-                                  Position:@"Chest"
-                               NumberOfSet:12
-                                      Sets:4
-                                    Weight:40
-                                      Date:@"2014-3-12"
-                            CountingMethod:@"Accelormeter"];
-    
 }
 
 - (void)initClockSoundPlayer

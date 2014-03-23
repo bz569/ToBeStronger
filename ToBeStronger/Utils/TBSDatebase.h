@@ -49,5 +49,26 @@
                                  Date:(NSString *)date
                        CountingMethod:(NSString *)countingMethod;
 
+/**
+ *  Update a content of a day to finished status
+ *
+ *  @param id_contentOfDay  ID of the content
+*/
+- (void)finishAContentOfDayByID:(NSInteger)id_contentOfDay;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

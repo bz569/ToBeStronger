@@ -155,6 +155,17 @@
     }
 }
 
-
+/**
+ *  Update a content of a day to finished status
+ *
+ *  @param id_contentOfDay  ID of the content
+*/
+- (void)finishAContentOfDayByID:(NSInteger)id_contentOfDay
+{
+    NSString *sqlToFinishAContentOfDay = [NSString stringWithFormat:@"UPDATE %@ SET %@ = %d WHERE %@ = %ld", TABLE_NAME_EXERCISE_CONTENT, COLUMN_NAME_EXERCISE_CONTEN_FINISHED, YES, COLUMN_NAME_EXERCISE_CONTEN_ID, id_contentOfDay];
+    NSLog(@"sqlToFinishAContentOfDay=%@", sqlToFinishAContentOfDay);
+    
+    [self execSql:sqlToFinishAContentOfDay];
+}
 
 @end

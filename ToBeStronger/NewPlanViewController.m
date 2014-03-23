@@ -67,7 +67,10 @@
     self.tf_duration.clearsOnBeginEditing = YES;
 }
 
-//using UIPickerView to input frequency and counting Method
+//using UIPickerView to input 
+
+
+//using UIPickerView to input frequency
 - (void)createPickerViewForFrequencyInput
 {
     self.tf_frequency.delegate = self;
@@ -100,6 +103,7 @@
 
 }
 
+//using UIPickerView to input counting Method
 - (void)createPickerViewForCountingMethodInput
 {
     self.tf_countingMethod.delegate = self;
