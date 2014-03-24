@@ -11,6 +11,8 @@
 		B21BAA3D18CD011A00304E1F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21BAA3C18CD011A00304E1F /* AVFoundation.framework */; };
 		B22295E118CA3D5700EA6E87 /* TimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22295E018CA3D5700EA6E87 /* TimerViewController.m */; };
 		B23C231618CFDF32001F14CC /* TBSDatebase.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C231518CFDF32001F14CC /* TBSDatebase.m */; };
+		B2711DA318E0A65000D66C1D /* CounterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2711DA218E0A65000D66C1D /* CounterViewController.m */; };
+		B2711DA518E0AF1900D66C1D /* Farrington7B_Qiqi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2711DA418E0A9DA00D66C1D /* Farrington7B_Qiqi.ttf */; };
 		B2A8CE9018CFB92A00303929 /* clock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2A8CE8F18CFB92A00303929 /* clock.mp3 */; };
 		B2A8CE9318CFC16000303929 /* TimerPics.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A8CE9218CFC16000303929 /* TimerPics.m */; };
 		B2A8CE9918CFC1A500303929 /* Counter.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A8CE9818CFC1A500303929 /* Counter.m */; };
@@ -51,6 +53,9 @@
 		B22295E018CA3D5700EA6E87 /* TimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimerViewController.m; path = ToBeStronger/TimerViewController.m; sourceTree = SOURCE_ROOT; };
 		B23C231418CFDF32001F14CC /* TBSDatebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TBSDatebase.h; path = Utils/TBSDatebase.h; sourceTree = "<group>"; };
 		B23C231518CFDF32001F14CC /* TBSDatebase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TBSDatebase.m; path = Utils/TBSDatebase.m; sourceTree = "<group>"; };
+		B2711DA118E0A65000D66C1D /* CounterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CounterViewController.h; sourceTree = "<group>"; };
+		B2711DA218E0A65000D66C1D /* CounterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CounterViewController.m; sourceTree = "<group>"; };
+		B2711DA418E0A9DA00D66C1D /* Farrington7B_Qiqi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Farrington7B_Qiqi.ttf; sourceTree = "<group>"; };
 		B2A8CE8F18CFB92A00303929 /* clock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clock.mp3; sourceTree = "<group>"; };
 		B2A8CE9118CFC16000303929 /* TimerPics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerPics.h; sourceTree = "<group>"; };
 		B2A8CE9218CFC16000303929 /* TimerPics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerPics.m; sourceTree = "<group>"; };
@@ -156,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				B2FE9F5818CA3988004328E7 /* Main.storyboard */,
+				B2711DA118E0A65000D66C1D /* CounterViewController.h */,
+				B2711DA218E0A65000D66C1D /* CounterViewController.m */,
 				B22295DF18CA3D5700EA6E87 /* TimerViewController.h */,
 				B22295E018CA3D5700EA6E87 /* TimerViewController.m */,
 				B2BE299818D0F6F80052DCCD /* NewPlanViewController.h */,
@@ -173,6 +180,7 @@
 		B2FE9F4D18CA3987004328E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B2711DA418E0A9DA00D66C1D /* Farrington7B_Qiqi.ttf */,
 				B2A8CE8F18CFB92A00303929 /* clock.mp3 */,
 				B2FE9F5518CA3988004328E7 /* TBSAppDelegate.h */,
 				B2FE9F5618CA3988004328E7 /* TBSAppDelegate.m */,
@@ -268,6 +276,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Boxuan Zhang";
 				TargetAttributes = {
+					B2FE9F4218CA3987004328E7 = {
+						DevelopmentTeam = DJ956UH6X5;
+					};
 					B2FE9F6318CA3988004328E7 = {
 						TestTargetID = B2FE9F4218CA3987004328E7;
 					};
@@ -297,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2711DA518E0AF1900D66C1D /* Farrington7B_Qiqi.ttf in Resources */,
 				B21BAA3918CCF6B500304E1F /* Images.xcassets in Resources */,
 				B2FE9F5118CA3987004328E7 /* InfoPlist.strings in Resources */,
 				B2FE9F5A18CA3988004328E7 /* Main.storyboard in Resources */,
@@ -328,6 +340,7 @@
 				B2A8CEA218CFC28700303929 /* Plan.m in Sources */,
 				B2FE9F5318CA3988004328E7 /* main.m in Sources */,
 				B2A8CEA118CFC28700303929 /* Exercise.m in Sources */,
+				B2711DA318E0A65000D66C1D /* CounterViewController.m in Sources */,
 				B2A8CE9318CFC16000303929 /* TimerPics.m in Sources */,
 				B2A8CE9918CFC1A500303929 /* Counter.m in Sources */,
 			);
@@ -454,10 +467,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ToBeStronger/ToBeStronger-Prefix.pch";
 				INFOPLIST_FILE = "ToBeStronger/ToBeStronger-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -467,10 +484,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ToBeStronger/ToBeStronger-Prefix.pch";
 				INFOPLIST_FILE = "ToBeStronger/ToBeStronger-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
+#import "ContentOfDay.h"
 
 
 @interface TBSDatebase : NSObject
@@ -56,7 +57,36 @@
 */
 - (void)finishAContentOfDayByID:(NSInteger)id_contentOfDay;
 
+/**
+ *  save interval time for a certain content of day
+ *
+ *  @param contentId    ID of the content
+ *  @param number       the sequence number of the interval
+ *  @param time         the interval time string
+ */
+- (void)saveIntervalTimeWithContentID:(NSInteger)contentId
+                               Number:(NSInteger)number
+                                 Time:(NSString*)time;
 
+/**
+ *  save rest time for a certain content of day
+ *
+ *  @param contentId    ID of the content
+ *  @param number       the sequence number of the interval
+ *  @param time         the interval time string
+ */
+- (void)saveRestTimeWithContentID:(NSInteger)contentId
+                           Number:(NSInteger)number
+                             Time:(NSString*)time;
+
+/**
+ *  query exercise contents of a certain day by date
+ *
+ *  @param date         the date of the day
+ *
+ *  @return             the array of the results
+ */
+- (NSArray*)getContentsOfDayByDate:(NSString*)date;
 
 
 

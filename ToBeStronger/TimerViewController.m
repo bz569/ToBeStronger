@@ -70,4 +70,11 @@
     [self.timerimage setImage:[self.timerPics getTimerImage:time_sec]];
 }
 
+- (IBAction)continueExercise:(id)sender
+{
+    [self.clockSoundPlayer stop];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 @end

@@ -12,6 +12,7 @@
 
 @interface ContentOfDay : Exercise
 
+@property (nonatomic) NSInteger idNumber;
 @property (strong, nonatomic) NSString *date;
 @property (nonatomic, getter = isFinished) BOOL finished;
 @property (strong, nonatomic) NSMutableArray *intervalTimes;
@@ -35,6 +36,16 @@
                   isFinished:(BOOL)finished
                intervalTimes:(NSMutableArray*)intervalTimes
                    RestTimes:(NSMutableArray*)RestTimes;
+
+- (instancetype)initWithID:(NSInteger)idNumber
+                      Name:(NSString *)name
+                  Position:(NSString *)position
+              nubmerPerSet:(NSInteger)numberPerSet
+                      Sets:(NSInteger)sets
+                    Weight:(NSInteger)weight
+                      Date:(NSString *)date
+            CountingMethod:(NSString *)countingMethod
+                isFinished:(BOOL)finished;
 
 - (void)finishPlanWithIntervalTimes:(NSMutableArray*)intervalTimes
                           RestTimes:(NSMutableArray*)restTimes;

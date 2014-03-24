@@ -56,12 +56,43 @@
     if(self)
     {
         self.finished = finished;
+        self.date = date;
         self.intervalTimes = intervalTimes;
         self.restTimes = RestTimes;
     }
     
     return self;
 }
+
+- (instancetype)initWithID:(NSInteger)idNumber
+                        Name:(NSString *)name
+                    Position:(NSString *)position
+                nubmerPerSet:(NSInteger)numberPerset
+                        Sets:(NSInteger)sets
+                      Weight:(NSInteger)weight
+                        Date:(NSString *)date
+              CountingMethod:(NSString *)countingMethod
+                  isFinished:(BOOL)finished
+{
+    self = [super initWithName:name
+                      Position:position
+                  nubmerPerSet:numberPerset
+                          Sets:sets
+                        Weight:weight
+                CountingMethod:countingMethod];
+    
+    
+    if(self)
+    {
+        self.idNumber = idNumber;
+        self.date = date;
+        self.finished = finished;
+    }
+    
+    return self;
+}
+
+
 
 - (void)finishPlanWithIntervalTimes:(NSMutableArray *)intervalTimes
                           RestTimes:(NSMutableArray *)restTimes
