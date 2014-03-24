@@ -46,10 +46,10 @@
 	// Do any additional setup after loading the view.
     
     [self setTextfieldsDelegates];
-    [self createDatePicker];
-    [self createPickerViewForFrequencyInput];
-    [self createPickerViewForCountingMethodInput];
-    [self createPickerViewForPositionInput];
+//    [self createDatePicker];
+//    [self createPickerViewForFrequencyInput];
+//    [self createPickerViewForCountingMethodInput];
+//    [self createPickerViewForPositionInput];
     
     self.planToAdd = [[Plan alloc] init];
     
@@ -64,6 +64,7 @@
     self.tf_frequency.delegate = self;
     self.tf_duration.delegate = self;
     self.tf_countingMethod.delegate = self;
+    self.tf_startDate.delegate = self;
 
     self.tf_weight.delegate = self;
     self.tf_weight.clearsOnBeginEditing = YES;
@@ -296,6 +297,23 @@
     {
         self.planToAdd.duration = [self.tf_duration.text integerValue];
         self.tf_duration.text = [NSString stringWithFormat:@"Duration:\t\t\t\t\t\t  %ld week(s)", self.planToAdd.duration];
+    }
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if(textField == self.tf_position)
+    {
+        [self createPickerViewForPositionInput];
+    }else if(textField == self.tf_startDate)
+    {
+        [self createDatePicker];
+    }else if(textField == self.tf_frequency)
+    {
+        [self createPickerViewForFrequencyInput];
+    }else if(textField == self.tf_countingMethod)
+    {
+        [self createPickerViewForCountingMethodInput];
     }
 }
 
