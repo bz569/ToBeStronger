@@ -70,5 +70,4 @@
     [self.timerimage setImage:[self.timerPics getTimerImage:time_sec]];
 }
 
-
 @end

@@ -168,4 +168,56 @@
     [self execSql:sqlToFinishAContentOfDay];
 }
 
+/**
+ *  save interval time for a certain content of day
+ *
+ *  @param contentId    ID of the content
+ *  @param number       the sequence number of the interval
+ *  @param time         the interval time string
+ */
+- (void)saveIntervalTimeWithContentID:(NSInteger)contentId
+                               Number:(NSInteger)number
+                                 Time:(NSString*)time
+{
+    NSString *sqlToInsertIntervalTime = [NSString stringWithFormat:@"INSERT INTO '%@' ('%@', '%@', '%@') VALUES (%ld, %ld, '%@')", TABLE_NAME_INTERVAL_TIMES, COLUMN_NAME_INTERVAL_TIMES_OFCONTENT, COLUMN_NAME_INTERVAL_TIMES_NO, COLUMN_NAME_INTERVAL_TIMES_TIME, contentId, number, time];
+    NSLog(@"sqlToInsertIntervalTime=%@", sqlToInsertIntervalTime);
+    [self execSql:sqlToInsertIntervalTime];
+}
+
+/**
+ *  save rest time for a certain content of day
+ *
+ *  @param contentId    ID of the content
+ *  @param number       the sequence number of the interval
+ *  @param time         the interval time string
+ */
+- (void)saveRestTimeWithContentID:(NSInteger)contentId
+                               Number:(NSInteger)number
+                                 Time:(NSString*)time
+{
+    NSString *sqlToInsertRestTime = [NSString stringWithFormat:@"INSERT INTO '%@' ('%@', '%@', '%@') VALUES (%ld, %ld, '%@')", TABLE_NAME_REST_TIMES, COLUMN_NAME_REST_TIMES_OFCONTENT, COLUMN_NAME_REST_TIMES_NO, COLUMN_NAME_REST_TIMES_TIME, contentId, number, time];
+    NSLog(@"sqlToInsertIntervalTime=%@", sqlToInsertRestTime);
+    [self execSql:sqlToInsertRestTime];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end
