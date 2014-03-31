@@ -20,6 +20,7 @@
 		B2A8CEA118CFC28700303929 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A8CE9D18CFC28700303929 /* Exercise.m */; };
 		B2A8CEA218CFC28700303929 /* Plan.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A8CE9F18CFC28700303929 /* Plan.m */; };
 		B2A8CEA418CFC53300303929 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A8CEA318CFC53300303929 /* libsqlite3.0.dylib */; };
+		B2AEE27C18E2420E002CC60D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2AEE27B18E2420E002CC60D /* CoreMotion.framework */; };
 		B2BE299A18D0F6F80052DCCD /* NewPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BE299918D0F6F80052DCCD /* NewPlanViewController.m */; };
 		B2FE9F4718CA3987004328E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE9F4618CA3987004328E7 /* Foundation.framework */; };
 		B2FE9F4918CA3987004328E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE9F4818CA3987004328E7 /* CoreGraphics.framework */; };
@@ -68,6 +69,7 @@
 		B2A8CE9E18CFC28700303929 /* Plan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plan.h; sourceTree = "<group>"; };
 		B2A8CE9F18CFC28700303929 /* Plan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plan.m; sourceTree = "<group>"; };
 		B2A8CEA318CFC53300303929 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		B2AEE27B18E2420E002CC60D /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		B2BE299818D0F6F80052DCCD /* NewPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPlanViewController.h; sourceTree = "<group>"; };
 		B2BE299918D0F6F80052DCCD /* NewPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPlanViewController.m; sourceTree = "<group>"; };
 		B2FE9F4318CA3987004328E7 /* ToBeStronger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToBeStronger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2AEE27C18E2420E002CC60D /* CoreMotion.framework in Frameworks */,
 				B2A8CEA418CFC53300303929 /* libsqlite3.0.dylib in Frameworks */,
 				B21BAA3D18CD011A00304E1F /* AVFoundation.framework in Frameworks */,
 				B2FE9F4918CA3987004328E7 /* CoreGraphics.framework in Frameworks */,
@@ -147,6 +150,7 @@
 		B2FE9F4518CA3987004328E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B2AEE27B18E2420E002CC60D /* CoreMotion.framework */,
 				B2A8CEA318CFC53300303929 /* libsqlite3.0.dylib */,
 				B21BAA3C18CD011A00304E1F /* AVFoundation.framework */,
 				B2FE9F4618CA3987004328E7 /* Foundation.framework */,

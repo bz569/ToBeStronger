@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ContentOfDay.h"
+#import <CoreMotion/CoreMotion.h>
 
 @interface CounterViewController : UIViewController
 

@@ -42,6 +42,8 @@
         [self.clockSoundPlayer play];
     }
     
+    [self.navigationItem setHidesBackButton:YES];
+    
 }
 
 - (void)initClockSoundPlayer
@@ -73,7 +75,8 @@
 - (IBAction)continueExercise:(id)sender
 {
     [self.clockSoundPlayer stop];
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

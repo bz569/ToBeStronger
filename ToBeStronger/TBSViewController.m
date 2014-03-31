@@ -8,22 +8,234 @@
 
 #import "TBSViewController.h"
 
+
 @interface TBSViewController ()
+
+@property (weak, nonatomic) IBOutlet UITableView *tv_showDetail;
+@property (strong, nonatomic) NSArray *contentIDs;
+@property (strong, nonatomic) NSMutableArray *contentsArray;
+@property (strong, nonatomic) NSMutableDictionary *positionsDic;
+
+//For test
+@property (strong, nonatomic) ContentOfDay *testContent1;
+@property (strong, nonatomic) ContentOfDay *testContent2;
+@property (strong, nonatomic) ContentOfDay *testContent3;
+
+//For past value to counter
+@property (strong, nonatomic) ContentOfDay *selectedContent;
 
 @end
 
 @implementation TBSViewController
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [self prepareContentData];
+   
+    //set table views
+    [self.tv_showDetail setDelegate:self];
+    [self.tv_showDetail setDataSource:self];
+    [self.tv_showDetail setSeparatorColor:[UIColor orangeColor]];
+    
+        
 }
 
-- (void)didReceiveMemoryWarning
+- (void)prepareContentData
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    //For test
+    self.testContent1 = [[ContentOfDay alloc] initWithID:1
+                                                    Name:@"Push-ups"
+                                                Position:@"Chest"
+                                            nubmerPerSet:12
+                                                    Sets:4
+                                                  Weight:0
+                                                    Date:@"2014-03-31"
+                                          CountingMethod:@"Touch"
+                                              isFinished:NO];
+    
+    self.testContent2 = [[ContentOfDay alloc] initWithID:2
+                                                    Name:@"Chest Fly"
+                                                Position:@"Chest"
+                                            nubmerPerSet:10
+                                                    Sets:3
+                                                  Weight:12
+                                                    Date:@"2014-03-31"
+                                          CountingMethod:@"Accelorometer"
+                                              isFinished:NO];
+    self.testContent3 = [[ContentOfDay alloc] initWithID:3
+                                                    Name:@"Sit-ups"
+                                                Position:@"Core"
+                                            nubmerPerSet:25
+                                                    Sets:5
+                                                  Weight:0
+                                                    Date:@"2014-03-31"
+                                          CountingMethod:@"Touch"
+                                              isFinished:NO];
+    
+    self.contentsArray = [[NSMutableArray alloc] init];
+    [self.contentsArray addObject:self.testContent1];
+    [self.contentsArray addObject:self.testContent2];
+    [self.contentsArray addObject:self.testContent3];
+
+    self.positionsDic = [[NSMutableDictionary alloc] initWithCapacity:10];
+    for(ContentOfDay *content in self.contentsArray)
+    {
+        if(![[self.positionsDic allKeys] containsObject:content.position]) //if position does not exsit in dictionary
+        {
+            NSMutableArray *contentOfPostionArray = [[NSMutableArray alloc] init];
+            [contentOfPostionArray addObject:content];
+            [self.positionsDic setObject:contentOfPostionArray forKey:content.position];
+        }else                                                              //if position exsits in dictionary
+        {
+            [[self.positionsDic objectForKey:content.position] addObject:content];
+        }
+    }
+
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    NSLog(@"numberOfSection=%ld", (long)[[self.positionsDic allKeys] count]);
+    return [[self.positionsDic allKeys] count];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSString *key = (NSString *)[[self.positionsDic allKeys] objectAtIndex:section];
+    return [[self.positionsDic objectForKey:key] count];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+    return footerView;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *sectionHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+    
+    //set UILable for showing position Name
+    UILabel *positionLable = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 150, 20)];
+    positionLable.text = [[self.positionsDic allKeys] objectAtIndex:section];
+    positionLable.font = [UIFont systemFontOfSize:16];
+    positionLable.adjustsFontSizeToFitWidth = NO;
+    positionLable.textAlignment = NSTextAlignmentLeft;
+    [sectionHeaderView addSubview:positionLable];
+    
+    //set UILable for showing weight hint
+    UILabel *weightLable = [[UILabel alloc] initWithFrame:CGRectMake(160, 0, 50, 20)];
+    weightLable.text = @"Weight";
+    weightLable.font = [UIFont systemFontOfSize:13];
+    weightLable.adjustsFontSizeToFitWidth = NO;
+    weightLable.textAlignment = NSTextAlignmentCenter;
+    [sectionHeaderView addSubview:weightLable];
+    
+    //set UILable for Num. hint
+    UILabel *numberLable = [[UILabel alloc] initWithFrame:CGRectMake(210, 0, 50, 20)];
+    numberLable.text = @"Num.";
+    numberLable.font = [UIFont systemFontOfSize:13];
+    numberLable.adjustsFontSizeToFitWidth = NO;
+    numberLable.textAlignment = NSTextAlignmentCenter;
+    [sectionHeaderView addSubview:numberLable];
+    
+    //set UILable for Set hint
+    UILabel *setsLable = [[UILabel alloc] initWithFrame:CGRectMake(260, 0, 50, 20)];
+    setsLable.text = @"Sets";
+    setsLable.font = [UIFont systemFontOfSize:13];
+    setsLable.adjustsFontSizeToFitWidth = NO;
+    setsLable.textAlignment = NSTextAlignmentCenter;
+    [sectionHeaderView addSubview:setsLable];
+    
+    //set divider
+    UIImageView *divider = [[UIImageView alloc] initWithFrame:CGRectMake(0, 17, 320, 3)];
+    divider.image = [UIImage imageNamed:@"divider1"];
+    [sectionHeaderView addSubview:divider];
+    
+    return sectionHeaderView;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //get content data
+    NSString *key = (NSString *)[[self.positionsDic allKeys] objectAtIndex:indexPath.section];
+    ContentOfDay *content = [[self.positionsDic objectForKey:key] objectAtIndex:indexPath.row];
+
+    
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [self.tv_showDetail dequeueReusableCellWithIdentifier:CellIdentifier];
+    if(cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+    }
+    
+    //set UILable to show content name
+    UILabel *nameLable = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 140, 30)];
+    nameLable.text = content.name;
+    nameLable.font = [UIFont systemFontOfSize:18];
+    nameLable.adjustsFontSizeToFitWidth = NO;
+    nameLable.textAlignment = NSTextAlignmentLeft;
+    [cell addSubview:nameLable];
+    
+    //set UILable to show weight value
+    UILabel *weightLable = [[UILabel alloc] initWithFrame:CGRectMake(160, 0, 50, 30)];
+    if(content.weight==0)
+    {
+        weightLable.text = @"";
+    }else
+    {
+        weightLable.text = [NSString stringWithFormat:@"%ld", content.weight];
+    }
+    weightLable.font = [UIFont systemFontOfSize:15];
+    weightLable.adjustsFontSizeToFitWidth = NO;
+    weightLable.textAlignment = NSTextAlignmentCenter;
+    [cell addSubview:weightLable];
+    
+    //set UILable to show number value
+    UILabel *numLable = [[UILabel alloc] initWithFrame:CGRectMake(210, 0, 50, 30)];
+    numLable.text = [NSString stringWithFormat:@"%ld", content.numberPerSet];
+    numLable.font = [UIFont systemFontOfSize:15];
+    numLable.adjustsFontSizeToFitWidth = NO;
+    numLable.textAlignment = NSTextAlignmentCenter;
+    [cell addSubview:numLable];
+
+    //set UILable to show sets value
+    UILabel *setsLable = [[UILabel alloc] initWithFrame:CGRectMake(260, 0, 50, 30)];
+    setsLable.text = [NSString stringWithFormat:@"%ld", content.sets];
+    setsLable.font = [UIFont systemFontOfSize:15];
+    setsLable.adjustsFontSizeToFitWidth = NO;
+    setsLable.textAlignment = NSTextAlignmentCenter;
+    [cell addSubview:setsLable];
+
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 30;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //get content data
+    NSString *key = (NSString *)[[self.positionsDic allKeys] objectAtIndex:indexPath.section];
+    ContentOfDay *content = [[self.positionsDic objectForKey:key] objectAtIndex:indexPath.row];
+    self.selectedContent = content;
+    
+    [self performSegueWithIdentifier:@"segue_todayToCounter" sender:self];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    CounterViewController *counterController = segue.destinationViewController;
+    [counterController setValue:self.selectedContent forKey:@"exerciseContent"];
+}
+
 
 @end

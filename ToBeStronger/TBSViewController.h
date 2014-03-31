@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <math.h>
+#import "ContentOfDay.h"
+#import "CounterViewController.h"
 
-@interface TBSViewController : UIViewController
+@interface TBSViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+
 
 
 @end
