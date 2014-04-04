@@ -6,15 +6,20 @@
 //  Copyright (c) 2014年 Boxuan Zhang. All rights reserved.
 //
 
-#import "TBSViewController.h"
+#import "TodayViewController.h"
 
 
-@interface TBSViewController ()
+@interface TodayViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tv_showDetail;
 @property (strong, nonatomic) NSArray *contentIDs;
-@property (strong, nonatomic) NSMutableArray *contentsArray;
+@property (strong, nonatomic) NSArray *contentsArray;
 @property (strong, nonatomic) NSMutableDictionary *positionsDic;
+@property (weak, nonatomic) IBOutlet UILabel *l_showDate;
+
+
+//receive from calendar view
+@property (strong, nonatomic) NSString *date;
 
 //For test
 @property (strong, nonatomic) ContentOfDay *testContent1;
@@ -26,17 +31,22 @@
 
 @end
 
-@implementation TBSViewController
+@implementation TodayViewController
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     
-    [self prepareContentData];
+    //For test
+    [self setTodayDate];
+
+    //set UILable to show date
+    self.l_showDate.text = self.date;
+    
    
     //set table views
+    [self prepareContentData];
     [self.tv_showDetail setDelegate:self];
     [self.tv_showDetail setDataSource:self];
     [self.tv_showDetail setSeparatorColor:[UIColor orangeColor]];
@@ -44,42 +54,54 @@
         
 }
 
+- (void)setTodayDate
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYY-MM-dd"];
+    self.date = [formatter stringFromDate:[NSDate date]];
+    
+}
+
 - (void)prepareContentData
 {
-    //For test
-    self.testContent1 = [[ContentOfDay alloc] initWithID:1
-                                                    Name:@"Push-ups"
-                                                Position:@"Chest"
-                                            nubmerPerSet:12
-                                                    Sets:4
-                                                  Weight:0
-                                                    Date:@"2014-03-31"
-                                          CountingMethod:@"Touch"
-                                              isFinished:NO];
+    TBSDatebase *db = [[TBSDatebase alloc] init];
+    self.contentsArray = [db getContentsOfDayByDate:self.date];
     
-    self.testContent2 = [[ContentOfDay alloc] initWithID:2
-                                                    Name:@"Chest Fly"
-                                                Position:@"Chest"
-                                            nubmerPerSet:10
-                                                    Sets:3
-                                                  Weight:12
-                                                    Date:@"2014-03-31"
-                                          CountingMethod:@"Accelorometer"
-                                              isFinished:NO];
-    self.testContent3 = [[ContentOfDay alloc] initWithID:3
-                                                    Name:@"Sit-ups"
-                                                Position:@"Core"
-                                            nubmerPerSet:25
-                                                    Sets:5
-                                                  Weight:0
-                                                    Date:@"2014-03-31"
-                                          CountingMethod:@"Touch"
-                                              isFinished:NO];
     
-    self.contentsArray = [[NSMutableArray alloc] init];
-    [self.contentsArray addObject:self.testContent1];
-    [self.contentsArray addObject:self.testContent2];
-    [self.contentsArray addObject:self.testContent3];
+//    //For test
+//    self.testContent1 = [[ContentOfDay alloc] initWithID:1
+//                                                    Name:@"Push-ups"
+//                                                Position:@"Chest"
+//                                            nubmerPerSet:12
+//                                                    Sets:4
+//                                                  Weight:0
+//                                                    Date:@"2014-03-31"
+//                                          CountingMethod:@"Touch"
+//                                              isFinished:NO];
+//    
+//    self.testContent2 = [[ContentOfDay alloc] initWithID:2
+//                                                    Name:@"Chest Fly"
+//                                                Position:@"Chest"
+//                                            nubmerPerSet:10
+//                                                    Sets:3
+//                                                  Weight:12
+//                                                    Date:@"2014-03-31"
+//                                          CountingMethod:@"Accelorometer"
+//                                              isFinished:NO];
+//    self.testContent3 = [[ContentOfDay alloc] initWithID:3
+//                                                    Name:@"Sit-ups"
+//                                                Position:@"Core"
+//                                            nubmerPerSet:25
+//                                                    Sets:5
+//                                                  Weight:0
+//                                                    Date:@"2014-03-31"
+//                                          CountingMethod:@"Touch"
+//                                              isFinished:NO];
+//    
+//    self.contentsArray = [[NSMutableArray alloc] init];
+//    [self.contentsArray addObject:self.testContent1];
+//    [self.contentsArray addObject:self.testContent2];
+//    [self.contentsArray addObject:self.testContent3];
 
     self.positionsDic = [[NSMutableDictionary alloc] initWithCapacity:10];
     for(ContentOfDay *content in self.contentsArray)
@@ -233,9 +255,19 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if([segue.identifier isEqual:@"segue_todayToCounter"])
+    {
     CounterViewController *counterController = segue.destinationViewController;
     [counterController setValue:self.selectedContent forKey:@"exerciseContent"];
+    }
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSLog(@"fuck");
+    [self prepareContentData];
+    [self.tv_showDetail reloadData];
+}
 
 @end

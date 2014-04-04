@@ -10,8 +10,9 @@
 #import <math.h>
 #import "ContentOfDay.h"
 #import "CounterViewController.h"
+#import "TBSDatebase.h"
 
-@interface TBSViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface TodayViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 
 

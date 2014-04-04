@@ -94,9 +94,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Q33-kH-uZg" kind="push" id="efj-sj-w3r"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="v0Y-r4-flY">
                                         <rect key="frame" x="0.0" y="152" width="320" height="44"/>
@@ -113,9 +110,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Q33-kH-uZg" kind="push" id="rgo-yN-qzp"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -126,21 +120,17 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Today" id="RG6-gf-YLN">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="5nc-kc-LHv">
-                            <connections>
-                                <segue destination="EjJ-Bb-DPn" kind="push" id="D6A-CF-rR1"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="5nc-kc-LHv"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YdY-yD-pXz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="855" y="-38"/>
+            <point key="canvasLocation" x="951" y="1482"/>
         </scene>
-        <!--View Controller - Today-->
+        <!--Today View Controller - Today-->
         <scene sceneID="G66-u0-w2i">
             <objects>
-                <viewController id="kL1-ok-oNR" customClass="TBSViewController" sceneMemberID="viewController">
+                <viewController id="kL1-ok-oNR" customClass="TodayViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gku-Fa-zRG"/>
                         <viewControllerLayoutGuide type="bottom" id="kJx-KY-JJP"/>
@@ -158,15 +148,9 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYI-Lz-NrL">
-                                        <rect key="frame" x="20" y="0.0" width="280" height="52"/>
+                                        <rect key="frame" x="20" y="15" width="280" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="46"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Monday" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxy-Yg-Bki">
-                                        <rect key="frame" x="20" y="51" width="280" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -188,15 +172,22 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Today" id="nai-eG-tc0"/>
+                    <navigationItem key="navigationItem" title="Today" id="nai-eG-tc0">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="IgR-f0-dlJ">
+                            <connections>
+                                <segue destination="EjJ-Bb-DPn" kind="push" id="ERR-hb-moG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="l_showDate" destination="CYI-Lz-NrL" id="Evq-td-iNM"/>
                         <outlet property="tv_showDetail" destination="sXg-d3-z8o" id="M9b-eq-tOj"/>
                         <segue destination="Q33-kH-uZg" kind="push" identifier="segue_todayToCounter" id="Ktq-3X-7xa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YyH-wb-sto" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-531" y="1290"/>
+            <point key="canvasLocation" x="457" y="554"/>
         </scene>
         <!--New Plan View Controller - New Plan-->
         <scene sceneID="8AQ-RJ-PfS">
@@ -415,7 +406,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ntl-86-a9m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1053" y="1290"/>
+            <point key="canvasLocation" x="-65" y="554"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zKb-A4-OIc">
@@ -434,7 +425,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I3B-v8-3kB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="329" y="-38"/>
+            <point key="canvasLocation" x="425" y="1482"/>
         </scene>
     </scenes>
     <resources>
@@ -446,7 +437,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="Ktq-3X-7xa"/>
-    </inferredMetricsTieBreakers>
 </document>

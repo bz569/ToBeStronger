@@ -29,7 +29,7 @@
 		B2FE9F5318CA3988004328E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FE9F5218CA3988004328E7 /* main.m */; };
 		B2FE9F5718CA3988004328E7 /* TBSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FE9F5618CA3988004328E7 /* TBSAppDelegate.m */; };
 		B2FE9F5A18CA3988004328E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2FE9F5818CA3988004328E7 /* Main.storyboard */; };
-		B2FE9F5D18CA3988004328E7 /* TBSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FE9F5C18CA3988004328E7 /* TBSViewController.m */; };
+		B2FE9F5D18CA3988004328E7 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FE9F5C18CA3988004328E7 /* TodayViewController.m */; };
 		B2FE9F6618CA3988004328E7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE9F6518CA3988004328E7 /* XCTest.framework */; };
 		B2FE9F6718CA3988004328E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE9F4618CA3987004328E7 /* Foundation.framework */; };
 		B2FE9F6818CA3988004328E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE9F4A18CA3987004328E7 /* UIKit.framework */; };
@@ -83,8 +83,8 @@
 		B2FE9F5518CA3988004328E7 /* TBSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBSAppDelegate.h; sourceTree = "<group>"; };
 		B2FE9F5618CA3988004328E7 /* TBSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBSAppDelegate.m; sourceTree = "<group>"; };
 		B2FE9F5918CA3988004328E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B2FE9F5B18CA3988004328E7 /* TBSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBSViewController.h; sourceTree = "<group>"; };
-		B2FE9F5C18CA3988004328E7 /* TBSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBSViewController.m; sourceTree = "<group>"; };
+		B2FE9F5B18CA3988004328E7 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		B2FE9F5C18CA3988004328E7 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		B2FE9F6418CA3988004328E7 /* ToBeStrongerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToBeStrongerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2FE9F6518CA3988004328E7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		B2FE9F6D18CA3988004328E7 /* ToBeStrongerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ToBeStrongerTests-Info.plist"; sourceTree = "<group>"; };
@@ -171,8 +171,8 @@
 				B22295E018CA3D5700EA6E87 /* TimerViewController.m */,
 				B2BE299818D0F6F80052DCCD /* NewPlanViewController.h */,
 				B2BE299918D0F6F80052DCCD /* NewPlanViewController.m */,
-				B2FE9F5B18CA3988004328E7 /* TBSViewController.h */,
-				B2FE9F5C18CA3988004328E7 /* TBSViewController.m */,
+				B2FE9F5B18CA3988004328E7 /* TodayViewController.h */,
+				B2FE9F5C18CA3988004328E7 /* TodayViewController.m */,
 				B21BAA3818CCF6B500304E1F /* Images.xcassets */,
 				B23C231318CFDECB001F14CC /* Utils */,
 				B2FE9F7B18CA39C8004328E7 /* Models */,
@@ -340,7 +340,7 @@
 				B23C231618CFDF32001F14CC /* TBSDatebase.m in Sources */,
 				B2BE299A18D0F6F80052DCCD /* NewPlanViewController.m in Sources */,
 				B2A8CEA018CFC28700303929 /* ContentOfDay.m in Sources */,
-				B2FE9F5D18CA3988004328E7 /* TBSViewController.m in Sources */,
+				B2FE9F5D18CA3988004328E7 /* TodayViewController.m in Sources */,
 				B2A8CEA218CFC28700303929 /* Plan.m in Sources */,
 				B2FE9F5318CA3988004328E7 /* main.m in Sources */,
 				B2A8CEA118CFC28700303929 /* Exercise.m in Sources */,

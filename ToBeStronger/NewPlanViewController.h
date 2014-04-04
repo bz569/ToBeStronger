@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Plan.h"
-#import "TBSViewController.h"
 
 @interface NewPlanViewController : UIViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
