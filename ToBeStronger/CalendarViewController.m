@@ -21,6 +21,8 @@
 @property (nonatomic) NSInteger month;
 @property (nonatomic) NSInteger year;
 
+//date to pass to today view
+@property (strong, nonatomic) NSString *selectedDate;
 
 @end
 
@@ -55,17 +57,28 @@
 
 - (void)showCalendar
 {
+    //draw header background
+    UIImageView *iv_headerBg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+    iv_headerBg.image = [UIImage imageNamed:@"bg_calendarHeader"];
+    [self.v_calendarHeader addSubview:iv_headerBg];
+    [self.v_calendarHeader sendSubviewToBack:iv_headerBg];
+    
     //draw seperators above and below calendar header
-    UIImageView *septorAboveHeader = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 2)];
+    UIImageView *septorAboveHeader = [[UIImageView alloc] initWithFrame:CGRectMake(-1, 0, 321, 3)];
     septorAboveHeader.image = [UIImage imageNamed:@"divider1"];
     [self.v_calendarHeader addSubview:septorAboveHeader];
     
-    UIImageView *septorBelowHeader = [[UIImageView alloc] initWithFrame:CGRectMake(0, 38, 320, 4)];
+    UIImageView *septorBelowHeader = [[UIImageView alloc] initWithFrame:CGRectMake(-1, 36, 321, 5)];
     septorBelowHeader.image = [UIImage imageNamed:@"divider1"];
     [self.v_calendarHeader addSubview:septorBelowHeader];
     
+    //draw seperators above and below calendar body
+    UIImageView *septorBelowBody = [[UIImageView alloc] initWithFrame:CGRectMake(-1, 248, 321, 5)];
+    septorBelowBody.image = [UIImage imageNamed:@"divider1"];
+    [self.v_calendarBody addSubview:septorBelowBody];
+    
     //Calculate weekday for the first day of month
-    NSString *firstDateStr = [NSString stringWithFormat:@"%02ld-%02ld-%02ld", (long)self.year, self.month, 1];
+    NSString *firstDateStr = [NSString stringWithFormat:@"%02ld-%02ld-%02d", (long)self.year, self.month, 1];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
     NSDate *firstDate = [formatter dateFromString:firstDateStr];
@@ -98,37 +111,30 @@
         NSString *dateStr = [NSString stringWithFormat:@"%02ld-%02ld-%02d", self.year, self.month, i];
         CalendarDayView *dayView = [[CalendarDayView alloc] initWithFrame:CGRectMake(46 * cur_column, 50 * cur_row,
                                                                                      46, 50)
-                                                                     Date:dateStr];
+                                                                     Date:dateStr
+                                                               parentView:self];
         [self.v_calendarBody addSubview:dayView];
         
         cur_row = cur_row + (cur_column+1) / 7;
         cur_column = (cur_column + 1) % 7;
     }
-    
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 }
 
+- (void)selectDate:(NSString*)date
+{
+    self.selectedDate = date;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"fuck");
+    if([segue.identifier isEqual:@"segue_monthToToday"])
+    {
+        TodayViewController *todayController = segue.destinationViewController;
+        [todayController setValue:self.selectedDate forKey:@"date"];
+    }
+}
 
 
 @end

@@ -41,7 +41,7 @@
     [super viewDidLoad];
     
     //For test
-    self.date = @"2014-04-07";
+//    self.date = @"2014-04-07";
     
     //init dateObj using date string getting from Calendar view, and set UILable to show date
     [self setTodayDate];

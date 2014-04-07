@@ -238,7 +238,6 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -260,12 +259,13 @@
                         <outlet property="l_showMonth" destination="jVJ-Zs-lOX" id="9cD-ut-3ye"/>
                         <outlet property="l_showWeekDay" destination="LvM-ik-dcn" id="C6x-p4-y7A"/>
                         <outlet property="v_calendarBody" destination="SfE-qA-gLh" id="rKE-IC-auw"/>
-                        <outlet property="v_calendarHeader" destination="g8h-PR-XBP" id="b6j-kb-wLb"/>
+                        <outlet property="v_calendarHeader" destination="g8h-PR-XBP" id="Oqd-9t-UlN"/>
+                        <segue destination="kL1-ok-oNR" kind="push" identifier="segue_monthToToday" id="2do-Bc-maf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D3z-g9-UlN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1055" y="1253"/>
+            <point key="canvasLocation" x="-53" y="554"/>
         </scene>
         <!--Today View Controller - Today-->
         <scene sceneID="G66-u0-w2i">
@@ -538,25 +538,6 @@
             <point key="canvasLocation" x="1522" y="554"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="2eW-XZ-o4E">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q7O-07-EPQ" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5QE-ks-2cn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="kL1-ok-oNR" kind="relationship" relationship="rootViewController" id="JCr-Ru-aIp"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ntl-86-a9m" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-65" y="554"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="zKb-A4-OIc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NeP-YK-1HN" sceneMemberID="viewController">
@@ -591,7 +572,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JvT-fk-OQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="529" y="1253"/>
+            <point key="canvasLocation" x="-577" y="554"/>
         </scene>
     </scenes>
     <resources>

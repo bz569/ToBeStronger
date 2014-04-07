@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSString *date;
 @property (strong, nonatomic) NSArray *contents;
+@property (strong, nonatomic) UIViewController *parentView;
 
 
 @end
@@ -28,12 +29,14 @@
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
-               Date:(NSString *)date
+                         Date:(NSString *)date
+                       parentView:(UIViewController *)parentView
 {
     self = [super initWithFrame:frame];
     if (self)
     {
         self.date = date;
+        self.parentView = parentView;
         
         NSString *dayStr = [[date componentsSeparatedByString:@"-"] objectAtIndex:2];
         UILabel *l_showDate = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 46, 15)];
@@ -206,17 +209,13 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    CalendarViewController *calendarView = (CalendarViewController *) self.parentView;
     
-    
+    [calendarView selectDate:self.date];
+    [calendarView performSegueWithIdentifier:@"segue_monthToToday" sender:self.parentView];
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+
+
 
 @end

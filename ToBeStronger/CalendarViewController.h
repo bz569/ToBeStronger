@@ -10,7 +10,10 @@
 #import "CalendarDayView.h"
 #import "TBSDate.h"
 #import "CalendarDayView.h"
+#import "TodayViewController.h"
 
 @interface CalendarViewController : UIViewController
+
+- (void)selectDate:(NSString*)date;
 
 @end

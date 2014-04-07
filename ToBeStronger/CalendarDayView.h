@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ContentOfDay.h"
 #import "TBSDatabase.h"
+#import "CalendarViewController.h"
 
 @interface CalendarDayView : UIView
-- (id)initWithFrame:(CGRect)frame Date:(NSString *)date;
+- (instancetype)initWithFrame:(CGRect)frame
+                         Date:(NSString *)date
+                   parentView:(UIViewController *)parentView;
+
 - (instancetype)initWithBlankContent:(CGRect)frame;
 
 @end
