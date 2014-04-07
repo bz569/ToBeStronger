@@ -46,6 +46,8 @@
         UIImageView *seperator = [[UIImageView alloc] initWithFrame:CGRectMake(0, 49, 46, 2)];
         seperator.image = [UIImage imageNamed:@"divider1"];
         [self addSubview:seperator];
+        
+        [self addContentIcons];
   
         
     }
@@ -69,6 +71,138 @@
     
     return self;
 }
+
+- (void)addContentIcons
+{
+    TBSDatabase *db = [[TBSDatabase alloc] init];
+    NSArray *contents = [db getContentsOfDayByDate:self.date];
+    
+    NSMutableArray *positions = [[NSMutableArray alloc] init];
+    for(ContentOfDay *content in contents)
+    {
+        if(![positions containsObject:content.position])
+        {
+            [positions addObject:content.position];
+        }
+    }
+    
+    switch ([positions count])
+    {
+        case 0:
+            break;
+        case 1:
+        {
+            UILabel *iconview = [[UILabel alloc] initWithFrame:CGRectMake(12, 17, 15, 15)];
+            iconview.text = [self getIconForPosition:[positions objectAtIndex:0]];
+            iconview.font = [UIFont systemFontOfSize:8];
+            [self addSubview:iconview];
+            break;
+        }
+        case 2:
+        {
+            UILabel *iconview1 = [[UILabel alloc] initWithFrame:CGRectMake(12, 17, 15, 15)];
+            iconview1.text = [self getIconForPosition:[positions objectAtIndex:0]];
+            iconview1.font = [UIFont systemFontOfSize:8];
+            [self addSubview:iconview1];
+            UILabel *iconview2 = [[UILabel alloc] initWithFrame:CGRectMake(27, 17, 15, 15)];
+            iconview2.text = [self getIconForPosition:[positions objectAtIndex:1]];
+            iconview2.font = [UIFont systemFontOfSize:8];
+            [self addSubview:iconview2];
+            break;
+        }
+        case 3:
+        {
+            UILabel *iconview1 = [[UILabel alloc] initWithFrame:CGRectMake(12, 17, 15, 15)];
+            iconview1.text = [self getIconForPosition:[positions objectAtIndex:0]];
+            iconview1.font = [UIFont systemFontOfSize:8];
+            [self addSubview:iconview1];
+            UILabel *iconview2 = [[UILabel alloc] initWithFrame:CGRectMake(27, 17, 15, 15)];
+            iconview2.text = [self getIconForPosition:[positions objectAtIndex:1]];
+            iconview2.font = [UIFont systemFontOfSize:8];
+            [self addSubview:iconview2];
+            UILabel *iconview3 = [[UILabel alloc] initWithFrame:CGRectMake(12, 33, 15, 15)];
+            iconview3.text = [self getIconForPosition:[positions objectAtIndex:2]];
+            iconview3.font = [UIFont systemFontOfSize:8];
+            [self addSubview:iconview3];
+            break;
+        }
+        case 4:
+        {
+            UILabel *iconview1 = [[UILabel alloc] initWithFrame:CGRectMake(12, 17, 15, 15)];
+            iconview1.text = [self getIconForPosition:[positions objectAtIndex:0]];
+            iconview1.font = [UIFont systemFontOfSize:8];
+            [self addSubview:iconview1];
+            UILabel *iconview2 = [[UILabel alloc] initWithFrame:CGRectMake(27, 17, 15, 15)];
+            iconview2.text = [self getIconForPosition:[positions objectAtIndex:1]];
+            iconview2.font = [UIFont systemFontOfSize:8];
+            [self addSubview:iconview2];
+            UILabel *iconview3 = [[UILabel alloc] initWithFrame:CGRectMake(12, 33, 15, 15)];
+            iconview3.text = [self getIconForPosition:[positions objectAtIndex:2]];
+            iconview3.font = [UIFont systemFontOfSize:8];
+            [self addSubview:iconview3];
+            UILabel *iconview4 = [[UILabel alloc] initWithFrame:CGRectMake(27, 17, 15, 15)];
+            iconview4.text = [self getIconForPosition:[positions objectAtIndex:3]];
+            iconview4.font = [UIFont systemFontOfSize:8];
+            [self addSubview:iconview4];
+            break;
+        }
+        default:
+        {
+            UILabel *iconview1 = [[UILabel alloc] initWithFrame:CGRectMake(12, 17, 15, 15)];
+            iconview1.text = [self getIconForPosition:[positions objectAtIndex:0]];
+            iconview1.font = [UIFont systemFontOfSize:8];
+            [self addSubview:iconview1];
+            UILabel *iconview2 = [[UILabel alloc] initWithFrame:CGRectMake(27, 17, 15, 15)];
+            iconview2.text = [self getIconForPosition:[positions objectAtIndex:1]];
+            iconview2.font = [UIFont systemFontOfSize:8];
+            [self addSubview:iconview2];
+            UILabel *iconview3 = [[UILabel alloc] initWithFrame:CGRectMake(12, 33, 15, 15)];
+            iconview3.text = [self getIconForPosition:[positions objectAtIndex:2]];
+            iconview3.font = [UIFont systemFontOfSize:8];
+            [self addSubview:iconview3];
+            UILabel *iconview4 = [[UILabel alloc] initWithFrame:CGRectMake(27, 17, 15, 15)];
+            iconview4.text = @"...";
+            iconview4.font = [UIFont systemFontOfSize:8];
+            [self addSubview:iconview4];
+            break;
+        }
+    }
+    
+    
+    
+    
+}
+
+
+//need modify
+- (NSString*)getIconForPosition:(NSString *)position
+{
+    if([position isEqual:@"Shoulders"])
+    {
+        return @"S";
+    }else if([position isEqual:@"Chest"])
+    {
+        return @"C";
+    }
+    else if([position isEqual:@"Arms"])
+    {
+        return @"A";
+    }else if([position isEqual:@"Core"])
+    {
+        return @"Co";
+    }else if([position isEqual:@"Legs"])
+    {
+        return @"L";
+    }else if([position isEqual:@"Other"])
+    {
+        return @"O";
+    }else
+    {
+        return @"error";
+    }
+}
+
+
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
