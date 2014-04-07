@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Exercise.h"
-#import "TBSDatebase.h"
+#import "TBSDatabase.h"
 
 @interface ContentOfDay : Exercise
 

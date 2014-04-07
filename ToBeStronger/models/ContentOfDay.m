@@ -104,7 +104,7 @@
 
 - (void)storeIntoDateBase
 {
-    TBSDatebase *db = [[TBSDatebase alloc] init];
+    TBSDatabase *db = [[TBSDatabase alloc] init];
     [db insertExerciseContentWithName:self.name
                              Position:self.position
                           NumberOfSet:self.numberPerSet

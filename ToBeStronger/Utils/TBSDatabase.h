@@ -1,5 +1,5 @@
 //
-//  TBSDatebase.h
+//  TBSDatabase.h
 //  ToBeStronger
 //
 //  Created by Zhang Boxuan on 14-3-11.
@@ -11,7 +11,7 @@
 #import "ContentOfDay.h"
 
 
-@interface TBSDatebase : NSObject
+@interface TBSDatabase : NSObject
 
 
 /**

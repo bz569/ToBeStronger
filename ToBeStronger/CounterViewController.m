@@ -19,7 +19,10 @@
 @property (nonatomic) NSInteger curNumber;
 
 //used for counting by Accelorometer
+@property (nonatomic) BOOL isActivated;
 @property (strong, nonatomic) NSMutableArray *fiveRecords;
+@property (strong, nonatomic) NSMutableArray *thirtyRecords;
+@property (nonatomic) BOOL haveOneCountInThirtyRecordFlag;
 @property (strong, nonatomic) CMMotionManager *motionManager;
 @property (strong, nonatomic) NSOperationQueue *queue;
 
@@ -33,17 +36,17 @@
     
     NSLog(@"msg rec:%@", self.exerciseContent.name);
     
-//    //new a ContentOfDay object for test
-//    self.exerciseContent = [[ContentOfDay alloc] initWithID:1
-//                                                       Name:@"Pushups"
-//                                                   Position:@"Chest"
-//                                               nubmerPerSet:12
-//                                                       Sets:4
-//                                                     Weight:0
-//                                                       Date:@"2014-3-24"
-//                                             CountingMethod:@"Accelorometer"
-//                                                 isFinished:NO];
-
+    //    //new a ContentOfDay object for test
+    //    self.exerciseContent = [[ContentOfDay alloc] initWithID:1
+    //                                                       Name:@"Pushups"
+    //                                                   Position:@"Chest"
+    //                                               nubmerPerSet:12
+    //                                                       Sets:4
+    //                                                     Weight:0
+    //                                                       Date:@"2014-3-24"
+    //                                             CountingMethod:@"Accelorometer"
+    //                                                 isFinished:NO];
+    
     //initial view
     
     self.setNumber = 1;
@@ -57,6 +60,21 @@
     self.l_planedNumber.font = [UIFont fontWithName:@"Farrington-7B-Qiqi" size:70];
     self.l_planedNumber.text = [NSString stringWithFormat:@"%ld", self.exerciseContent.numberPerSet];
     
+    //    if([self.exerciseContent.countingMethod  isEqual: @"Accelorometer"])
+    //    {
+    //        [self startCountingByAccelorometer];
+    //    }
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.curNumber = 0;
+    self.l_currentNumber.text = @"00";
+    self.isActivated = YES;
+    
     if([self.exerciseContent.countingMethod  isEqual: @"Accelorometer"])
     {
         [self startCountingByAccelorometer];
@@ -64,11 +82,21 @@
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.motionManager stopDeviceMotionUpdates];
+    NSLog(@"stop updating");
+}
+
 - (void)startCountingByAccelorometer
 {
     self.motionManager = [[CMMotionManager alloc] init];
     self.queue = [[NSOperationQueue alloc] init];
     self.fiveRecords = [[NSMutableArray alloc] init];
+    self.thirtyRecords = [[NSMutableArray alloc] init];
+    self.haveOneCountInThirtyRecordFlag = NO;
     CMDeviceMotion *motion = self.motionManager.deviceMotion;
     
     if(self.motionManager.deviceMotionAvailable)
@@ -77,37 +105,60 @@
         
         [self.motionManager startDeviceMotionUpdatesToQueue:self.queue
                                                 withHandler:^(CMDeviceMotion *motion, NSError *error)
-        {
-            NSInteger x = motion.userAcceleration.x;
-            NSInteger y = motion.userAcceleration.y;
-            NSInteger z = motion.userAcceleration.z;
-            
-            NSNumber *sum = [NSNumber numberWithDouble:sqrt(x*x + y*y + z*z)];
-            
-            if([self.fiveRecords count] < 5)
-            {
-                [self.fiveRecords addObject:sum];
-            }else
-            {
-                [self.fiveRecords removeObjectAtIndex:0];
-                [self.fiveRecords addObject:sum];
-                
-                
-                double n1 = [[self.fiveRecords objectAtIndex:0] doubleValue];
-                double n2 = [[self.fiveRecords objectAtIndex:1] doubleValue];
-                double n3 = [[self.fiveRecords objectAtIndex:2] doubleValue];
-                double n4 = [[self.fiveRecords objectAtIndex:3] doubleValue];
-                double n5 = [[self.fiveRecords objectAtIndex:4] doubleValue];
-                
-                if((n2 > n1) && (n3 > n2) && (n4 < n3) && (n5 < n4))
-                {
-                    self.curNumber++;
-                    NSLog(@"count=%d", self.curNumber);
-                    
-                    [self performSelectorOnMainThread:@selector(changeCountingNum) withObject:nil waitUntilDone:NO];
-                }
-            }
-        }];
+         {
+             NSInteger x = motion.userAcceleration.x;
+             NSInteger y = motion.userAcceleration.y;
+             NSInteger z = motion.userAcceleration.z;
+             
+             NSNumber *sum = [NSNumber numberWithDouble:sqrt(x*x + y*y + z*z)];
+             
+             if(self.isActivated)
+             {
+                 if([self.thirtyRecords count] < 45)
+                 {
+                     [self.thirtyRecords addObject:sum];
+                 }else
+                 {
+                     [self.thirtyRecords removeAllObjects];
+                     self.haveOneCountInThirtyRecordFlag = NO;
+                 }
+                 
+                 if([self.fiveRecords count] < 5)
+                 {
+                     [self.fiveRecords addObject:sum];
+                 }else
+                 {
+                     [self.fiveRecords removeObjectAtIndex:0];
+                     [self.fiveRecords addObject:sum];
+                     
+                     
+                     double n1 = [[self.fiveRecords objectAtIndex:0] doubleValue];
+                     double n2 = [[self.fiveRecords objectAtIndex:1] doubleValue];
+                     double n3 = [[self.fiveRecords objectAtIndex:2] doubleValue];
+                     double n4 = [[self.fiveRecords objectAtIndex:3] doubleValue];
+                     double n5 = [[self.fiveRecords objectAtIndex:4] doubleValue];
+                     
+                     if((n2 > n1) && (n3 > n2) && (n4 < n3) && (n5 < n4))
+                     {
+                         //                    self.curNumber++;
+                         //                    NSLog(@"count=%d", self.curNumber);
+                         //
+                         //                    [self performSelectorOnMainThread:@selector(changeCountingNum) withObject:nil waitUntilDone:NO];
+                         
+                         
+                         if(self.haveOneCountInThirtyRecordFlag == NO)
+                         {
+                             self.curNumber++;
+                             self.haveOneCountInThirtyRecordFlag = YES;
+                             NSLog(@"count=%ld", self.curNumber);
+                             
+                             [self performSelectorOnMainThread:@selector(changeCountingNum) withObject:nil waitUntilDone:NO];
+                             
+                         }
+                     }
+                 }
+             }
+         }];
     }
     
 }
@@ -118,7 +169,7 @@
     {
         self.curNumber++;
         [self performSelectorOnMainThread:@selector(changeCountingNum) withObject:nil waitUntilDone:NO];
-       
+        
     }
     
 }
@@ -135,6 +186,7 @@
         self.setNumber++;
         if(self.setNumber <= self.exerciseContent.sets)
         {
+            self.isActivated = NO;
             [self performSegueWithIdentifier:@"segue_CounterToTimer" sender:self];
             self.l_setNumber.text = [NSString stringWithFormat:@"Set %ld", self.setNumber];
         }else
@@ -144,18 +196,18 @@
         self.curNumber = 0;
         self.l_currentNumber.text = [NSString stringWithFormat:@"%02ld", self.curNumber];
     }
-
+    
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

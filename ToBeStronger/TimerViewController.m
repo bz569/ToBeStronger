@@ -16,7 +16,7 @@
 @property (strong, nonatomic) TimerPics *timerPics;
 @property (strong, nonatomic) AVAudioPlayer *clockSoundPlayer;
 
-@property (strong, nonatomic) TBSDatebase *db;
+@property (strong, nonatomic) TBSDatabase *db;
 
 @end
 

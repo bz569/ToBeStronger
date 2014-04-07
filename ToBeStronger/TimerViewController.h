@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "TimerPics.h"
-#import "TBSDatebase.h"
+#import "TBSDatabase.h"
 
 @interface TimerViewController : UIViewController
 

@@ -16,10 +16,12 @@
 @property (strong, nonatomic) NSArray *contentsArray;
 @property (strong, nonatomic) NSMutableDictionary *positionsDic;
 @property (weak, nonatomic) IBOutlet UILabel *l_showDate;
+@property (weak, nonatomic) IBOutlet UILabel *l_showWeekDay;
 
 
 //receive from calendar view
 @property (strong, nonatomic) NSString *date;
+@property (strong, nonatomic) NSDate *dateObj;
 
 //For test
 @property (strong, nonatomic) ContentOfDay *testContent1;
@@ -39,12 +41,11 @@
     [super viewDidLoad];
     
     //For test
+    self.date = @"2014-04-07";
+    
+    //init dateObj using date string getting from Calendar view, and set UILable to show date
     [self setTodayDate];
 
-    //set UILable to show date
-    self.l_showDate.text = self.date;
-    
-   
     //set table views
     [self prepareContentData];
     [self.tv_showDetail setDelegate:self];
@@ -54,17 +55,30 @@
         
 }
 
+//init dateObj using date string getting from Calendar view, and set UILable to show date
 - (void)setTodayDate
 {
+    //For test, using today date
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"YYYY-MM-dd"];
+//    self.date = [formatter stringFromDate:[NSDate date]];
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
-    self.date = [formatter stringFromDate:[NSDate date]];
+    NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    self.dateObj = [formatter dateFromString:self.date];
     
+    //set UILable to show date
+    self.l_showDate.text = [NSString stringWithFormat:@"%d", [[[self.date componentsSeparatedByString:@"-"] objectAtIndex:2] intValue]];
+    //    NSLog(@"Weekday=%@", [self getWeedDayFromDate:[NSDate date]]);
+    self.l_showWeekDay.text = [TBSDate getWeedDayFromDate:self.dateObj];
+
 }
+
 
 - (void)prepareContentData
 {
-    TBSDatebase *db = [[TBSDatebase alloc] init];
+    TBSDatabase *db = [[TBSDatabase alloc] init];
     self.contentsArray = [db getContentsOfDayByDate:self.date];
     
     
@@ -265,7 +279,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSLog(@"fuck");
     [self prepareContentData];
     [self.tv_showDetail reloadData];
 }

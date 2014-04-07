@@ -10,7 +10,9 @@
 		B21BAA3918CCF6B500304E1F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B21BAA3818CCF6B500304E1F /* Images.xcassets */; };
 		B21BAA3D18CD011A00304E1F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21BAA3C18CD011A00304E1F /* AVFoundation.framework */; };
 		B22295E118CA3D5700EA6E87 /* TimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22295E018CA3D5700EA6E87 /* TimerViewController.m */; };
-		B23C231618CFDF32001F14CC /* TBSDatebase.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C231518CFDF32001F14CC /* TBSDatebase.m */; };
+		B22D58BC18F26276004AF670 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22D58BB18F26276004AF670 /* CalendarViewController.m */; };
+		B23B308418EF592500476C94 /* CalendarDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B23B308318EF592500476C94 /* CalendarDayView.m */; };
+		B23C231618CFDF32001F14CC /* TBSDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C231518CFDF32001F14CC /* TBSDatabase.m */; };
 		B2711DA318E0A65000D66C1D /* CounterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2711DA218E0A65000D66C1D /* CounterViewController.m */; };
 		B2711DA518E0AF1900D66C1D /* Farrington7B_Qiqi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2711DA418E0A9DA00D66C1D /* Farrington7B_Qiqi.ttf */; };
 		B2A8CE9018CFB92A00303929 /* clock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2A8CE8F18CFB92A00303929 /* clock.mp3 */; };
@@ -21,6 +23,7 @@
 		B2A8CEA218CFC28700303929 /* Plan.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A8CE9F18CFC28700303929 /* Plan.m */; };
 		B2A8CEA418CFC53300303929 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A8CEA318CFC53300303929 /* libsqlite3.0.dylib */; };
 		B2AEE27C18E2420E002CC60D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2AEE27B18E2420E002CC60D /* CoreMotion.framework */; };
+		B2BC51CA18F2F671003CC07D /* TBSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC51C918F2F671003CC07D /* TBSDate.m */; };
 		B2BE299A18D0F6F80052DCCD /* NewPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BE299918D0F6F80052DCCD /* NewPlanViewController.m */; };
 		B2FE9F4718CA3987004328E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE9F4618CA3987004328E7 /* Foundation.framework */; };
 		B2FE9F4918CA3987004328E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE9F4818CA3987004328E7 /* CoreGraphics.framework */; };
@@ -52,8 +55,12 @@
 		B21BAA3C18CD011A00304E1F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B22295DF18CA3D5700EA6E87 /* TimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimerViewController.h; path = ToBeStronger/TimerViewController.h; sourceTree = SOURCE_ROOT; };
 		B22295E018CA3D5700EA6E87 /* TimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimerViewController.m; path = ToBeStronger/TimerViewController.m; sourceTree = SOURCE_ROOT; };
-		B23C231418CFDF32001F14CC /* TBSDatebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TBSDatebase.h; path = Utils/TBSDatebase.h; sourceTree = "<group>"; };
-		B23C231518CFDF32001F14CC /* TBSDatebase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TBSDatebase.m; path = Utils/TBSDatebase.m; sourceTree = "<group>"; };
+		B22D58BA18F26276004AF670 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		B22D58BB18F26276004AF670 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		B23B308218EF592500476C94 /* CalendarDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDayView.h; sourceTree = "<group>"; };
+		B23B308318EF592500476C94 /* CalendarDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDayView.m; sourceTree = "<group>"; };
+		B23C231418CFDF32001F14CC /* TBSDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TBSDatabase.h; path = Utils/TBSDatabase.h; sourceTree = "<group>"; };
+		B23C231518CFDF32001F14CC /* TBSDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TBSDatabase.m; path = Utils/TBSDatabase.m; sourceTree = "<group>"; };
 		B2711DA118E0A65000D66C1D /* CounterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CounterViewController.h; sourceTree = "<group>"; };
 		B2711DA218E0A65000D66C1D /* CounterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CounterViewController.m; sourceTree = "<group>"; };
 		B2711DA418E0A9DA00D66C1D /* Farrington7B_Qiqi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Farrington7B_Qiqi.ttf; sourceTree = "<group>"; };
@@ -70,6 +77,8 @@
 		B2A8CE9F18CFC28700303929 /* Plan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plan.m; sourceTree = "<group>"; };
 		B2A8CEA318CFC53300303929 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		B2AEE27B18E2420E002CC60D /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		B2BC51C818F2F671003CC07D /* TBSDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSDate.h; sourceTree = "<group>"; };
+		B2BC51C918F2F671003CC07D /* TBSDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSDate.m; sourceTree = "<group>"; };
 		B2BE299818D0F6F80052DCCD /* NewPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPlanViewController.h; sourceTree = "<group>"; };
 		B2BE299918D0F6F80052DCCD /* NewPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPlanViewController.m; sourceTree = "<group>"; };
 		B2FE9F4318CA3987004328E7 /* ToBeStronger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToBeStronger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,8 +131,10 @@
 		B23C231318CFDECB001F14CC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				B23C231418CFDF32001F14CC /* TBSDatebase.h */,
-				B23C231518CFDF32001F14CC /* TBSDatebase.m */,
+				B23C231418CFDF32001F14CC /* TBSDatabase.h */,
+				B23C231518CFDF32001F14CC /* TBSDatabase.m */,
+				B2BC51C818F2F671003CC07D /* TBSDate.h */,
+				B2BC51C918F2F671003CC07D /* TBSDate.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -173,6 +184,10 @@
 				B2BE299918D0F6F80052DCCD /* NewPlanViewController.m */,
 				B2FE9F5B18CA3988004328E7 /* TodayViewController.h */,
 				B2FE9F5C18CA3988004328E7 /* TodayViewController.m */,
+				B23B308218EF592500476C94 /* CalendarDayView.h */,
+				B23B308318EF592500476C94 /* CalendarDayView.m */,
+				B22D58BA18F26276004AF670 /* CalendarViewController.h */,
+				B22D58BB18F26276004AF670 /* CalendarViewController.m */,
 				B21BAA3818CCF6B500304E1F /* Images.xcassets */,
 				B23C231318CFDECB001F14CC /* Utils */,
 				B2FE9F7B18CA39C8004328E7 /* Models */,
@@ -337,9 +352,12 @@
 			files = (
 				B22295E118CA3D5700EA6E87 /* TimerViewController.m in Sources */,
 				B2FE9F5718CA3988004328E7 /* TBSAppDelegate.m in Sources */,
-				B23C231618CFDF32001F14CC /* TBSDatebase.m in Sources */,
+				B23C231618CFDF32001F14CC /* TBSDatabase.m in Sources */,
 				B2BE299A18D0F6F80052DCCD /* NewPlanViewController.m in Sources */,
+				B23B308418EF592500476C94 /* CalendarDayView.m in Sources */,
 				B2A8CEA018CFC28700303929 /* ContentOfDay.m in Sources */,
+				B22D58BC18F26276004AF670 /* CalendarViewController.m in Sources */,
+				B2BC51CA18F2F671003CC07D /* TBSDate.m in Sources */,
 				B2FE9F5D18CA3988004328E7 /* TodayViewController.m in Sources */,
 				B2A8CEA218CFC28700303929 /* Plan.m in Sources */,
 				B2FE9F5318CA3988004328E7 /* main.m in Sources */,

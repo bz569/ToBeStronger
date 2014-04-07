@@ -1,20 +1,20 @@
 //
-//  TBSDatebase.m
+//  TBSDatabase.m
 //  ToBeStronger
 //
 //  Created by Zhang Boxuan on 14-3-11.
 //  Copyright (c) 2014年 Boxuan Zhang. All rights reserved.
 //
 
-#import "TBSDatebase.h"
+#import "TBSDatabase.h"
 
-@interface TBSDatebase ()
+@interface TBSDatabase ()
 
 @property (nonatomic) sqlite3 *db;
 
 @end
 
-@implementation TBSDatebase
+@implementation TBSDatabase
 
 #define DBNAME    @"tbs_database.sqlite"
 
