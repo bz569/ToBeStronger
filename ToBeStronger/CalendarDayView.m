@@ -18,7 +18,7 @@
 
 @implementation CalendarDayView
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -27,7 +27,7 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
                Date:(NSString *)date
 {
     self = [super initWithFrame:frame];
@@ -36,16 +36,44 @@
         self.date = date;
         
         NSString *dayStr = [[date componentsSeparatedByString:@"-"] objectAtIndex:2];
-        UILabel *l_showDate = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320/7, 15)];
-        l_showDate.text = dayStr;
-        l_showDate.font = [UIFont systemFontOfSize:5];
+        UILabel *l_showDate = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 46, 15)];
+        l_showDate.text = [NSString stringWithFormat:@"    %@", dayStr];
+        l_showDate.font = [UIFont systemFontOfSize:10];
         l_showDate.textAlignment = NSTextAlignmentLeft;
+        l_showDate.backgroundColor = [UIColor colorWithRed:0.83 green:0.83 blue:0.83 alpha:0.5];
         [self addSubview:l_showDate];
+        
+        UIImageView *seperator = [[UIImageView alloc] initWithFrame:CGRectMake(0, 49, 46, 2)];
+        seperator.image = [UIImage imageNamed:@"divider1"];
+        [self addSubview:seperator];
   
         
     }
 
     return self;
+}
+
+- (instancetype)initWithBlankContent:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self)
+    {
+        UILabel *l_showDate = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 46, 15)];
+        l_showDate.backgroundColor = [UIColor colorWithRed:0.83 green:0.83 blue:0.83 alpha:0.5];
+        [self addSubview:l_showDate];
+        
+        UIImageView *seperator = [[UIImageView alloc] initWithFrame:CGRectMake(0, 49, 46, 2)];
+        seperator.image = [UIImage imageNamed:@"divider1"];
+        [self addSubview:seperator];
+    }
+    
+    return self;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+    
 }
 
 /*

@@ -65,7 +65,6 @@
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
-    NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
     self.dateObj = [formatter dateFromString:self.date];
     
     //set UILable to show date

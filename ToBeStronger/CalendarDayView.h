@@ -11,5 +11,7 @@
 #import "TBSDatabase.h"
 
 @interface CalendarDayView : UIView
+- (id)initWithFrame:(CGRect)frame Date:(NSString *)date;
+- (instancetype)initWithBlankContent:(CGRect)frame;
 
 @end

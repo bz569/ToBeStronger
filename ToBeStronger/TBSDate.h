@@ -13,5 +13,9 @@
 + (NSString *)getWeedDayFromDate:(NSDate *)date;
 + (NSString *)getMonthFromDate:(NSDate *)date;
 + (NSInteger)getMonthValueFromDate:(NSDate *)date;
++ (NSInteger)getYearValueFromDate:(NSDate *)date;
++ (NSInteger)getWeedDayValueFromDate:(NSDate *)date;
++ (NSInteger)getNumberOfDaysInMonth:(NSInteger)month
+                               Year:(NSInteger)year;
 
 @end

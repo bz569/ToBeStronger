@@ -59,6 +59,15 @@
     
 }
 
++ (NSInteger)getWeedDayValueFromDate:(NSDate *)date
+{
+    NSDateComponents *componets = [[NSCalendar autoupdatingCurrentCalendar] components:NSWeekdayCalendarUnit
+                                                                              fromDate:date];
+    
+    NSInteger weekday = [componets weekday];
+    return weekday;
+}
+
 + (NSInteger)getMonthValueFromDate:(NSDate *)date
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -67,6 +76,16 @@
     NSInteger month = [component month];
     
     return month;
+}
+
++ (NSInteger)getYearValueFromDate:(NSDate *)date
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *component = [calendar components:unitFlags fromDate:date];
+    NSInteger year = [component year];
+    
+    return year;
 }
 
 + (NSString *)getMonthFromDate:(NSDate *)date
@@ -134,6 +153,48 @@
     
     
 }
+
++ (NSInteger)getNumberOfDaysInMonth:(NSInteger)month
+                               Year:(NSInteger)year
+{
+    if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
+    {
+        return 31;
+    }else if(month == 4 || month == 6 || month == 9 || month == 11)
+    {
+        return 30;
+    }else if(month == 2 && [self isLeapYear:year])
+    {
+        return 29;
+    }else if(month == 2 && [self isLeapYear:year])
+    {
+        return 28;
+    }else
+    {
+        return -1;
+    }
+}
+
++ (BOOL)isLeapYear:(NSInteger)year
+{
+    if ((year % 4  == 0 && year % 100 != 0) || (year % 400 == 0))
+        return YES;
+    else
+        return NO;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
