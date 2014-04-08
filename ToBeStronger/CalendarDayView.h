@@ -16,6 +16,10 @@
                          Date:(NSString *)date
                    parentView:(UIViewController *)parentView;
 
+- (instancetype)initForTodayWithFrame:(CGRect)frame
+                                 Date:(NSString *)date
+                           parentView:(UIViewController *)parentView;
+
 - (instancetype)initWithBlankContent:(CGRect)frame;
 
 @end

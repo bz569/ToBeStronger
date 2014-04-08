@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIView *v_calendarBody;
 @property (weak, nonatomic) IBOutlet UIView *v_calendarHeader;
 
+//today date
+@property (strong, nonatomic) NSString *todayDate;
+
 //current month
 @property (nonatomic) NSInteger month;
 @property (nonatomic) NSInteger year;
@@ -33,8 +36,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
     [self setTodayDate];
+    
+    //draw or re-draw
     [self showCalendar];
 }
 
@@ -42,10 +50,10 @@
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
-    NSString *date = [formatter stringFromDate:[NSDate date]];
+    self.todayDate = [formatter stringFromDate:[NSDate date]];
     
     //set UILable to show date
-    self.l_showDate.text = [NSString stringWithFormat:@"%d", [[[date componentsSeparatedByString:@"-"] objectAtIndex:2] intValue]];
+    self.l_showDate.text = [NSString stringWithFormat:@"%d", [[[self.todayDate componentsSeparatedByString:@"-"] objectAtIndex:2] intValue]];
     self.l_showWeekDay.text = [TBSDate getWeedDayFromDate:[NSDate date]];
     self.l_showMonth.text = [TBSDate getMonthFromDate:[NSDate date]];
     
@@ -57,6 +65,16 @@
 
 - (void)showCalendar
 {
+    //remove all subviews
+    for(UIView *subview in self.v_calendarBody.subviews)
+    {
+        if([subview isKindOfClass:[CalendarDayView class]])
+        {
+            [subview removeFromSuperview];
+        }
+    }
+    
+    
     //draw header background
     UIImageView *iv_headerBg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
     iv_headerBg.image = [UIImage imageNamed:@"bg_calendarHeader"];
@@ -78,7 +96,7 @@
     [self.v_calendarBody addSubview:septorBelowBody];
     
     //Calculate weekday for the first day of month
-    NSString *firstDateStr = [NSString stringWithFormat:@"%02ld-%02ld-%02d", (long)self.year, self.month, 1];
+    NSString *firstDateStr = [NSString stringWithFormat:@"%02ld-%02ld-%02d", (long)self.year, (long)self.month, 1];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
     NSDate *firstDate = [formatter dateFromString:firstDateStr];
@@ -108,12 +126,23 @@
     
     for(int i = 1; i <= numberOfdays; i++)
     {
-        NSString *dateStr = [NSString stringWithFormat:@"%02ld-%02ld-%02d", self.year, self.month, i];
-        CalendarDayView *dayView = [[CalendarDayView alloc] initWithFrame:CGRectMake(46 * cur_column, 50 * cur_row,
+        NSString *dateStr = [NSString stringWithFormat:@"%02ld-%02ld-%02d", (long)self.year, (long)self.month, i];
+        
+        if(![dateStr isEqual:self.todayDate])
+        {
+            CalendarDayView *dayView = [[CalendarDayView alloc] initWithFrame:CGRectMake(46 * cur_column, 50 * cur_row,
                                                                                      46, 50)
                                                                      Date:dateStr
                                                                parentView:self];
-        [self.v_calendarBody addSubview:dayView];
+            [self.v_calendarBody addSubview:dayView];
+        }else
+        {
+            CalendarDayView *dayView = [[CalendarDayView alloc] initForTodayWithFrame:CGRectMake(46 * cur_column, 50 * cur_row,
+                                                                                         46, 50)
+                                                                         Date:dateStr
+                                                                   parentView:self];
+            [self.v_calendarBody addSubview:dayView];
+        }
         
         cur_row = cur_row + (cur_column+1) / 7;
         cur_column = (cur_column + 1) % 7;
@@ -128,7 +157,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"fuck");
     if([segue.identifier isEqual:@"segue_monthToToday"])
     {
         TodayViewController *todayController = segue.destinationViewController;

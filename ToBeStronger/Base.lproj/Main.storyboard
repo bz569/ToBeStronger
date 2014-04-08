@@ -253,7 +253,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Month" id="w5s-Z8-nHh"/>
+                    <navigationItem key="navigationItem" title="Month" id="w5s-Z8-nHh">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="HZ4-dw-X6v">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="EjJ-Bb-DPn" kind="push" id="Ar8-is-SlX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="l_showDate" destination="aTe-cg-YDi" id="UQH-Nq-94G"/>
                         <outlet property="l_showMonth" destination="jVJ-Zs-lOX" id="9cD-ut-3ye"/>
@@ -319,13 +326,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Today" id="nai-eG-tc0">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="IgR-f0-dlJ">
-                            <connections>
-                                <segue destination="EjJ-Bb-DPn" kind="push" id="ERR-hb-moG"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Today" id="nai-eG-tc0"/>
                     <connections>
                         <outlet property="l_showDate" destination="CYI-Lz-NrL" id="Evq-td-iNM"/>
                         <outlet property="l_showWeekDay" destination="gim-K7-L1L" id="sTK-Kg-1mm"/>
@@ -451,6 +452,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="New Plan" id="dyA-ac-x9X">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="uNS-pr-dtT">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="clickDoneButtonToAddPlan:" destination="EjJ-Bb-DPn" id="RXb-4v-11Z"/>
                             </connections>
@@ -470,7 +472,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t9Z-AH-4y1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1505" y="-323"/>
+            <point key="canvasLocation" x="457" y="-275"/>
         </scene>
         <!--Counter View Controller - Counter-->
         <scene sceneID="Hb8-Tv-wVR">
@@ -564,6 +566,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RL5-30-FNc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
