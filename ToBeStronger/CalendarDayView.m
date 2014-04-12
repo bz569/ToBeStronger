@@ -13,7 +13,7 @@
 @property (strong, nonatomic) NSString *date;
 @property (strong, nonatomic) NSArray *contents;
 @property (strong, nonatomic) UIViewController *parentView;
-
+@property (strong, nonatomic) NSArray *allContents;
 
 @end
 
@@ -30,13 +30,15 @@
 
 - (instancetype)initWithFrame:(CGRect)frame
                          Date:(NSString *)date
-                       parentView:(UIViewController *)parentView
+                   parentView:(UIViewController *)parentView
+                  AllContents:(NSArray *)allContents
 {
     self = [super initWithFrame:frame];
     if (self)
     {
         self.date = date;
         self.parentView = parentView;
+        self.allContents = allContents;
         
         NSString *dayStr = [[date componentsSeparatedByString:@"-"] objectAtIndex:2];
         UILabel *l_showDate = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 46, 15)];
@@ -59,14 +61,16 @@
 }
 
 - (instancetype)initForTodayWithFrame:(CGRect)frame
-                         Date:(NSString *)date
-                   parentView:(UIViewController *)parentView
+                                 Date:(NSString *)date
+                           parentView:(UIViewController *)parentView
+                         AllContents:(NSArray *)allContents
 {
     self = [super initWithFrame:frame];
     if (self)
     {
         self.date = date;
         self.parentView = parentView;
+        self.allContents = allContents;
         
         NSString *dayStr = [[date componentsSeparatedByString:@"-"] objectAtIndex:2];
         UILabel *l_showDate = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 46, 15)];
@@ -107,8 +111,15 @@
 
 - (void)addContentIcons
 {
-    TBSDatabase *db = [[TBSDatabase alloc] init];
-    NSArray *contents = [db getContentsOfDayByDate:self.date];
+    NSMutableArray *contentsMutableArray = [[NSMutableArray alloc] init];
+    for(ContentOfDay *content in self.allContents)
+    {
+        if([content.date isEqual:self.date])
+        {
+            [contentsMutableArray addObject:content];
+        }
+    }
+    NSArray *contents = [contentsMutableArray copy];
     
     NSMutableArray *positions = [[NSMutableArray alloc] init];
     for(ContentOfDay *content in contents)

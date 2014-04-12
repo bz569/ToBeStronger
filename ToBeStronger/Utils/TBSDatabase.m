@@ -288,8 +288,76 @@
     return contentsArray;
 }
 
-
-
+- (NSArray*)queryAllContents
+{
+    sqlite3 *db;
+    //Open datebase
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documents = [paths objectAtIndex:0];
+    NSString *database_path = [documents stringByAppendingPathComponent:DBNAME];
+    
+    int result = sqlite3_open([database_path UTF8String], &db);
+    if (result != SQLITE_OK)
+    {
+        sqlite3_close(db);
+        NSLog(@"数据库打开失败: %d", result);
+    }
+    
+    
+    NSString *sqlToQueryAllContents = [NSString stringWithFormat:@"SELECT * FROM %@", TABLE_NAME_EXERCISE_CONTENT];
+    NSLog(@"sqlToQueryAllContents=%@\n", sqlToQueryAllContents);
+    
+    sqlite3_stmt *statement;
+    
+    NSMutableArray *contentsMutableArray = [[NSMutableArray alloc] init];
+    
+    if(sqlite3_prepare_v2(db, [sqlToQueryAllContents UTF8String], -1, &statement, nil) == SQLITE_OK)
+    {
+        while(sqlite3_step(statement) == SQLITE_ROW)
+        {
+            NSInteger idNumber = sqlite3_column_int(statement, 0);
+            
+            char *nameChars = (char*)sqlite3_column_text(statement, 1);
+            NSString *name = [[NSString alloc] initWithUTF8String:nameChars];
+            
+            char *positionChars = (char*)sqlite3_column_text(statement, 2);
+            NSString *position = [[NSString alloc] initWithUTF8String:positionChars];
+            
+            NSInteger numberPerSet = sqlite3_column_int(statement, 3);
+            
+            NSInteger sets = sqlite3_column_int(statement, 4);
+            
+            NSInteger weight = sqlite3_column_int(statement, 5);
+            
+            char *dateChars = (char*)sqlite3_column_text(statement, 6);
+            NSString *date = [[NSString alloc] initWithUTF8String:dateChars];
+            
+            char *countingMethodChars = (char*)sqlite3_column_text(statement, 7);
+            NSString *countingMethod = [[NSString alloc] initWithUTF8String:countingMethodChars];
+            
+            BOOL finished = sqlite3_column_int(statement, 8);
+            
+            ContentOfDay *contentOfDay = [[ContentOfDay alloc] initWithID:idNumber
+                                                                     Name:name
+                                                                 Position:position
+                                                             nubmerPerSet:numberPerSet
+                                                                     Sets:sets
+                                                                   Weight:weight
+                                                                     Date:date
+                                                           CountingMethod:countingMethod
+                                                               isFinished:finished];
+            
+            [contentsMutableArray addObject:contentOfDay];
+        }
+    }
+    
+    NSArray *contentsArray = [contentsMutableArray copy];
+    
+    
+    sqlite3_close(db);
+    
+    return contentsArray;
+}
 
 
 

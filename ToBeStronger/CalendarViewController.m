@@ -27,6 +27,9 @@
 //date to pass to today view
 @property (strong, nonatomic) NSString *selectedDate;
 
+//date from database
+@property (strong, nonatomic) NSArray *allContents;
+
 @end
 
 @implementation CalendarViewController
@@ -35,12 +38,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+
     [self setTodayDate];
+    
+    //get data from DB
+    [self getAllContentsFromDB];
     
     //draw or re-draw
     [self showCalendar];
@@ -132,15 +141,17 @@
         {
             CalendarDayView *dayView = [[CalendarDayView alloc] initWithFrame:CGRectMake(46 * cur_column, 50 * cur_row,
                                                                                      46, 50)
-                                                                     Date:dateStr
-                                                               parentView:self];
+                                                                         Date:dateStr
+                                                                   parentView:self
+                                                                  AllContents:self.allContents];
             [self.v_calendarBody addSubview:dayView];
         }else
         {
             CalendarDayView *dayView = [[CalendarDayView alloc] initForTodayWithFrame:CGRectMake(46 * cur_column, 50 * cur_row,
                                                                                          46, 50)
-                                                                         Date:dateStr
-                                                                   parentView:self];
+                                                                                 Date:dateStr
+                                                                           parentView:self
+                                                                          AllContents:self.allContents];
             [self.v_calendarBody addSubview:dayView];
         }
         
@@ -163,6 +174,19 @@
         [todayController setValue:self.selectedDate forKey:@"date"];
     }
 }
+
+
+- (void)getAllContentsFromDB
+{
+    TBSDatabase *db = [[TBSDatabase alloc] init];
+    self.allContents = [db queryAllContents];
+}
+
+
+
+
+
+
 
 
 @end

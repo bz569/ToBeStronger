@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <sqlite3.h>
 #import "CalendarDayView.h"
 #import "TBSDate.h"
 #import "CalendarDayView.h"
