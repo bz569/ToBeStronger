@@ -47,8 +47,7 @@
             CountingMethod:(NSString *)countingMethod
                 isFinished:(BOOL)finished;
 
-- (void)finishPlanWithIntervalTimes:(NSMutableArray*)intervalTimes
-                          RestTimes:(NSMutableArray*)restTimes;
+- (void)finishPlan;
 
 - (void)storeIntoDateBase;
 

@@ -214,6 +214,10 @@
     nameLable.font = [UIFont systemFontOfSize:18];
     nameLable.adjustsFontSizeToFitWidth = NO;
     nameLable.textAlignment = NSTextAlignmentLeft;
+    if(content.isFinished)
+    {
+        nameLable.textColor = [UIColor lightGrayColor];
+    }
     [cell addSubview:nameLable];
     
     //set UILable to show weight value
@@ -228,6 +232,10 @@
     weightLable.font = [UIFont systemFontOfSize:15];
     weightLable.adjustsFontSizeToFitWidth = NO;
     weightLable.textAlignment = NSTextAlignmentCenter;
+    if(content.isFinished)
+    {
+        weightLable.textColor = [UIColor lightGrayColor];
+    }
     [cell addSubview:weightLable];
     
     //set UILable to show number value
@@ -236,6 +244,10 @@
     numLable.font = [UIFont systemFontOfSize:15];
     numLable.adjustsFontSizeToFitWidth = NO;
     numLable.textAlignment = NSTextAlignmentCenter;
+    if(content.isFinished)
+    {
+        numLable.textColor = [UIColor lightGrayColor];
+    }
     [cell addSubview:numLable];
 
     //set UILable to show sets value
@@ -244,6 +256,10 @@
     setsLable.font = [UIFont systemFontOfSize:15];
     setsLable.adjustsFontSizeToFitWidth = NO;
     setsLable.textAlignment = NSTextAlignmentCenter;
+    if(content.isFinished)
+    {
+        setsLable.textColor = [UIColor lightGrayColor];
+    }
     [cell addSubview:setsLable];
 
     return cell;
@@ -261,9 +277,14 @@
     ContentOfDay *content = [[self.positionsDic objectForKey:key] objectAtIndex:indexPath.row];
     self.selectedContent = content;
     
-    [self performSegueWithIdentifier:@"segue_todayToCounter" sender:self];
+    if(!content.isFinished)
+    {
+        [self performSegueWithIdentifier:@"segue_todayToCounter" sender:self];
+        
+    }
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

@@ -10,7 +10,7 @@
 
 @interface TBSDatabase ()
 
-@property (nonatomic) sqlite3 *db;
+//@property (nonatomic) sqlite3 *db;
 
 @end
 
@@ -51,19 +51,7 @@
 - (instancetype)init
 {
     self = [super init];
-    sqlite3 *dbHandle;
-    //Open datebase
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documents = [paths objectAtIndex:0];
-    NSString *database_path = [documents stringByAppendingPathComponent:DBNAME];
     
-    if (sqlite3_open([database_path UTF8String], &dbHandle) != SQLITE_OK)
-    {
-        sqlite3_close(dbHandle);
-        NSLog(@"数据库打开失败");
-    }
-    
-    self.db = dbHandle;
     [self createTables];
     
     return self;
@@ -71,6 +59,19 @@
 
 - (void) createTables
 {
+    sqlite3 *db;
+    //Open datebase
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documents = [paths objectAtIndex:0];
+    NSString *database_path = [documents stringByAppendingPathComponent:DBNAME];
+    
+    int result = sqlite3_open([database_path UTF8String], &db);
+    if (result != SQLITE_OK)
+    {
+        sqlite3_close(db);
+        NSLog(@"数据库打开失败: %d", result);
+    }
+
     //Create Exercise Conetent Table
     NSString *sqlToCreateECTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (%@ INTEGER PRIMARY KEY AUTOINCREMENT, %@ TEXT, %@ TEXT, %@ INTEGER, %@ INTEGER, %@ INTEGER, %@ TEXT, %@ TEXT, %@ BOOL)", TABLE_NAME_EXERCISE_CONTENT, COLUMN_NAME_EXERCISE_CONTEN_ID, COLUMN_NAME_EXERCISE_CONTEN_NAME, COLUMN_NAME_EXERCISE_CONTEN_POSITION, COLUMN_NAME_EXERCISE_CONTEN_NUMBER_PER_SET, COLUMN_NAME_EXERCISE_CONTEN_SETS, COLUMN_NAME_EXERCISE_CONTEN_WEIGHT, COLUMN_NAME_EXERCISE_CONTEN_DATE, COLUMN_NAME_EXERCISE_CONTEN_COUNTING_METHOD, COLUMN_NAME_EXERCISE_CONTEN_FINISHED];
     NSLog(@"sqlToCreateECTable=%@", sqlToCreateECTable);
@@ -89,6 +90,7 @@
     NSLog(@"sqlToCreateRTTable=%@", sqlToCreateRTTable);
     
     [self execSql:sqlToCreateRTTable];
+    
     
 }
 
@@ -111,7 +113,6 @@
                        CountingMethod:(NSString *)countingMethod
                              Finished:(BOOL)finished
 {
-    
     NSString *sqlToInsertECRecord = [NSString stringWithFormat:@"INSERT INTO '%@' ('%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@') VALUES ('%@', '%@', %ld, %ld, %ld, '%@', '%@', %d)"               ,TABLE_NAME_EXERCISE_CONTENT, COLUMN_NAME_EXERCISE_CONTEN_NAME, COLUMN_NAME_EXERCISE_CONTEN_POSITION, COLUMN_NAME_EXERCISE_CONTEN_NUMBER_PER_SET, COLUMN_NAME_EXERCISE_CONTEN_SETS, COLUMN_NAME_EXERCISE_CONTEN_WEIGHT, COLUMN_NAME_EXERCISE_CONTEN_DATE, COLUMN_NAME_EXERCISE_CONTEN_COUNTING_METHOD, COLUMN_NAME_EXERCISE_CONTEN_FINISHED, name, position, numberOfSet, sets, weight, date, countingMethod, finished];
     NSLog(@"sqlToInsertECRecord=%@", sqlToInsertECRecord);
     
@@ -148,11 +149,27 @@
 
 - (void)execSql:(NSString *)sql
 {
+    sqlite3 *db;
+    //Open datebase
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documents = [paths objectAtIndex:0];
+    NSString *database_path = [documents stringByAppendingPathComponent:DBNAME];
+    
+    int result = sqlite3_open([database_path UTF8String], &db);
+    if (result != SQLITE_OK)
+    {
+        sqlite3_close(db);
+        NSLog(@"数据库打开失败: %d", result);
+    }
+
+    
     char *err;
-    if (sqlite3_exec(self.db, [sql UTF8String], NULL, NULL, &err) != SQLITE_OK)
+    if (sqlite3_exec(db, [sql UTF8String], NULL, NULL, &err) != SQLITE_OK)
     {
         NSLog(@"database error:%s", err);
     }
+    
+    sqlite3_close(db);
 }
 
 /**
@@ -202,6 +219,20 @@
 
 - (NSArray*)getContentsOfDayByDate:(NSString*)date
 {
+    sqlite3 *db;
+    //Open datebase
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documents = [paths objectAtIndex:0];
+    NSString *database_path = [documents stringByAppendingPathComponent:DBNAME];
+    
+    int result = sqlite3_open([database_path UTF8String], &db);
+    if (result != SQLITE_OK)
+    {
+        sqlite3_close(db);
+        NSLog(@"数据库打开失败: %d", result);
+    }
+
+    
     NSString *sqlToQueryContentsOfDay = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = '%@'", TABLE_NAME_EXERCISE_CONTENT, COLUMN_NAME_EXERCISE_CONTEN_DATE, date];
     NSLog(@"sqlToQueryContentsOfDay=%@\n", sqlToQueryContentsOfDay);
     
@@ -209,7 +240,7 @@
     
     NSMutableArray *contentsMutableArray = [[NSMutableArray alloc] init];
     
-    if(sqlite3_prepare_v2(self.db, [sqlToQueryContentsOfDay UTF8String], -1, &statement, nil) == SQLITE_OK)
+    if(sqlite3_prepare_v2(db, [sqlToQueryContentsOfDay UTF8String], -1, &statement, nil) == SQLITE_OK)
     {
         while(sqlite3_step(statement) == SQLITE_ROW)
         {
@@ -250,10 +281,12 @@
     }
     
     NSArray *contentsArray = [contentsMutableArray copy];
+
+    
+    sqlite3_close(db);
     
     return contentsArray;
 }
-
 
 
 

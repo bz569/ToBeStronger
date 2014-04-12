@@ -89,7 +89,7 @@
 - (NSArray*)getContentsOfDayByDate:(NSString*)date;
 
 
-
+- (void)closeDB;
 
 
 

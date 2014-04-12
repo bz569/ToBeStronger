@@ -94,12 +94,13 @@
 
 
 
-- (void)finishPlanWithIntervalTimes:(NSMutableArray *)intervalTimes
-                          RestTimes:(NSMutableArray *)restTimes
+- (void)finishPlan
 {
     self.finished = YES;
-    self.intervalTimes = intervalTimes;
-    self.restTimes =restTimes;
+    
+    //update content in datebase
+    TBSDatabase *db = [[TBSDatabase alloc] init];
+    [db finishAContentOfDayByID:self.idNumber];
 }
 
 - (void)storeIntoDateBase
