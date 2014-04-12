@@ -380,9 +380,23 @@
     NSLog(@"addPlan.frequency=%ld\n", (long)self.planToAdd.frequency);
     NSLog(@"addPlan.countingMethod=%@\n", self.planToAdd.countingMethod);
     
-    [self.planToAdd generatePlan];
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    //input Checking
+    if(!self.planToAdd.name || !self.planToAdd.position || !self.planToAdd.startDate || !self.planToAdd.duration || !self.planToAdd.frequency ||!self.planToAdd.countingMethod)
+    {
+        //Show alert View
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Please input complete information" delegate:self cancelButtonTitle:@"Back" otherButtonTitles:nil];
+        [alertView show];
+    }else
+    {
+        [self.planToAdd generatePlan];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    
+    
+//    [self.planToAdd generatePlan];
+//    
+//    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 

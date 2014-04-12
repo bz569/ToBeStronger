@@ -175,7 +175,7 @@
             UIImageView *iconview3 = [[UIImageView alloc] initWithFrame:CGRectMake(12, 33, 15, 15)];
             iconview3.image = [self getIconForPosition:[positions objectAtIndex:2]];
             [self addSubview:iconview3];
-            UIImageView *iconview4 = [[UIImageView alloc] initWithFrame:CGRectMake(27, 17, 15, 15)];
+            UIImageView *iconview4 = [[UIImageView alloc] initWithFrame:CGRectMake(27, 33, 15, 15)];
             iconview4.image = [self getIconForPosition:[positions objectAtIndex:3]];
             [self addSubview:iconview4];
             break;
@@ -191,9 +191,10 @@
             UIImageView *iconview3 = [[UIImageView alloc] initWithFrame:CGRectMake(12, 33, 15, 15)];
             iconview3.image = [self getIconForPosition:[positions objectAtIndex:2]];
             [self addSubview:iconview3];
-            UILabel *iconview4 = [[UILabel alloc] initWithFrame:CGRectMake(27, 17, 15, 15)];
+            UILabel *iconview4 = [[UILabel alloc] initWithFrame:CGRectMake(27, 33, 15, 15)];
             iconview4.text = @"...";
-            iconview4.font = [UIFont systemFontOfSize:8];
+            iconview4.textAlignment = NSTextAlignmentCenter;
+            iconview4.font = [UIFont boldSystemFontOfSize:8];
             [self addSubview:iconview4];
             break;
         }
@@ -204,9 +205,9 @@
 //need modify
 - (UIImage *)getIconForPosition:(NSString *)position
 {
-    NSLog(@"position=%@", position);
+//    NSLog(@"position=%@", position);
     NSString *imgName = [NSString stringWithFormat:@"icon_%@", position];
-    NSLog(imgName);
+//    NSLog(imgName);
     return [UIImage imageNamed:imgName];
 }
 
