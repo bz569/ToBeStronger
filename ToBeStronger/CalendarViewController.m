@@ -86,7 +86,7 @@
     septorAboveHeader.image = [UIImage imageNamed:@"divider1"];
     [self.v_calendarHeader addSubview:septorAboveHeader];
     
-    UIImageView *septorBelowHeader = [[UIImageView alloc] initWithFrame:CGRectMake(-1, 36, 321, 5)];
+    UIImageView *septorBelowHeader = [[UIImageView alloc] initWithFrame:CGRectMake(-1, 38, 321, 5)];
     septorBelowHeader.image = [UIImage imageNamed:@"divider1"];
     [self.v_calendarHeader addSubview:septorBelowHeader];
     
