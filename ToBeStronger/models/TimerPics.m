@@ -25,7 +25,7 @@
     for(int i = 0; i <= 60; i++)
     {
         UIImage *faceImage = [UIImage imageNamed:[NSString stringWithFormat:@"timerPic_%d", i]];
-        NSLog(@"ImageName: timerPic_%d", i);
+//        NSLog(@"ImageName: timerPic_%d", i);
         
         [timerPicMutableAry addObject:faceImage];
     }

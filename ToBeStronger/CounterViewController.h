@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "ContentOfDay.h"
 #import <CoreMotion/CoreMotion.h>
+#import "TimerViewController.h"
 
 @interface CounterViewController : UIViewController
+
+//used to stroe rest time
+@property (strong, nonatomic) NSMutableArray *restTimes;
 
 @end

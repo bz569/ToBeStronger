@@ -36,6 +36,8 @@
     
     NSLog(@"msg rec:%@", self.exerciseContent.name);
     
+    self.restTimes = [[NSMutableArray alloc] init];
+    
     //    //new a ContentOfDay object for test
     //    self.exerciseContent = [[ContentOfDay alloc] initWithID:1
     //                                                       Name:@"Pushups"
@@ -80,6 +82,9 @@
         [self startCountingByAccelorometer];
     }
     
+    
+    //for test
+    NSLog(@"RestTime Count = %d", [self.restTimes count]);
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -189,13 +194,18 @@
             self.isActivated = NO;
             [self performSegueWithIdentifier:@"segue_CounterToTimer" sender:self];
             self.l_setNumber.text = [NSString stringWithFormat:@"Set %ld", self.setNumber];
-        }else
+        }else //plan finished
         {
             NSLog(@"Set Finished");
+            
+            //store rest times
+            for(RestTime *restime in self.restTimes)
+            {
+                [restime saveInDatabase];
+            }
+            
             [self.exerciseContent finishPlan];
             [self.navigationController popViewControllerAnimated:YES];
-            
-            
         }
         self.curNumber = 0;
         self.l_currentNumber.text = [NSString stringWithFormat:@"%02ld", self.curNumber];
@@ -203,7 +213,7 @@
     
 }
 
-/*
+
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -211,7 +221,14 @@
  {
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
+    if([segue.identifier isEqual:@"segue_CounterToTimer"])
+    {
+        TimerViewController *dstTimerViewController = segue.destinationViewController;
+        
+        [dstTimerViewController setValue:[NSNumber numberWithInteger:self.exerciseContent.idNumber] forKeyPath:@"contentID"];
+        [dstTimerViewController setValue:[NSNumber numberWithInteger:self.setNumber - 1] forKeyPath:@"set"];
+    }
+     
  }
- */
 
 @end

@@ -16,7 +16,11 @@
 @property (strong, nonatomic) TimerPics *timerPics;
 @property (strong, nonatomic) AVAudioPlayer *clockSoundPlayer;
 
-@property (strong, nonatomic) TBSDatabase *db;
+@property (strong, nonatomic) NSString *timeStr;
+
+//get from CounterView
+@property (nonatomic) NSInteger set;
+@property (nonatomic) NSInteger contentID;
 
 @end
 
@@ -26,6 +30,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    NSLog(@"SET=%d, ID=%d", self.set, self.contentID);
     
     self.timerPics = [[TimerPics alloc] init];
     
@@ -65,9 +71,9 @@
     self.timeInt += 1;
     NSInteger time_sec = self.timeInt - (60 * (int)(self.timeInt / 60));
     NSInteger time_min = (int)self.timeInt / 60;
-    NSString *timeStr = [NSString stringWithFormat:@"%02ld:%02ld", time_min, time_sec];
+    self.timeStr = [NSString stringWithFormat:@"%02ld:%02ld", time_min, time_sec];
     
-    [self.lable_showTime setText:timeStr];
+    [self.lable_showTime setText:self.timeStr];
     
     [self.timerimage setImage:[self.timerPics getTimerImage:time_sec]];
 }
@@ -75,7 +81,17 @@
 - (IBAction)continueExercise:(id)sender
 {
     [self.clockSoundPlayer stop];
-//    [self dismissViewControllerAnimated:YES completion:nil];
+    //store rest time in DB
+//    TBSDatabase *db = [[TBSDatabase alloc] init];
+//    [db saveRestTimeWithContentID:self.contentID Number:self.set Time:self.timeStr];
+    
+    RestTime *restTime = [[RestTime alloc] initWithContentID:self.contentID SetNumber:self.set Time:self.timeStr];
+    
+    NSArray *viewControllers = self.navigationController.viewControllers;
+    CounterViewController *cvc = [viewControllers objectAtIndex:[viewControllers count] - 2];
+    [cvc.restTimes addObject:restTime];
+    
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

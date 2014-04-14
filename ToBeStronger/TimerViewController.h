@@ -10,6 +10,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import "TimerPics.h"
 #import "TBSDatabase.h"
+#import "RestTime.h"
+#import "CounterViewController.h"
 
 @interface TimerViewController : UIViewController
 

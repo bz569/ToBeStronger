@@ -25,6 +25,7 @@
 		B2AEE27C18E2420E002CC60D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2AEE27B18E2420E002CC60D /* CoreMotion.framework */; };
 		B2BC51CA18F2F671003CC07D /* TBSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC51C918F2F671003CC07D /* TBSDate.m */; };
 		B2BE299A18D0F6F80052DCCD /* NewPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BE299918D0F6F80052DCCD /* NewPlanViewController.m */; };
+		B2CE8FD918FC5A080077C227 /* RestTime.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CE8FD818FC5A080077C227 /* RestTime.m */; };
 		B2FE9F4718CA3987004328E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE9F4618CA3987004328E7 /* Foundation.framework */; };
 		B2FE9F4918CA3987004328E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE9F4818CA3987004328E7 /* CoreGraphics.framework */; };
 		B2FE9F4B18CA3987004328E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE9F4A18CA3987004328E7 /* UIKit.framework */; };
@@ -81,6 +82,8 @@
 		B2BC51C918F2F671003CC07D /* TBSDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSDate.m; sourceTree = "<group>"; };
 		B2BE299818D0F6F80052DCCD /* NewPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPlanViewController.h; sourceTree = "<group>"; };
 		B2BE299918D0F6F80052DCCD /* NewPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPlanViewController.m; sourceTree = "<group>"; };
+		B2CE8FD718FC5A080077C227 /* RestTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestTime.h; sourceTree = "<group>"; };
+		B2CE8FD818FC5A080077C227 /* RestTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestTime.m; sourceTree = "<group>"; };
 		B2FE9F4318CA3987004328E7 /* ToBeStronger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToBeStronger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2FE9F4618CA3987004328E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B2FE9F4818CA3987004328E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -242,6 +245,8 @@
 				B2A8CE9818CFC1A500303929 /* Counter.m */,
 				B2A8CE9118CFC16000303929 /* TimerPics.h */,
 				B2A8CE9218CFC16000303929 /* TimerPics.m */,
+				B2CE8FD718FC5A080077C227 /* RestTime.h */,
+				B2CE8FD818FC5A080077C227 /* RestTime.m */,
 			);
 			name = Models;
 			path = models;
@@ -352,6 +357,7 @@
 			files = (
 				B22295E118CA3D5700EA6E87 /* TimerViewController.m in Sources */,
 				B2FE9F5718CA3988004328E7 /* TBSAppDelegate.m in Sources */,
+				B2CE8FD918FC5A080077C227 /* RestTime.m in Sources */,
 				B23C231618CFDF32001F14CC /* TBSDatabase.m in Sources */,
 				B2BE299A18D0F6F80052DCCD /* NewPlanViewController.m in Sources */,
 				B23B308418EF592500476C94 /* CalendarDayView.m in Sources */,

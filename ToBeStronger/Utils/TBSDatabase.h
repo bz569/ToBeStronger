@@ -89,6 +89,10 @@
 - (NSArray*)getContentsOfDayByDate:(NSString*)date;
 
 
+/**
+ *  query all exercise contents in Datebase
+ *
+ */
 
 - (NSArray*)queryAllContents;
 
