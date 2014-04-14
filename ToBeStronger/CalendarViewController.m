@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *l_showMonth;
 @property (weak, nonatomic) IBOutlet UIView *v_calendarBody;
 @property (weak, nonatomic) IBOutlet UIView *v_calendarHeader;
+@property (weak, nonatomic) IBOutlet UIView *v_symbols;
 
 //today date
 @property (strong, nonatomic) NSString *todayDate;
@@ -53,6 +54,9 @@
     
     //draw or re-draw
     [self showCalendar];
+    
+    //show symbols explanation
+    [self showSymbols];
 }
 
 - (void)setTodayDate
@@ -181,6 +185,52 @@
     TBSDatabase *db = [[TBSDatabase alloc] init];
     self.allContents = [db queryAllContents];
 }
+
+- (void)showSymbols
+{
+    NSMutableArray *positionsMutableAarray = [[NSMutableArray alloc] init];
+    for(ContentOfDay *content in self.allContents)
+    {
+        if(![positionsMutableAarray containsObject:content.position])
+        {
+            [positionsMutableAarray addObject:content.position];
+        }
+    }
+    
+    int x = 40;
+    int y = 20;
+    for(NSString *position in positionsMutableAarray)
+    {
+        UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, 15, 15)];
+        NSString *imgName = [NSString stringWithFormat:@"icon_%@", position];
+        icon.image = [UIImage imageNamed:imgName];
+        [self.v_symbols addSubview:icon];
+        
+        UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(x+15, y, 65, 15)];
+        text.text = [NSString stringWithFormat:@" - %@", position];
+        text.font = [UIFont systemFontOfSize:10];
+        [self.v_symbols addSubview:text];
+        
+        x += 85;
+        if(x > 255)
+        {
+            x = 40;
+            y += 20;
+        }
+        
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

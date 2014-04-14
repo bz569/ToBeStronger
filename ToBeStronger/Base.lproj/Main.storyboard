@@ -250,6 +250,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ECz-nk-ogo" userLabel="Symbols View">
+                                <rect key="frame" x="0.0" y="490" width="320" height="78"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -267,6 +272,7 @@
                         <outlet property="l_showWeekDay" destination="LvM-ik-dcn" id="C6x-p4-y7A"/>
                         <outlet property="v_calendarBody" destination="SfE-qA-gLh" id="rKE-IC-auw"/>
                         <outlet property="v_calendarHeader" destination="g8h-PR-XBP" id="Oqd-9t-UlN"/>
+                        <outlet property="v_symbols" destination="ECz-nk-ogo" id="por-kI-0Gx"/>
                         <segue destination="kL1-ok-oNR" kind="push" identifier="segue_monthToToday" id="2do-Bc-maf"/>
                     </connections>
                 </viewController>
