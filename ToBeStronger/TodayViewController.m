@@ -272,18 +272,44 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //get content data
-    NSString *key = (NSString *)[[self.positionsDic allKeys] objectAtIndex:indexPath.section];
-    ContentOfDay *content = [[self.positionsDic objectForKey:key] objectAtIndex:indexPath.row];
-    self.selectedContent = content;
-    
-    if(!content.isFinished)
+    //get today date
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYY-MM-dd"];
+    NSString *todaydate = [formatter stringFromDate:[NSDate date]];
+    if([todaydate isEqual:self.date])
     {
-        [self performSegueWithIdentifier:@"segue_todayToCounter" sender:self];
+        //get content data
+        NSString *key = (NSString *)[[self.positionsDic allKeys] objectAtIndex:indexPath.section];
+        ContentOfDay *content = [[self.positionsDic objectForKey:key] objectAtIndex:indexPath.row];
+        self.selectedContent = content;
         
+        if(!content.isFinished)
+        {
+            [self performSegueWithIdentifier:@"segue_todayToCounter" sender:self];
+            
+        }
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+
+    }else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"You are only able to complete today's plan" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+
     }
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+//    //get content data
+//    NSString *key = (NSString *)[[self.positionsDic allKeys] objectAtIndex:indexPath.section];
+//    ContentOfDay *content = [[self.positionsDic objectForKey:key] objectAtIndex:indexPath.row];
+//    self.selectedContent = content;
+//    
+//    if(!content.isFinished)
+//    {
+//        [self performSegueWithIdentifier:@"segue_todayToCounter" sender:self];
+//        
+//    }
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
 
 }
 
