@@ -50,7 +50,7 @@
     [self prepareContentData];
     [self.tv_showDetail setDelegate:self];
     [self.tv_showDetail setDataSource:self];
-    [self.tv_showDetail setSeparatorColor:[UIColor orangeColor]];
+    [self.tv_showDetail setSeparatorColor:[UIColor whiteColor]];
     
         
 }
@@ -80,41 +80,6 @@
     TBSDatabase *db = [[TBSDatabase alloc] init];
     self.contentsArray = [db getContentsOfDayByDate:self.date];
     
-    
-//    //For test
-//    self.testContent1 = [[ContentOfDay alloc] initWithID:1
-//                                                    Name:@"Push-ups"
-//                                                Position:@"Chest"
-//                                            nubmerPerSet:12
-//                                                    Sets:4
-//                                                  Weight:0
-//                                                    Date:@"2014-03-31"
-//                                          CountingMethod:@"Touch"
-//                                              isFinished:NO];
-//    
-//    self.testContent2 = [[ContentOfDay alloc] initWithID:2
-//                                                    Name:@"Chest Fly"
-//                                                Position:@"Chest"
-//                                            nubmerPerSet:10
-//                                                    Sets:3
-//                                                  Weight:12
-//                                                    Date:@"2014-03-31"
-//                                          CountingMethod:@"Accelorometer"
-//                                              isFinished:NO];
-//    self.testContent3 = [[ContentOfDay alloc] initWithID:3
-//                                                    Name:@"Sit-ups"
-//                                                Position:@"Core"
-//                                            nubmerPerSet:25
-//                                                    Sets:5
-//                                                  Weight:0
-//                                                    Date:@"2014-03-31"
-//                                          CountingMethod:@"Touch"
-//                                              isFinished:NO];
-//    
-//    self.contentsArray = [[NSMutableArray alloc] init];
-//    [self.contentsArray addObject:self.testContent1];
-//    [self.contentsArray addObject:self.testContent2];
-//    [self.contentsArray addObject:self.testContent3];
 
     self.positionsDic = [[NSMutableDictionary alloc] initWithCapacity:10];
     for(ContentOfDay *content in self.contentsArray)

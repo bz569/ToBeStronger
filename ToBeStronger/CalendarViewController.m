@@ -115,6 +115,8 @@
     NSDate *firstDate = [formatter dateFromString:firstDateStr];
     
     NSInteger weekDayOfFirstDay = [TBSDate getWeedDayValueFromDate:firstDate];
+    NSLog(@"weekDayOfFirstDay=%ld", weekDayOfFirstDay);
+
     
     //draw calendar
         //set Start column num
@@ -129,8 +131,10 @@
     }
     
     NSInteger numberOfdays = [TBSDate getNumberOfDaysInMonth:self.month Year:self.year];
+    NSLog(@"numberOfdays=%ld", numberOfdays);
+
     
-    for (int i = 6; i > (35 - numberOfdays - cur_column); i--)
+    for (int i = 6; i > (6 - (35 - numberOfdays - cur_column)); i--)
     {
         CalendarDayView *blankView = [[CalendarDayView alloc] initWithBlankContent:CGRectMake(46 * i, 200, 46, 50)];
         [self.v_calendarBody addSubview:blankView];
@@ -161,6 +165,12 @@
         
         cur_row = cur_row + (cur_column+1) / 7;
         cur_column = (cur_column + 1) % 7;
+        
+        if(cur_row > 4)
+        {
+            cur_row = 0;
+            cur_column = 0;
+        }
     }
 
 }
@@ -222,10 +232,41 @@
     }
 }
 
+- (IBAction)previousMonth:(id)sender
+{
+    NSString *previousMonthOfYear = [TBSDate previousMonthOfYear:self.year Month:self.month];
+    NSString *previousMonthOfYearStr = [[previousMonthOfYear componentsSeparatedByString:@"-"] objectAtIndex:0];
+    NSString *previousMonthStr = [[previousMonthOfYear componentsSeparatedByString:@"-"] objectAtIndex:1];
+    
+    self.month = [previousMonthStr integerValue];
+    self.year = [previousMonthOfYearStr integerValue];
+    
+    NSLog(@"previous=%02ld-%02ld", self.year, self.month);
+    
+    self.l_showMonth.text = [TBSDate getMonthStringFromMonth:self.month];
+    
+    //draw or re-draw
+    [self showCalendar];
+    
+}
 
-
-
-
+- (IBAction)nextMonth:(id)sender
+{
+    NSString *nextMonthOfYear = [TBSDate nextMonthOfYear:self.year Month:self.month];
+    NSString *nextMonthOfYearStr = [[nextMonthOfYear componentsSeparatedByString:@"-"] objectAtIndex:0];
+    NSString *nextMonthStr = [[nextMonthOfYear componentsSeparatedByString:@"-"] objectAtIndex:1];
+    
+    self.month = [nextMonthStr integerValue];
+    self.year = [nextMonthOfYearStr integerValue];
+    
+    NSLog(@"previous=%02ld-%02ld", self.year, self.month);
+    
+    self.l_showMonth.text = [TBSDate getMonthStringFromMonth:self.month];
+    
+    //draw or re-draw
+    [self showCalendar];
+    
+}
 
 
 

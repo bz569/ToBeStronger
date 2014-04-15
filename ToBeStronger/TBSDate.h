@@ -18,4 +18,27 @@
 + (NSInteger)getNumberOfDaysInMonth:(NSInteger)month
                                Year:(NSInteger)year;
 
++ (NSString*)getMonthStringFromMonth:(NSInteger)month;
+
+
+/**
+ *get pervious month of a given month and year
+ *
+ *@return   a string with format "YYYY-MM"
+ *
+ *
+ **/
++ (NSString*)previousMonthOfYear:(NSInteger)year
+                           Month:(NSInteger)month;
+
+/**
+ *get next month of a given month and year
+ *
+ *@return   a string with format "YYYY-MM"
+ *
+ *
+ **/
++ (NSString*)nextMonthOfYear:(NSInteger)year
+                           Month:(NSInteger)month;
+
 @end

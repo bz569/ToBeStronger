@@ -212,7 +212,7 @@
             [self.exerciseContent finishPlan];
             [self.navigationController popViewControllerAnimated:YES];
         }
-        self.curNumber = 0;
+//        self.curNumber = 0;
         self.l_currentNumber.text = [NSString stringWithFormat:@"%02ld", self.curNumber];
     }
     
