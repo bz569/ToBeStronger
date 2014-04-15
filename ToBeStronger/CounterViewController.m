@@ -26,6 +26,9 @@
 @property (strong, nonatomic) CMMotionManager *motionManager;
 @property (strong, nonatomic) NSOperationQueue *queue;
 
+//used for playing counting voice
+@property (strong, nonatomic) AVAudioPlayer *countingVoicePlayer;
+
 @end
 
 @implementation CounterViewController
@@ -173,6 +176,7 @@
     if([self.exerciseContent.countingMethod  isEqual:@"Touch"])
     {
         self.curNumber++;
+        [self.countingVoicePlayer stop];
         [self performSelectorOnMainThread:@selector(changeCountingNum) withObject:nil waitUntilDone:NO];
         
     }
@@ -189,6 +193,7 @@
         self.l_currentNumber.text = [NSString stringWithFormat:@"%02ld", self.curNumber];
         
         self.setNumber++;
+        
         if(self.setNumber <= self.exerciseContent.sets)
         {
             self.isActivated = NO;
@@ -210,6 +215,60 @@
         self.curNumber = 0;
         self.l_currentNumber.text = [NSString stringWithFormat:@"%02ld", self.curNumber];
     }
+    
+    //play counting voice
+    if(self.curNumber < 20)
+    {
+        NSString *resourceStr = [NSString stringWithFormat:@"voice_%ld", (long)self.curNumber];
+        NSString *voicePath = [[NSBundle mainBundle] pathForResource:resourceStr ofType:@"mp3"];
+        NSLog(@"path=%@", voicePath);
+        self.countingVoicePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSURL alloc] initFileURLWithPath:voicePath]
+                                                                   fileTypeHint:@"mp3"
+                                    
+                                                                          error:nil];
+        
+        [self.countingVoicePlayer prepareToPlay];
+        [self.countingVoicePlayer setNumberOfLoops:1];
+        [self.countingVoicePlayer setVolume:1];
+        [self.countingVoicePlayer play];
+    }else
+    {
+        NSString *resourceStr = [NSString stringWithFormat:@"voice_%ldx", self.curNumber / 10];
+        NSString *voicePath = [[NSBundle mainBundle] pathForResource:resourceStr ofType:@"mp3"];
+        NSLog(@"path1=%@", voicePath);
+        self.countingVoicePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSURL alloc] initFileURLWithPath:voicePath]
+                                                                   fileTypeHint:@"mp3"
+                                    
+                                                                          error:nil];
+        
+        [self.countingVoicePlayer prepareToPlay];
+        [self.countingVoicePlayer setNumberOfLoops:1];
+        [self.countingVoicePlayer setVolume:1];
+        [self.countingVoicePlayer play];
+        
+        while([self.countingVoicePlayer isPlaying])
+        {
+            
+        }
+        
+        if((self.curNumber % 10) != 0)
+        {
+            resourceStr = [NSString stringWithFormat:@"voice_%ld", self.curNumber % 10];
+            NSLog(@"resourceStr1=%@", resourceStr);
+            voicePath = [[NSBundle mainBundle] pathForResource:resourceStr ofType:@"mp3"];
+            NSLog(@"path1=%@", voicePath);
+            self.countingVoicePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSURL alloc] initFileURLWithPath:voicePath]
+                                                                       fileTypeHint:@"mp3"
+                                        
+                                                                              error:nil];
+            
+            [self.countingVoicePlayer prepareToPlay];
+            [self.countingVoicePlayer setNumberOfLoops:1];
+            [self.countingVoicePlayer setVolume:1];
+            [self.countingVoicePlayer play];
+        }
+    }
+    
     
 }
 

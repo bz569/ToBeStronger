@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ContentOfDay.h"
 #import <CoreMotion/CoreMotion.h>
+#import <AVFoundation/AVFoundation.h>
 #import "TimerViewController.h"
 
 @interface CounterViewController : UIViewController
