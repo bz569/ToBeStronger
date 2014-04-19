@@ -15,7 +15,6 @@
     // Override point for customization after application launch.
     
     // Insert delay of 5 seconds befor the splash screen disappers.
-    [NSThread sleepForTimeInterval:2.0];
     
     return YES;
 }
