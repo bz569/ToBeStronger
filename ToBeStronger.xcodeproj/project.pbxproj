@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B21473971901F6C300E25F1E /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B21473961901F6C300E25F1E /* SplashViewController.m */; };
 		B21BAA3918CCF6B500304E1F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B21BAA3818CCF6B500304E1F /* Images.xcassets */; };
 		B21BAA3D18CD011A00304E1F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21BAA3C18CD011A00304E1F /* AVFoundation.framework */; };
 		B22295E118CA3D5700EA6E87 /* TimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22295E018CA3D5700EA6E87 /* TimerViewController.m */; };
@@ -79,6 +80,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B21473951901F6C300E25F1E /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		B21473961901F6C300E25F1E /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		B21BAA3818CCF6B500304E1F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B21BAA3C18CD011A00304E1F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B22295DF18CA3D5700EA6E87 /* TimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimerViewController.h; path = ToBeStronger/TimerViewController.h; sourceTree = SOURCE_ROOT; };
@@ -280,6 +283,8 @@
 				B22D58BB18F26276004AF670 /* CalendarViewController.m */,
 				B23B308218EF592500476C94 /* CalendarDayView.h */,
 				B23B308318EF592500476C94 /* CalendarDayView.m */,
+				B21473951901F6C300E25F1E /* SplashViewController.h */,
+				B21473961901F6C300E25F1E /* SplashViewController.m */,
 				B21BAA3818CCF6B500304E1F /* Images.xcassets */,
 				B23C231318CFDECB001F14CC /* Utils */,
 				B2FE9F7B18CA39C8004328E7 /* Models */,
@@ -472,6 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B22295E118CA3D5700EA6E87 /* TimerViewController.m in Sources */,
+				B21473971901F6C300E25F1E /* SplashViewController.m in Sources */,
 				B2FE9F5718CA3988004328E7 /* TBSAppDelegate.m in Sources */,
 				B2CE8FD918FC5A080077C227 /* RestTime.m in Sources */,
 				B23C231618CFDF32001F14CC /* TBSDatabase.m in Sources */,

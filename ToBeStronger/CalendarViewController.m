@@ -207,6 +207,8 @@
         }
     }
     
+
+    
     int x = 40;
     int y = 20;
     for(NSString *position in positionsMutableAarray)
@@ -268,7 +270,10 @@
     
 }
 
-
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 
 
 

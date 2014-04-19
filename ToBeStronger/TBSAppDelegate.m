@@ -13,6 +13,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    // Insert delay of 5 seconds befor the splash screen disappers.
+    [NSThread sleepForTimeInterval:2.0];
+    
     return YES;
 }
 							
@@ -42,5 +46,6 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 @end
