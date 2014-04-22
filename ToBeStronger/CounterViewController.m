@@ -26,6 +26,11 @@
 @property (strong, nonatomic) CMMotionManager *motionManager;
 @property (strong, nonatomic) NSOperationQueue *queue;
 
+@property (atomic) NSInteger dynamicWindowsCount;
+@property (atomic) double dynamicMax;
+@property (atomic) double dynamicMin;
+@property (atomic) double dynamicThreshold;
+
 //used for playing counting voice
 @property (strong, nonatomic) AVAudioPlayer *countingVoicePlayer;
 
@@ -41,6 +46,10 @@
     
     self.restTimes = [[NSMutableArray alloc] init];
     
+    self.dynamicWindowsCount = 0;
+    self.dynamicMax = 0;
+    self.dynamicMin = 0;
+    
     //    //new a ContentOfDay object for test
     //    self.exerciseContent = [[ContentOfDay alloc] initWithID:1
     //                                                       Name:@"Pushups"
@@ -55,7 +64,7 @@
     //initial view
     
     self.setNumber = 1;
-    self.l_setNumber.text = [NSString stringWithFormat:@"Set %ld", self.setNumber];
+    self.l_setNumber.text = [NSString stringWithFormat:@"Set %ld", (long)self.setNumber];
     
     self.l_countingMethod.text = [NSString stringWithFormat:@"CountingMethod: %@", self.exerciseContent.countingMethod];
     
@@ -63,7 +72,7 @@
     self.l_currentNumber.text = [NSString stringWithFormat:@"00"];
     
     self.l_planedNumber.font = [UIFont fontWithName:@"Farrington-7B-Qiqi" size:70];
-    self.l_planedNumber.text = [NSString stringWithFormat:@"%ld", self.exerciseContent.numberPerSet];
+    self.l_planedNumber.text = [NSString stringWithFormat:@"%02ld", (long)self.exerciseContent.numberPerSet];
     
     //    if([self.exerciseContent.countingMethod  isEqual: @"Accelorometer"])
     //    {
@@ -105,7 +114,6 @@
     self.fiveRecords = [[NSMutableArray alloc] init];
     self.thirtyRecords = [[NSMutableArray alloc] init];
     self.haveOneCountInThirtyRecordFlag = NO;
-    CMDeviceMotion *motion = self.motionManager.deviceMotion;
     
     if(self.motionManager.deviceMotionAvailable)
     {
@@ -114,15 +122,33 @@
         [self.motionManager startDeviceMotionUpdatesToQueue:self.queue
                                                 withHandler:^(CMDeviceMotion *motion, NSError *error)
          {
-             NSInteger x = motion.userAcceleration.x;
-             NSInteger y = motion.userAcceleration.y;
-             NSInteger z = motion.userAcceleration.z;
+             double x = motion.userAcceleration.x;
+             double y = motion.userAcceleration.y;
+             double z = motion.userAcceleration.z;
              
              NSNumber *sum = [NSNumber numberWithDouble:sqrt(x*x + y*y + z*z)];
              
              if(self.isActivated)
              {
-                 if([self.thirtyRecords count] < 45)
+                 if(self.dynamicWindowsCount < 50)
+                 {
+                     if([sum integerValue] > self.dynamicMax)
+                         self.dynamicMax = [sum doubleValue];
+                     if([sum integerValue] < self.dynamicMin)
+                         self.dynamicMin = [sum doubleValue];
+                     
+                     self.dynamicWindowsCount++;
+                 }else
+                 {
+                     self.dynamicThreshold = (self.dynamicMax + self.dynamicMin) / 2;
+                     
+                     self.dynamicWindowsCount = 0;
+                     self.dynamicMax = 0;
+                     self.dynamicMin = 0;
+                 }
+                 
+                 
+                 if([self.thirtyRecords count] < 90)
                  {
                      [self.thirtyRecords addObject:sum];
                  }else
@@ -146,8 +172,13 @@
                      double n4 = [[self.fiveRecords objectAtIndex:3] doubleValue];
                      double n5 = [[self.fiveRecords objectAtIndex:4] doubleValue];
                      
-                     if((n2 > n1) && (n3 > n2) && (n4 < n3) && (n5 < n4))
+                     double avg = (n1 + n2 + n3 + n4 + n5) / 5;
+                     
+                     
+//                     if((n2 > n1) && (n3 > n2) && (n4 < n3) && (n5 < n4))
+                     if((avg > (self.dynamicThreshold * 1.3)) && avg > 0.5)
                      {
+                         NSLog(@"avg=%f, threshold=%f", avg, self.dynamicThreshold);
                          //                    self.curNumber++;
                          //                    NSLog(@"count=%d", self.curNumber);
                          //
@@ -158,6 +189,7 @@
                          {
                              self.curNumber++;
                              self.haveOneCountInThirtyRecordFlag = YES;
+                             [self.thirtyRecords removeAllObjects];
                              NSLog(@"count=%ld", self.curNumber);
                              
                              [self performSelectorOnMainThread:@selector(changeCountingNum) withObject:nil waitUntilDone:NO];
