@@ -64,9 +64,14 @@
     //initial view
     
     self.setNumber = 1;
-    self.l_setNumber.text = [NSString stringWithFormat:@"Set %ld", (long)self.setNumber];
+//    self.l_setNumber.text = [NSString stringWithFormat:@"Set %ld", (long)self.setNumber];
+    self.l_setNumber.text = [NSString stringWithFormat:NSLocalizedString(@"SetNumber", @"Set Number"), (long)self.setNumber];
     
-    self.l_countingMethod.text = [NSString stringWithFormat:@"CountingMethod: %@", self.exerciseContent.countingMethod];
+    NSString *iCountingMethod = [NSString stringWithFormat:NSLocalizedString(self.exerciseContent.countingMethod, @"Counting Method")];
+    NSString *iCountingMethodHint = [NSString stringWithFormat:NSLocalizedString(@"CountingMethodHint", @"Counting Method Hint"),iCountingMethod];
+    
+//    self.l_countingMethod.text = [NSString stringWithFormat:@"CountingMethod: %@", self.exerciseContent.countingMethod];
+    self.l_countingMethod.text = iCountingMethodHint;
     
     self.l_currentNumber.font = [UIFont fontWithName:@"Farrington-7B-Qiqi" size:70];
     self.l_currentNumber.text = [NSString stringWithFormat:@"00"];
@@ -224,7 +229,8 @@
         {
             self.isActivated = NO;
             [self performSegueWithIdentifier:@"segue_CounterToTimer" sender:self];
-            self.l_setNumber.text = [NSString stringWithFormat:@"Set %ld", self.setNumber];
+//            self.l_setNumber.text = [NSString stringWithFormat:@"Set %ld", self.setNumber];
+            self.l_setNumber.text = [NSString stringWithFormat:NSLocalizedString(@"SetNumber", @"Set Number"), (long)self.setNumber];
         }else //plan finished
         {
             NSLog(@"Set Finished");

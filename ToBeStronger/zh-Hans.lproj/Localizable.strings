@@ -129,10 +129,25 @@
 "DurationHint" = "持续周数\t\t\t\t\t\t\t      %ld 周";
 
 
+/* -------------- Today View Labels -----------------*/
+
+/* Weight Label */
+"WeightLabel" = "重量";
+
+/* Number Label */
+"NumberLabel" = "数量";
+
+/* Sets Label */
+"SetsLabel" = "组数";
 
 
+/* -------------- Counter View Labels -----------------*/
 
+/* Set Number */
+"SetNumber" = "第 %ld 组";
 
+/* Counting Method Hint */
+"CountingMethodHint" = "计数方式: %@";
 
 
 

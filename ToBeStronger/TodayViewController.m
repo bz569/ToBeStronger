@@ -70,7 +70,8 @@
     //set UILable to show date
     self.l_showDate.text = [NSString stringWithFormat:@"%d", [[[self.date componentsSeparatedByString:@"-"] objectAtIndex:2] intValue]];
     //    NSLog(@"Weekday=%@", [self getWeedDayFromDate:[NSDate date]]);
-    self.l_showWeekDay.text = [TBSDate getWeedDayFromDate:self.dateObj];
+//    self.l_showWeekDay.text = [TBSDate getWeedDayFromDate:self.dateObj];
+    self.l_showWeekDay.text = [NSString stringWithFormat:NSLocalizedString([TBSDate getWeedDayFromDate:self.dateObj], @"Weekday")];
 
 }
 
@@ -121,7 +122,9 @@
     
     //set UILable for showing position Name
     UILabel *positionLable = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 150, 20)];
-    positionLable.text = [[self.positionsDic allKeys] objectAtIndex:section];
+//    positionLable.text = [[self.positionsDic allKeys] objectAtIndex:section];
+    positionLable.text = [NSString stringWithFormat:NSLocalizedString([[self.positionsDic allKeys] objectAtIndex:section], @"Position")];
+    
     positionLable.font = [UIFont systemFontOfSize:16];
     positionLable.adjustsFontSizeToFitWidth = NO;
     positionLable.textAlignment = NSTextAlignmentLeft;
@@ -129,7 +132,8 @@
     
     //set UILable for showing weight hint
     UILabel *weightLable = [[UILabel alloc] initWithFrame:CGRectMake(160, 0, 50, 20)];
-    weightLable.text = @"Weight";
+//    weightLable.text = @"Weight";
+    weightLable.text = [NSString stringWithFormat:NSLocalizedString(@"WeightLabel", @"Weight Label")];
     weightLable.font = [UIFont systemFontOfSize:13];
     weightLable.adjustsFontSizeToFitWidth = NO;
     weightLable.textAlignment = NSTextAlignmentCenter;
@@ -137,7 +141,8 @@
     
     //set UILable for Num. hint
     UILabel *numberLable = [[UILabel alloc] initWithFrame:CGRectMake(210, 0, 50, 20)];
-    numberLable.text = @"Num.";
+//    numberLable.text = @"Num.";
+    numberLable.text = [NSString stringWithFormat:NSLocalizedString(@"NumberLabel", @"Number Label")];
     numberLable.font = [UIFont systemFontOfSize:13];
     numberLable.adjustsFontSizeToFitWidth = NO;
     numberLable.textAlignment = NSTextAlignmentCenter;
@@ -145,7 +150,8 @@
     
     //set UILable for Set hint
     UILabel *setsLable = [[UILabel alloc] initWithFrame:CGRectMake(260, 0, 50, 20)];
-    setsLable.text = @"Sets";
+//    setsLable.text = @"Sets";
+    setsLable.text = [NSString stringWithFormat:NSLocalizedString(@"SetsLabel", @"Sets Label")];
     setsLable.font = [UIFont systemFontOfSize:13];
     setsLable.adjustsFontSizeToFitWidth = NO;
     setsLable.textAlignment = NSTextAlignmentCenter;

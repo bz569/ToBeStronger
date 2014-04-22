@@ -135,13 +135,25 @@
 "DurationHint" = "Duration\t\t\t\t\t\t  %ld week(s)";
 
 
+/* -------------- Today View Labels -----------------*/
+
+/* Weight Label */
+"WeightLabel" = "Weight";
+
+/* Number Label */
+"NumberLabel" = "Num.";
+
+/* Sets Label */
+"SetsLabel" = "Set";
 
 
+/* -------------- Counter View Labels -----------------*/
 
+/* Set Number */
+"SetNumber" = "Set %ld";
 
-
-
-
+/* Counting Method Hint */
+"CountingMethodHint" = "CountingMethod: %@";
 
 
 

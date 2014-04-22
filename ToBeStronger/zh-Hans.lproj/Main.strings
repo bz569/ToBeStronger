@@ -50,8 +50,8 @@
 /* Class = "IBUINavigationItem"; title = "Recovery Time"; ObjectID = "VyT-1T-JBL"; */
 "VyT-1T-JBL.title" = "休息时间";
 
-/* Class = "IBUINavigationItem"; title = "Push-ups"; ObjectID = "aCZ-yo-FWT"; */
-"aCZ-yo-FWT.title" = "Push-ups";
+/* Class = "IBUINavigationItem"; title = "Counter"; ObjectID = "aCZ-yo-FWT"; */
+"aCZ-yo-FWT.title" = "计数器";
 
 /* Class = "IBUILabel"; text = "31"; ObjectID = "aTe-cg-YDi"; */
 "aTe-cg-YDi.text" = "31";

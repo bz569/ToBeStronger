@@ -489,7 +489,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Push-ups" id="aCZ-yo-FWT"/>
+                    <navigationItem key="navigationItem" title="Counter" id="aCZ-yo-FWT"/>
                     <connections>
                         <outlet property="l_countingMethod" destination="RMG-lq-TYH" id="OnG-q1-hWl"/>
                         <outlet property="l_currentNumber" destination="uuz-3T-mxQ" id="ZYh-7e-8jd"/>
