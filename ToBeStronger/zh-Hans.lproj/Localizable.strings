@@ -1,0 +1,87 @@
+/* 
+  Localizable.strings
+  ToBeStronger
+
+  Created by Zhang Boxuan on 14-4-22.
+  Copyright (c) 2014年 Boxuan Zhang. All rights reserved.
+*/
+
+
+/* Weekday - Sunday */
+"Sunday" = "星期日";
+
+/* Weekday - Monday */
+"Monday" = "星期一";
+
+/* Weekday - Tuesday */
+"Tuesday" = "星期二";
+
+/* Weekday -  Wednesday*/
+"Wednesday" = "星期三";
+
+/* Weekday - Thursday */
+"Thursday" = "星期四";
+
+/* Weekday - Friday */
+"Friday" = "星期五";
+
+/* Weekday - Saturday */
+"Saturday" = "星期六";
+
+/* Month - January */
+"January" = "一月";
+
+/* Month - February */
+"Feburary" = "二月";
+
+/* Month - March */
+"March" = "三月";
+
+/* Month - April */
+"April" = "四月";
+
+/* Month - May */
+"May" = "五月";
+
+/* Month - June */
+"June" = "六月";
+
+/* Month - July */
+"July" = "七月";
+
+/* Month - August */
+"August" = "八月";
+
+/* Month - September */
+"September" = "九月";
+
+/* Month - October */
+"October" = "十月";
+
+/* Month - November */
+"November" = "十一月";
+
+/* Month - December */
+"December" = "十二月";
+
+/* -------------- Position -----------------*/
+
+/* Position - Shoulder */
+"Shoulders" = "肩";
+
+/* Position - Chest */
+"Chest" = "胸";
+
+/* Position - Arms */
+"Arms" = "臂";
+
+/* Position - Core */
+"Core" = "核心区";
+
+/* Position - Legs */
+"Legs" = "腿";
+
+/* Position - Other */
+"Other" = "其他";
+
+

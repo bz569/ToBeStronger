@@ -67,8 +67,10 @@
     
     //set UILable to show date
     self.l_showDate.text = [NSString stringWithFormat:@"%d", [[[self.todayDate componentsSeparatedByString:@"-"] objectAtIndex:2] intValue]];
-    self.l_showWeekDay.text = [TBSDate getWeedDayFromDate:[NSDate date]];
-    self.l_showMonth.text = [TBSDate getMonthFromDate:[NSDate date]];
+//    self.l_showWeekDay.text = [TBSDate getWeedDayFromDate:[NSDate date]];
+    self.l_showWeekDay.text = [[NSString alloc] initWithFormat:NSLocalizedString([TBSDate getWeedDayFromDate:[NSDate date]], @"Weekday")];
+//    self.l_showMonth.text = [TBSDate getMonthFromDate:[NSDate date]];
+    self.l_showMonth.text = [[NSString alloc] initWithFormat:NSLocalizedString([TBSDate getMonthFromDate:[NSDate date]], @"Month")];
     
     //set date value
     self.month = [TBSDate getMonthValueFromDate:[NSDate date]];
@@ -219,7 +221,7 @@
         [self.v_symbols addSubview:icon];
         
         UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(x+15, y, 65, 15)];
-        text.text = [NSString stringWithFormat:@" - %@", position];
+        text.text = [NSString stringWithFormat:@" - %@", [[NSString alloc] initWithFormat:NSLocalizedString(position, @"position")]];
         text.font = [UIFont systemFontOfSize:10];
         [self.v_symbols addSubview:text];
         
@@ -245,7 +247,8 @@
     
     NSLog(@"previous=%02ld-%02ld", self.year, self.month);
     
-    self.l_showMonth.text = [TBSDate getMonthStringFromMonth:self.month];
+//    self.l_showMonth.text = [TBSDate getMonthStringFromMonth:self.month];
+    self.l_showMonth.text = [[NSString alloc] initWithFormat:NSLocalizedString([TBSDate getMonthStringFromMonth:self.month], @"Month")];
     
     //draw or re-draw
     [self showCalendar];
@@ -263,7 +266,8 @@
     
     NSLog(@"previous=%02ld-%02ld", self.year, self.month);
     
-    self.l_showMonth.text = [TBSDate getMonthStringFromMonth:self.month];
+//    self.l_showMonth.text = [TBSDate getMonthStringFromMonth:self.month];
+    self.l_showMonth.text = [[NSString alloc] initWithFormat:NSLocalizedString([TBSDate getMonthStringFromMonth:self.month], @"Month")];
     
     //draw or re-draw
     [self showCalendar];

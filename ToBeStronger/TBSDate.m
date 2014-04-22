@@ -135,7 +135,7 @@
             break;
             
         case 10:
-            return @"Octorber";
+            return @"October";
             break;
             
         case 11:
@@ -251,7 +251,7 @@
             break;
             
         case 10:
-            return @"Octorber";
+            return @"October";
             break;
             
         case 11:
