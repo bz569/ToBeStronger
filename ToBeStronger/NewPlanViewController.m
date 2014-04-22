@@ -32,6 +32,8 @@
 @property (strong, nonatomic) NSArray *frequencyPickerArray;
 @property (strong, nonatomic) NSArray *countingMethodPickerArray;
 @property (strong, nonatomic) NSArray *positionPickerArray;
+@property (strong, nonatomic) NSArray *positionPickerEngArray;
+
 
 @property (strong, nonatomic) Plan *planToAdd;
 
@@ -81,7 +83,16 @@
     [self.pickerView_position reloadAllComponents];
     [self.view addSubview:self.pickerView_position];
     
-    self.positionPickerArray = [NSArray arrayWithObjects:@"Shoulders", @"Chest", @"Arms", @"Core", @"Legs", @"Other", nil];
+    //Internationalization Strings
+    NSString *iShoulders = [[NSString alloc] initWithFormat:NSLocalizedString(@"Shoulders", @"Posiiont - Shoulders")];
+    NSString *iChest = [[NSString alloc] initWithFormat:NSLocalizedString(@"Chest", @"Posiiont - Chest")];
+    NSString *iArms = [[NSString alloc] initWithFormat:NSLocalizedString(@"Arms", @"Posiiont - Arms")];
+    NSString *iCore = [[NSString alloc] initWithFormat:NSLocalizedString(@"Core", @"Posiiont - Core")];
+    NSString *iLegs = [[NSString alloc] initWithFormat:NSLocalizedString(@"Legs", @"Posiiont - Legs")];
+    NSString *iOther = [[NSString alloc] initWithFormat:NSLocalizedString(@"Other", @"Posiiont - Other")];
+    
+    self.positionPickerEngArray = [NSArray arrayWithObjects:@"Shoulders", @"Chest", @"Arms", @"Core", @"Legs", @"Other", nil];
+    self.positionPickerArray = [NSArray arrayWithObjects:iShoulders, iChest, iArms, iCore, iLegs, iOther, nil];
     
     self.tf_position.inputView = self.pickerView_position;
     self.pickerView_position.delegate = self;
@@ -115,7 +126,16 @@
     [self.pickerView_frequency reloadAllComponents];
     [self.view addSubview:self.pickerView_frequency];
     
-    self.frequencyPickerArray = [NSArray arrayWithObjects:@"every 1 day ", @"every 2 days", @"every 3 days", @"every 4 days", @"every 5 days", @"every 6 days", nil];
+    //Internationalization Strings
+    NSString *iEvery1Day = [NSString stringWithFormat:NSLocalizedString(@"every 1 day", @"every 1 day")];
+    NSString *iEvery2Day = [NSString stringWithFormat:NSLocalizedString(@"every 2 day", @"every 2 day")];
+    NSString *iEvery3Day = [NSString stringWithFormat:NSLocalizedString(@"every 3 day", @"every 3 day")];
+    NSString *iEvery4Day = [NSString stringWithFormat:NSLocalizedString(@"every 4 day", @"every 4 day")];
+    NSString *iEvery5Day = [NSString stringWithFormat:NSLocalizedString(@"every 5 day", @"every 5 day")];
+    NSString *iEvery6Day = [NSString stringWithFormat:NSLocalizedString(@"every 6 day", @"every 6 day")];
+    
+//    self.frequencyPickerArray = [NSArray arrayWithObjects:@"every 1 day ", @"every 2 days", @"every 3 days", @"every 4 days", @"every 5 days", @"every 6 days", nil];
+    self.frequencyPickerArray = [NSArray arrayWithObjects:iEvery1Day, iEvery2Day, iEvery3Day, iEvery4Day, iEvery5Day, iEvery6Day, nil];
     
     self.tf_frequency.inputView = self.pickerView_frequency;
     self.pickerView_frequency.delegate = self;
@@ -148,7 +168,12 @@
     [self.pickerView_countingMethod reloadAllComponents];
     [self.view addSubview:self.pickerView_countingMethod];
     
-    self.countingMethodPickerArray = [NSArray arrayWithObjects:@"Accelorometer", @"Touch", nil];
+    //Internaionalization Strings
+    NSString *iAccelorometer = [NSString stringWithFormat:NSLocalizedString(@"Accelorometer", @"Counting Method - Accelorometer")];
+    NSString *iTouch = [NSString stringWithFormat:NSLocalizedString(@"Touch", @"Counting Method - Touch")];
+    
+//    self.countingMethodPickerArray = [NSArray arrayWithObjects:@"Accelorometer", @"Touch", nil];
+    self.countingMethodPickerArray = [NSArray arrayWithObjects:iAccelorometer, iTouch, nil];
     
     self.tf_countingMethod.inputView = self.pickerView_countingMethod;
     self.pickerView_countingMethod.delegate = self;
@@ -256,7 +281,8 @@
     if ([self.view endEditing:NO]) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"YYYY-MM-dd"];
-        self.tf_startDate.text = [NSString stringWithFormat:@"Start Date\t\t\t\t\t\t%@",[formatter stringFromDate:self.datePicker_startDate.date]];
+//        self.tf_startDate.text = [NSString stringWithFormat:@"Start Date\t\t\t\t\t\t%@",[formatter stringFromDate:self.datePicker_startDate.date]];
+        self.tf_startDate.text = [NSString stringWithFormat:NSLocalizedString(@"StartDateHint", @"Start Date Hint"), [formatter stringFromDate:self.datePicker_startDate.date]];
         self.planToAdd.startDate = [NSString stringWithString:[formatter stringFromDate:self.datePicker_startDate.date]];
     }
 }
@@ -267,23 +293,29 @@
     if(textField == self.tf_weight)
     {
         NSString *tmp = [NSString stringWithString:self.tf_weight.text];
-        self.tf_weight.text = [NSString stringWithFormat:@"Weight\t\t\t\t\t\t\t\t    %@ lb", tmp];
+//        self.tf_weight.text = [NSString stringWithFormat:@"Weight\t\t\t\t\t\t\t\t    %@ lb", tmp];
+        self.tf_weight.text = [NSString stringWithFormat:NSLocalizedString(@"WeightHint", @"Weight Hint"), tmp];
         self.planToAdd.weight = [tmp integerValue];
     }else if(textField == self.tf_frequency)
     {
         NSInteger row = [self.pickerView_frequency selectedRowInComponent:0];
-        self.tf_frequency.text = [NSString stringWithFormat:@"Freq.\t\t\t\t\t\t    %@", [self.frequencyPickerArray objectAtIndex:row]];
+//        self.tf_frequency.text = [NSString stringWithFormat:@"Freq.\t\t\t\t\t\t    %@", [self.frequencyPickerArray objectAtIndex:row]];
+        self.tf_frequency.text = [NSString stringWithFormat:NSLocalizedString(@"FrequencyHint", @"Frequency Hint"), [self.frequencyPickerArray objectAtIndex:row]];
         self.planToAdd.frequency = row + 1;
     }else if(textField == self.tf_countingMethod)
     {
         NSInteger row = [self.pickerView_countingMethod selectedRowInComponent:0];
         self.tf_countingMethod.text = [self.countingMethodPickerArray objectAtIndex:row];
-        self.planToAdd.countingMethod = [self.countingMethodPickerArray objectAtIndex:row];
+//        self.planToAdd.countingMethod = [self.countingMethodPickerArray objectAtIndex:row];
+        if(row == 0)
+            self.planToAdd.countingMethod = @"Accelorometer";
+        else
+            self.planToAdd.countingMethod = @"Touch";
     }else if(textField == self.tf_position)
     {
         NSInteger row = [self.pickerView_position selectedRowInComponent:0];
         self.tf_position.text = [self.positionPickerArray objectAtIndex:row];
-        self.planToAdd.position = self.tf_position.text;
+        self.planToAdd.position = [self.positionPickerEngArray objectAtIndex:row];
     }else if(textField == self.tf_content)
     {
         self.planToAdd.name = self.tf_content.text;
@@ -296,7 +328,8 @@
     }else if(textField == self.tf_duration)
     {
         self.planToAdd.duration = [self.tf_duration.text integerValue];
-        self.tf_duration.text = [NSString stringWithFormat:@"Duration:\t\t\t\t\t\t  %ld week(s)", self.planToAdd.duration];
+//        self.tf_duration.text = [NSString stringWithFormat:@"Duration:\t\t\t\t\t\t  %ld week(s)", self.planToAdd.duration];
+        self.tf_duration.text = [NSString stringWithFormat:NSLocalizedString(@"DurationHint", @"Duration Hint"), self.planToAdd.duration];
     }
 }
 

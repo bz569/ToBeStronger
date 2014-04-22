@@ -200,6 +200,14 @@
 
 - (void)showSymbols
 {
+    //remove all symbols at first
+    NSArray *subviews = [self.v_symbols subviews];
+    for(UIView *view in subviews)
+    {
+        [view removeFromSuperview];
+    }
+    
+    
     NSMutableArray *positionsMutableAarray = [[NSMutableArray alloc] init];
     for(ContentOfDay *content in self.allContents)
     {

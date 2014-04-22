@@ -91,12 +91,48 @@
 /* Position - Other */
 "Other" = "Other";
 
+/* -------------- Frequency -----------------*/
+
+/* Every 1 day */
+"every 1 day" = "every 1 day";
+
+/* Every 2 day */
+"every 2 day" = "every 2 day";
+
+/* Every 3 day */
+"every 3 day" = "every 3 day";
+
+/* Every 4 day */
+"every 4 day" = "every 4 day";
+
+/* Every 5 day */
+"every 5 day" = "every 5 day";
+
+/* Every 6 day */
+"every 6 day" = "every 6 day";
 
 
+/* -------------- Counting Method -----------------*/
 
+/* Counting Method - Accelorometer */
+"Accelorometer" = "Accelorometer";
 
+/* Counting Method - Touch */
+"Touch" = "Touch";
 
+/* -------------- New Plan Hint -----------------*/
 
+/* Weight Hint */
+"WeightHint" = "Weight\t\t\t\t\t\t\t\t    %@ lb";
+
+/* Start Date Hint */
+"StartDateHint" = "Start Date\t\t\t\t\t\t%@";
+
+/* Frequency Hint */
+"FrequencyHint" = "Freq.\t\t\t\t\t\t    %@";
+
+/* Duration Hint */
+"DurationHint" = "Duration\t\t\t\t\t\t  %ld week(s)";
 
 
 
