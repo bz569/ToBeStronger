@@ -178,13 +178,7 @@
 //                     if((n2 > n1) && (n3 > n2) && (n4 < n3) && (n5 < n4))
                      if((avg > (self.dynamicThreshold * 1.3)) && avg > 0.5)
                      {
-                         NSLog(@"avg=%f, threshold=%f", avg, self.dynamicThreshold);
-                         //                    self.curNumber++;
-                         //                    NSLog(@"count=%d", self.curNumber);
-                         //
-                         //                    [self performSelectorOnMainThread:@selector(changeCountingNum) withObject:nil waitUntilDone:NO];
-                         
-                         
+   
                          if(self.haveOneCountInThirtyRecordFlag == NO)
                          {
                              self.curNumber++;
