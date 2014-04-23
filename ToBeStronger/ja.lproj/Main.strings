@@ -39,7 +39,7 @@
 "LvM-ik-dcn.text" = "月曜日";
 
 /* Class = "IBUILabel"; text = "Fri"; ObjectID = "P7P-kD-J6Q"; */
-"P7P-kD-J6Q.text" = "金曜日";
+"P7P-kD-J6Q.text" = "金";
 
 /* Class = "IBUIViewController"; title = "Counter"; ObjectID = "Q33-kH-uZg"; */
 "Q33-kH-uZg.title" = "カウンター";
