@@ -262,9 +262,10 @@
                                                                           error:nil];
         
         [self.countingVoicePlayer prepareToPlay];
-        [self.countingVoicePlayer setNumberOfLoops:1];
+        [self.countingVoicePlayer setNumberOfLoops:0];
         [self.countingVoicePlayer setVolume:1];
         [self.countingVoicePlayer play];
+        
     }else
     {
         NSString *resourceStr = [NSString stringWithFormat:@"voice_%ldx", self.curNumber / 10];
@@ -276,7 +277,7 @@
                                                                           error:nil];
         
         [self.countingVoicePlayer prepareToPlay];
-        [self.countingVoicePlayer setNumberOfLoops:1];
+        [self.countingVoicePlayer setNumberOfLoops:0];
         [self.countingVoicePlayer setVolume:1];
         [self.countingVoicePlayer play];
         
@@ -289,7 +290,7 @@
         {
             resourceStr = [NSString stringWithFormat:@"voice_%ld", self.curNumber % 10];
             NSLog(@"resourceStr1=%@", resourceStr);
-            voicePath = [[NSBundle mainBundle] pathForResource:resourceStr ofType:@"mp3"];
+            voicePath = [[NSBundle mainBundle] pathForResource:NSLocalizedString(resourceStr, nil) ofType:@"mp3"];
             NSLog(@"path1=%@", voicePath);
             self.countingVoicePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSURL alloc] initFileURLWithPath:voicePath]
                                                                        fileTypeHint:@"mp3"
