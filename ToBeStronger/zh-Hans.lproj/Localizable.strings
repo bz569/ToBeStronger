@@ -149,7 +149,16 @@
 /* Counting Method Hint */
 "CountingMethodHint" = "计数方式: %@";
 
+/* -------------- New Plan Hint -----------------*/
 
+/* Information incomplete hint */
+"InfoIncomplete" = "请输入完整的计划信息";
+
+/* Back */
+"Back" = "返回";
+
+/* Number Too Large */
+"NumberTooLarge" = "每组动作数超出范围(1-99)";
 
 
 

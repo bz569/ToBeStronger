@@ -149,7 +149,16 @@
 /* Counting Method Hint */
 "CountingMethodHint" = "計数方法: %@";
 
+/* -------------- New Plan Hint -----------------*/
 
+/* Information incomplete hint */
+"InfoIncomplete" = "完全な情報を入力してください";
+
+/* Back */
+"Back" = "後退";
+
+/* Number Too Large */
+"NumberTooLarge" = "あまりにも多くの各アクション\n（1 - 99）";
 
 
 

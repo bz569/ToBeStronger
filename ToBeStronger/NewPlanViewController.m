@@ -415,15 +415,30 @@
     
     
     //input Checking
-    if(!self.planToAdd.name || !self.planToAdd.position || !self.planToAdd.startDate || !self.planToAdd.duration || !self.planToAdd.frequency ||!self.planToAdd.countingMethod)
+    if(!self.planToAdd.name || !self.planToAdd.position || !self.planToAdd.startDate || !self.planToAdd.duration || !self.planToAdd.frequency || !self.planToAdd.countingMethod || !self.planToAdd.numberPerSet)
     {
         //Show alert View
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Please input complete information" delegate:self cancelButtonTitle:@"Back" otherButtonTitles:nil];
+        NSString *alertMsg = [NSString stringWithFormat:NSLocalizedString(@"InfoIncomplete", @"Information incomplete hint")];
+        NSString *alertBtnStr = [NSString stringWithFormat:NSLocalizedString(@"Back", @"Back")];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:alertMsg delegate:self cancelButtonTitle:alertBtnStr otherButtonTitles:nil];
         [alertView show];
     }else
     {
-        [self.planToAdd generatePlan];
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        if(self.planToAdd.numberPerSet > 99)
+        {
+            //Show alert View
+            NSString *alertMsg = [NSString stringWithFormat:NSLocalizedString(@"NumberTooLarge", @"Number Too Large")];
+            NSString *alertBtnStr = [NSString stringWithFormat:NSLocalizedString(@"Back", @"Back")];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:alertMsg delegate:self cancelButtonTitle:alertBtnStr otherButtonTitles:nil];
+
+            [alertView show];
+        }else
+        {
+            [self.planToAdd generatePlan];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+
+        }
+        
     }
     
     

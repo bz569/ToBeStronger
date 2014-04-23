@@ -155,6 +155,32 @@
 /* Counting Method Hint */
 "CountingMethodHint" = "CountingMethod: %@";
 
+/* -------------- New Plan Hint -----------------*/
+
+/* Information incomplete hint */
+"InfoIncomplete" = "Please input complete information";
+
+/* Back */
+"Back" = "Back";
+
+/* Number Too Large */
+"NumberTooLarge" = "Number per set is too large, should be 1 - 99";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
