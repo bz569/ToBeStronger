@@ -6,9 +6,11 @@
 //  Copyright (c) 2014年 Boxuan Zhang. All rights reserved.
 //
 
+
 #import "CounterViewController.h"
 
 @interface CounterViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *l_currentNumber;
 @property (weak, nonatomic) IBOutlet UILabel *l_planedNumber;
 @property (weak, nonatomic) IBOutlet UILabel *l_setNumber;

@@ -98,6 +98,10 @@
 		B23B308318EF592500476C94 /* CalendarDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDayView.m; sourceTree = "<group>"; };
 		B23C231418CFDF32001F14CC /* TBSDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TBSDatabase.h; path = Utils/TBSDatabase.h; sourceTree = "<group>"; };
 		B23C231518CFDF32001F14CC /* TBSDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TBSDatabase.m; path = Utils/TBSDatabase.m; sourceTree = "<group>"; };
+		B26CD05519083DA300AF86D2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		B26CD05619083DA300AF86D2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B26CD05719083DA300AF86D2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B26CD05819083DA300AF86D2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B2711DA118E0A65000D66C1D /* CounterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CounterViewController.h; sourceTree = "<group>"; };
 		B2711DA218E0A65000D66C1D /* CounterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CounterViewController.m; sourceTree = "<group>"; };
 		B2711DA418E0A9DA00D66C1D /* Farrington7B_Qiqi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Farrington7B_Qiqi.ttf; sourceTree = "<group>"; };
@@ -417,6 +421,7 @@
 				en,
 				Base,
 				"zh-Hans",
+				ja,
 			);
 			mainGroup = B2FE9F3A18CA3987004328E7;
 			productRefGroup = B2FE9F4418CA3987004328E7 /* Products */;
@@ -529,6 +534,7 @@
 			children = (
 				B22AC7821906CE260033187A /* en */,
 				B22AC7841906CE370033187A /* zh-Hans */,
+				B26CD05619083DA300AF86D2 /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -538,6 +544,7 @@
 			children = (
 				B2FE9F5018CA3987004328E7 /* en */,
 				B22AC77C1906C8610033187A /* zh-Hans */,
+				B26CD05719083DA300AF86D2 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -547,6 +554,7 @@
 			children = (
 				B2FE9F5918CA3988004328E7 /* Base */,
 				B22AC77D1906C8610033187A /* zh-Hans */,
+				B26CD05519083DA300AF86D2 /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -556,6 +564,7 @@
 			children = (
 				B2FE9F6F18CA3988004328E7 /* en */,
 				B22AC77E1906C8610033187A /* zh-Hans */,
+				B26CD05819083DA300AF86D2 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
