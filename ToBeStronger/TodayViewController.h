@@ -13,7 +13,7 @@
 #import "TBSDatabase.h"
 #import "TBSDate.h"
 
-@interface TodayViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface TodayViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 
 
 

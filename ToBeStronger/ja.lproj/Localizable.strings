@@ -140,6 +140,15 @@
 /* Sets Label */
 "SetsLabel" = "組";
 
+/*Delete Confirmation*/
+"DeleteConfirmation" = "この計画の内容をすべて削除?";
+
+/* Cancel */
+"Cancel" = "取消";
+
+/* Confirm */
+"Confirm" = "確認";
+
 
 /* -------------- Counter View Labels -----------------*/
 

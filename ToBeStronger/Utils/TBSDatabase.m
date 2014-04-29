@@ -359,4 +359,26 @@
     return contentsArray;
 }
 
+
+- (void)deleteContentsWithName:(NSString*)name
+{
+    NSString *sqlToDelteContents = [NSString stringWithFormat:@"DELETE FROM %@ WHERE %@ = '%@'", TABLE_NAME_EXERCISE_CONTENT, COLUMN_NAME_EXERCISE_CONTEN_NAME, name];
+    NSLog(@"sqlToDelteContents=%@", sqlToDelteContents);
+    [self execSql:sqlToDelteContents];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end

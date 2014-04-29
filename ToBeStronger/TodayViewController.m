@@ -31,6 +31,9 @@
 //For past value to counter
 @property (strong, nonatomic) ContentOfDay *selectedContent;
 
+//name of content to be deleted
+@property (strong, nonatomic) NSString *nameOfContentToBeDeleted;
+
 @end
 
 @implementation TodayViewController
@@ -299,5 +302,53 @@
     [self prepareContentData];
     [self.tv_showDetail reloadData];
 }
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *key = (NSString *)[[self.positionsDic allKeys] objectAtIndex:indexPath.section];
+    ContentOfDay *content = [[self.positionsDic objectForKey:key] objectAtIndex:indexPath.row];
+    self.nameOfContentToBeDeleted = content.name;
+    
+    NSString *deleteConfirmMsg = [NSString stringWithFormat:NSLocalizedString(@"DeleteConfirmation", @"Delete Confirmation")];
+    NSString *cancel = [NSString stringWithFormat:NSLocalizedString(@"Cancel", @"Cancel")];
+    NSString *confirm = [NSString stringWithFormat:NSLocalizedString(@"Confirm", @"confirm")];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                    message:deleteConfirmMsg
+                                                   delegate:self
+                                          cancelButtonTitle:cancel
+                                          otherButtonTitles:confirm, nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1)
+    {
+        NSLog(@"click confirm");
+        TBSDatabase *db = [[TBSDatabase alloc] init];
+        [db deleteContentsWithName:self.nameOfContentToBeDeleted];
+        self.nameOfContentToBeDeleted = nil;
+        
+        //reload
+        [self prepareContentData];
+        [self.tv_showDetail reloadData];
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 @end

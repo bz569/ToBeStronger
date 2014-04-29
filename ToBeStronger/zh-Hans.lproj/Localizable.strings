@@ -140,6 +140,15 @@
 /* Sets Label */
 "SetsLabel" = "组数";
 
+/*Delete Confirmation*/
+"DeleteConfirmation" = "确定删除该计划所有内容?";
+
+/* Cancel */
+"Cancel" = "取消";
+
+/* Confirm */
+"Confirm" = "确定";
+
 
 /* -------------- Counter View Labels -----------------*/
 

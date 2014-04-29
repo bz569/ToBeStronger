@@ -96,6 +96,13 @@
 
 - (NSArray*)queryAllContents;
 
+/**
+ *  delete all contents that have the given name
+ *
+ *  @param name name of content that need to be deleted
+ */
+- (void)deleteContentsWithName:(NSString*)name;
+
 
 
 

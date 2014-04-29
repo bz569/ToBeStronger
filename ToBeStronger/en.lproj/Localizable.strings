@@ -146,6 +146,15 @@
 /* Sets Label */
 "SetsLabel" = "Set";
 
+/* Delete Confirmation */
+"DeleteConfirmation" = "Delete all contents of this plan?";
+
+/* Cancel */
+"Cancel" = "Cancel";
+
+/* Confirm */
+"Confirm" = "Confirm";
+
 
 /* -------------- Counter View Labels -----------------*/
 
